@@ -7,10 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B38A63101D00A32A005A2E5C /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A630F1D00A32A005A2E5C /* AnimationExtensions.swift */; };
+		B38A63121D00A508005A2E5C /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63111D00A508005A2E5C /* ArrayExtensions.swift */; };
+		B38A63141D00A512005A2E5C /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63131D00A512005A2E5C /* ControllerExtensions.swift */; };
+		B38A63161D00A61F005A2E5C /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63151D00A61F005A2E5C /* NibExtensions.swift */; };
+		B38A63181D00A680005A2E5C /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63171D00A680005A2E5C /* DateExtensions.swift */; };
+		B38A631A1D00A699005A2E5C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63191D00A699005A2E5C /* StringExtensions.swift */; };
+		B38A631C1D00A9D7005A2E5C /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A631B1D00A9D7005A2E5C /* Key.swift */; };
 		B3FC3ABE1D00A20E000EE526 /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B3FC3ABD1D00A20E000EE526 /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B38A630F1D00A32A005A2E5C /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
+		B38A63111D00A508005A2E5C /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		B38A63131D00A512005A2E5C /* ControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
+		B38A63151D00A61F005A2E5C /* NibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
+		B38A63171D00A680005A2E5C /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		B38A63191D00A699005A2E5C /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		B38A631B1D00A9D7005A2E5C /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		B3FC3ABA1D00A20D000EE526 /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3FC3ABD1D00A20E000EE526 /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B3FC3ABF1D00A20E000EE526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,6 +41,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B38A630C1D00A2CC005A2E5C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B38A631B1D00A9D7005A2E5C /* Key.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B38A630D1D00A2CC005A2E5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B38A63191D00A699005A2E5C /* StringExtensions.swift */,
+				B38A63111D00A508005A2E5C /* ArrayExtensions.swift */,
+				B38A63171D00A680005A2E5C /* DateExtensions.swift */,
+				B38A630F1D00A32A005A2E5C /* AnimationExtensions.swift */,
+				B38A63131D00A512005A2E5C /* ControllerExtensions.swift */,
+				B38A63151D00A61F005A2E5C /* NibExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B38A630E1D00A2E4005A2E5C /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B3FC3ABF1D00A20E000EE526 /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		B3FC3AB01D00A20D000EE526 = {
 			isa = PBXGroup;
 			children = (
@@ -47,7 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				B3FC3ABD1D00A20E000EE526 /* Dove.h */,
-				B3FC3ABF1D00A20E000EE526 /* Info.plist */,
+				B38A630C1D00A2CC005A2E5C /* Core */,
+				B38A630D1D00A2CC005A2E5C /* Extensions */,
+				B38A630E1D00A2E4005A2E5C /* Support */,
 			);
 			path = Dove;
 			sourceTree = "<group>";
@@ -130,6 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38A631C1D00A9D7005A2E5C /* Key.swift in Sources */,
+				B38A631A1D00A699005A2E5C /* StringExtensions.swift in Sources */,
+				B38A63141D00A512005A2E5C /* ControllerExtensions.swift in Sources */,
+				B38A63181D00A680005A2E5C /* DateExtensions.swift in Sources */,
+				B38A63101D00A32A005A2E5C /* AnimationExtensions.swift in Sources */,
+				B38A63121D00A508005A2E5C /* ArrayExtensions.swift in Sources */,
+				B38A63161D00A61F005A2E5C /* NibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +282,7 @@
 		B3FC3AC31D00A20E000EE526 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -240,12 +293,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B3FC3AC41D00A20E000EE526 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -278,6 +333,7 @@
 				B3FC3AC41D00A20E000EE526 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
