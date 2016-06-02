@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array where Element: Equatable {
-	func allEqual<T: Equatable>(predicate: Element -> T) -> Bool {
+public extension Array where Element: Equatable {
+	public func allEqual<T: Equatable>(predicate: Element -> T) -> Bool {
 		if let first = self.first {
 			let first = predicate(first)
 			
@@ -25,7 +25,7 @@ extension Array where Element: Equatable {
 		return true
 	}
 	
-	func distinct() -> [Element] {
+	public func distinct() -> [Element] {
 		var results = [Element]()
 		
 		for element in self {
@@ -38,16 +38,16 @@ extension Array where Element: Equatable {
 	}
 }
 
-extension Array {
-	func any(predicate: Element -> Bool) -> Bool {
+public extension Array {
+	public func any(predicate: Element -> Bool) -> Bool {
 		return self.count(predicate) > 0
 	}
 	
-	func all(predicate: Element -> Bool) -> Bool {
+	public func all(predicate: Element -> Bool) -> Bool {
 		return self.count(predicate) == self.count
 	}
 	
-	func count(predicate: Element -> Bool) -> Int {
+	public func count(predicate: Element -> Bool) -> Int {
 		var count = 0
 		
 		for element in self {

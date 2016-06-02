@@ -8,28 +8,36 @@
 
 import Foundation
 
-class Notification {
-	init(name: String) {
+public class Notification {
+	public init(name: String) {
 		self.name = name
 	}
 	
-	let name: String
+	public let name: String
 	
-	var identifier: String {
+	public var identifier: String {
 		return "\(name)Notification"
 	}
 }
 
-extension NSNotificationCenter {
-	func post(notification: Notification, sender: AnyObject?, parameters: [String: AnyObject]?) {
+public extension NSNotificationCenter {
+	public func post(notification: Notification, sender: AnyObject?, parameters: [String: AnyObject]?) {
 		NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notification.identifier, object: sender, userInfo: parameters))
 	}
 	
-	func subscribe(notification: Notification, observer: AnyObject, selector: Selector) {
+	public func post(notification: Notification, sender: AnyObject?) {
+		self.post(notification, sender: sender, parameters: nil)
+	}
+	
+	public func post(notification: Notification) {
+		self.post(notification, sender: nil)
+	}
+	
+	public func addObserver(notification: Notification, observer: AnyObject, selector: Selector) {
 		NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: notification.identifier, object: nil)
 	}
 	
-	func unsubscribe(notification: Notification, observer: AnyObject) {
+	public func removeObserver(notification: Notification, observer: AnyObject) {
 		NSNotificationCenter.defaultCenter().removeObserver(observer, name: notification.identifier, object: nil)
 	}
 }

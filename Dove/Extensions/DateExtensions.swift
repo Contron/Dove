@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension NSDate {
-	func timeAgo() -> String {
+public extension NSDate {
+	public func timeAgo() -> String {
 		let difference = abs(self.timeIntervalSinceNow)
 		
 		if difference <= 15 {

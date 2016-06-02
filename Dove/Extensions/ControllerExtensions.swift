@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-	func addToParent(parent: UIViewController, view: UIView) {
+public extension UIViewController {
+	public func addToParent(parent: UIViewController, view: UIView) {
 		view.addSubview(self.view)
 		parent.addChildViewController(self)
 	}
 	
-	func removeFromParent() {
+	public func removeFromParent() {
 		self.view.removeFromSuperview()
 		self.removeFromParentViewController()
 	}

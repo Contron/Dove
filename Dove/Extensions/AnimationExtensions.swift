@@ -9,28 +9,26 @@
 import Foundation
 import UIKit
 
-typealias AnimationBlock = Void -> Void
-
-extension UIView {
-	func fadeIn(block: AnimationBlock? = nil) {
+public extension UIView {
+	public func fadeIn(block: ActionBlock? = nil) {
 		self.animateAlpha(1, block: block)
 	}
 	
-	func fadeOut(block: AnimationBlock? = nil) {
+	public func fadeOut(block: ActionBlock? = nil) {
 		self.animateAlpha(0, block: block)
 	}
 	
-	func fadeOutAndRemove() {
+	public func fadeOutAndRemove() {
 		self.fadeOut({ [weak self] in
 			self?.removeFromSuperview()
 		})
 	}
 	
-	func animateVisible(hidden: Bool, block: AnimationBlock? = nil) {
+	public func animateVisible(hidden: Bool, block: ActionBlock? = nil) {
 		self.animateAlpha(CGFloat(hidden ? 0 : 1), block: block)
 	}
 	
-	func animateAlpha(alpha: CGFloat, block: AnimationBlock? = nil) {
+	public func animateAlpha(alpha: CGFloat, block: ActionBlock? = nil) {
 		if self.alpha == alpha {
 			return
 		}
@@ -43,16 +41,16 @@ extension UIView {
 	}
 }
 
-extension UIViewController {
-	func fadeIn(block: AnimationBlock? = nil) {
+public extension UIViewController {
+	public func fadeIn(block: ActionBlock? = nil) {
 		self.view.fadeIn(block)
 	}
 	
-	func fadeOut(block: AnimationBlock? = nil) {
+	public func fadeOut(block: ActionBlock? = nil) {
 		self.view.fadeOut(block)
 	}
 	
-	func fadeOutAndRemove(block: AnimationBlock? = nil) {
+	public func fadeOutAndRemove(block: ActionBlock? = nil) {
 		self.view.fadeOut({ [weak self] in
 			self?.removeFromParent()
 			
@@ -61,8 +59,8 @@ extension UIViewController {
 	}
 }
 
-extension UILabel {
-	func animateText(text: String?, block: AnimationBlock? = nil) {
+public extension UILabel {
+	public func animateText(text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
@@ -75,8 +73,8 @@ extension UILabel {
 	}
 }
 
-extension UITextField {
-	func animateText(text: String?, block: AnimationBlock? = nil) {
+public extension UITextField {
+	public func animateText(text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
@@ -89,8 +87,8 @@ extension UITextField {
 	}
 }
 
-extension UIButton {
-	func animateEnabled(enabled: Bool, block: AnimationBlock? = nil) {
+public extension UIButton {
+	public func animateEnabled(enabled: Bool, block: ActionBlock? = nil) {
 		if self.enabled == enabled {
 			return
 		}
@@ -103,8 +101,8 @@ extension UIButton {
 	}
 }
 
-extension UIImageView {
-	func animateImage(image: UIImage, block: AnimationBlock? = nil) {
+public extension UIImageView {
+	public func animateImage(image: UIImage, block: ActionBlock? = nil) {
 		if self.image == image {
 			return
 		}

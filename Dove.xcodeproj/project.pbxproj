@@ -14,6 +14,7 @@
 		B38A63181D00A680005A2E5C /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63171D00A680005A2E5C /* DateExtensions.swift */; };
 		B38A631A1D00A699005A2E5C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A63191D00A699005A2E5C /* StringExtensions.swift */; };
 		B38A631C1D00A9D7005A2E5C /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A631B1D00A9D7005A2E5C /* Key.swift */; };
+		B3937A291D00DC33008FF571 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3937A281D00DC33008FF571 /* Global.swift */; };
 		B3A2B5781D00D941007BCE65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2B5771D00D941007BCE65 /* Notification.swift */; };
 		B3FC3ABE1D00A20E000EE526 /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B3FC3ABD1D00A20E000EE526 /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		B38A63171D00A680005A2E5C /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B38A63191D00A699005A2E5C /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B38A631B1D00A9D7005A2E5C /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		B3937A281D00DC33008FF571 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		B3A2B5771D00D941007BCE65 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B3FC3ABA1D00A20D000EE526 /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3FC3ABD1D00A20E000EE526 /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B3FC3ABD1D00A20E000EE526 /* Dove.h */,
+				B3937A281D00DC33008FF571 /* Global.swift */,
 				B38A630C1D00A2CC005A2E5C /* Core */,
 				B38A630D1D00A2CC005A2E5C /* Extensions */,
 				B38A630E1D00A2E4005A2E5C /* Support */,
@@ -186,6 +189,7 @@
 				B38A63101D00A32A005A2E5C /* AnimationExtensions.swift in Sources */,
 				B38A63121D00A508005A2E5C /* ArrayExtensions.swift in Sources */,
 				B38A63161D00A61F005A2E5C /* NibExtensions.swift in Sources */,
+				B3937A291D00DC33008FF571 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

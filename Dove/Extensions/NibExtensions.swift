@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-extension UINib {
-	func createView() -> UIView? {
+public extension UINib {
+	public func createView() -> UIView? {
 		let results = self.instantiateWithOwner(nil, options: nil)
 		
 		if let result = results.first {

@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension String {
-	static func pluralise(count: Int, singular: String, plural: String?) -> String {
+public extension String {
+	public static func pluralise(count: Int, singular: String, plural: String?) -> String {
 		return count == 1 ? singular : plural ?? "\(singular)s"
 	}
 }

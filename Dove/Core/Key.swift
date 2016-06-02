@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Key {
-	init(name: String) {
+public class Key {
+	public init(name: String) {
 		self.name = name
 	}
 	
-	let name: String
+	public let name: String
 }
 
-extension NSUserDefaults {
-	subscript(key: Key) -> AnyObject? {
+public extension NSUserDefaults {
+	public subscript(key: Key) -> AnyObject? {
 		get {
 			return self.objectForKey(key.name)
 		}
