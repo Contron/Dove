@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B34383A71D01FBA500E5F39E /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34383A71D01FBA500E5F39E /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Dove.framework; path = "/Users/connor/Documents/Programming/Frameworks/Dove/build/Debug-iphoneos/Dove.framework"; sourceTree = "<absolute>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
@@ -45,16 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				B34383A91D01FBA600E5F39E /* Dove */,
-				B34383A81D01FBA500E5F39E /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		B34383A81D01FBA500E5F39E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B34383A71D01FBA500E5F39E /* Dove.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		B34383A91D01FBA600E5F39E /* Dove */ = {
@@ -151,7 +142,7 @@
 				en,
 			);
 			mainGroup = B343839D1D01FBA500E5F39E;
-			productRefGroup = B34383A81D01FBA500E5F39E /* Products */;
+			productRefGroup = B343839D1D01FBA500E5F39E;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -333,6 +324,7 @@
 				B34383B11D01FBA600E5F39E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
