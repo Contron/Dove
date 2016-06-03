@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
+		B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */; };
+		B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */; };
+		B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BA1D0203FE00E5F39E /* DateExtensions.swift */; };
+		B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BB1D0203FE00E5F39E /* NibExtensions.swift */; };
+		B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BC1D0203FE00E5F39E /* StringExtensions.swift */; };
+		B34383C41D02041D00E5F39E /* Dove.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383C31D02041D00E5F39E /* Dove.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B34383A71D01FBA500E5F39E /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
+		B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
+		B34383BA1D0203FE00E5F39E /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		B34383BB1D0203FE00E5F39E /* NibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
+		B34383BC1D0203FE00E5F39E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		B34383C31D02041D00E5F39E /* Dove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dove.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,9 +61,40 @@
 			isa = PBXGroup;
 			children = (
 				B34383AA1D01FBA600E5F39E /* Dove.h */,
+				B34383C31D02041D00E5F39E /* Dove.swift */,
+				B34383B31D0203B200E5F39E /* Core */,
+				B34383B41D0203B200E5F39E /* Extensions */,
+				B34383B51D0203B200E5F39E /* Utilities */,
 				B34383AC1D01FBA600E5F39E /* Info.plist */,
 			);
 			path = Dove;
+			sourceTree = "<group>";
+		};
+		B34383B31D0203B200E5F39E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B34383B41D0203B200E5F39E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
+				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
+				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
+				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
+				B34383BB1D0203FE00E5F39E /* NibExtensions.swift */,
+				B34383BC1D0203FE00E5F39E /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B34383B51D0203B200E5F39E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */,
+				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
+				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
+				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
+				B34383C41D02041D00E5F39E /* Dove.swift in Sources */,
+				B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */,
+				B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +282,7 @@
 		B34383B01D01FBA600E5F39E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -240,12 +293,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B34383B11D01FBA600E5F39E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
