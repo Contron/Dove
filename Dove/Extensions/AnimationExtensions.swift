@@ -108,7 +108,7 @@ public extension UIButton {
 }
 
 public extension UIImageView {
-	public func animateImage(image: UIImage, block: ActionBlock? = nil) {
+	public func animateImage(image: UIImage?, block: ActionBlock? = nil) {
 		if self.image == image {
 			return
 		}
