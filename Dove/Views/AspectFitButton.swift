@@ -26,15 +26,13 @@ import UIKit
 			self.contentMode = .ScaleAspectFit
 		}
 		
-		if self.scaleImageViews {
+		if self.scaleSubviews {
 			for view in self.subviews {
-				if view is UIImageView {
-					view.contentMode = .ScaleAspectFit
-				}
+				view.contentMode = .ScaleAspectFit
 			}
 		}
 	}
 	
-	@IBInspectable public var scaleSelf = true
-	@IBInspectable public var scaleImageViews = true
+	@IBInspectable public var scaleSelf: Bool = true
+	@IBInspectable public var scaleSubviews: Bool = true
 }
