@@ -15,6 +15,10 @@ public extension UIViewController {
 		parent.addChildViewController(self)
 	}
 	
+	public func addToParent(parent: UIViewController) {
+		self.addToParent(parent, view: parent.view)
+	}
+	
 	public func removeFromParent() {
 		self.view.removeFromSuperview()
 		self.removeFromParentViewController()
