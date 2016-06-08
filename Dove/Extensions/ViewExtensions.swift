@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public extension UIVisualEffectView {
+public extension UIView {
 	@IBInspectable public var cornerRadius: CGFloat {
 		get {
 			return self.layer.cornerRadius
@@ -17,6 +17,15 @@ public extension UIVisualEffectView {
 		set {
 			self.layer.cornerRadius = newValue
 			self.layer.masksToBounds = newValue > 0
+		}
+	}
+	
+	@IBInspectable public var edgeAntiAliasing: Bool {
+		get {
+			return self.layer.allowsEdgeAntialiasing
+		}
+		set {
+			self.layer.allowsEdgeAntialiasing = newValue
 		}
 	}
 }
