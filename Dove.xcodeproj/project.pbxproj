@@ -15,11 +15,11 @@
 		B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BB1D0203FE00E5F39E /* NibExtensions.swift */; };
 		B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BC1D0203FE00E5F39E /* StringExtensions.swift */; };
 		B34383C41D02041D00E5F39E /* Dove.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383C31D02041D00E5F39E /* Dove.swift */; };
+		B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984D411D0857C0005A1183 /* ViewExtensions.swift */; };
 		B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABC9AE1D0237F40066ED72 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B34383A71D01FBA500E5F39E /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Dove.framework; path = "/Users/connor/Documents/Programming/Frameworks/Dove/build/Debug-iphoneos/Dove.framework"; sourceTree = "<absolute>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
@@ -29,6 +29,8 @@
 		B34383BB1D0203FE00E5F39E /* NibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
 		B34383BC1D0203FE00E5F39E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B34383C31D02041D00E5F39E /* Dove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dove.swift; sourceTree = "<group>"; };
+		B3984D371D085371005A1183 /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3984D411D0857C0005A1183 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		B3ABC9AE1D0237F40066ED72 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				B34383A91D01FBA600E5F39E /* Dove */,
+				B3984D371D085371005A1183 /* Dove.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,12 +77,13 @@
 		B34383B41D0203B200E5F39E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
 				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
+				B34383BC1D0203FE00E5F39E /* StringExtensions.swift */,
+				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
+				B3984D411D0857C0005A1183 /* ViewExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
 				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
 				B34383BB1D0203FE00E5F39E /* NibExtensions.swift */,
-				B34383BC1D0203FE00E5F39E /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -120,7 +124,7 @@
 			);
 			name = Dove;
 			productName = Dove;
-			productReference = B34383A71D01FBA500E5F39E /* Dove.framework */;
+			productReference = B3984D371D085371005A1183 /* Dove.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -169,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */,
 				B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */,
 				B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
