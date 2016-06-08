@@ -16,20 +16,6 @@ public extension NSDate {
 			return "Just Now"
 		}
 		
-		let second = 1.0
-		let minute = 60.0
-		let hour = 3600.0
-		let day = 86400.0
-		let week = 604800.0
-		
-		let times = [
-			(second * 59, second, "Second"),
-			(minute * 59, minute, "Minute"),
-			(hour * 23, hour, "Hour"),
-			(day * 6, day, "Day"),
-			(week * 2, week, "Week")
-		]
-		
 		for (time, divider, caption) in times {
 			if difference <= time {
 				let amount = Int(round(difference / divider))
@@ -46,3 +32,17 @@ public extension NSDate {
 		return formatter.stringFromDate(self)
 	}
 }
+
+private let second = 1.0
+private let minute = 60.0
+private let hour = 3600.0
+private let day = 86400.0
+private let week = 604800.0
+
+private let times = [
+	(second * 59, second, "Second"),
+	(minute * 59, minute, "Minute"),
+	(hour * 23, hour, "Hour"),
+	(day * 6, day, "Day"),
+	(week * 2, week, "Week")
+]
