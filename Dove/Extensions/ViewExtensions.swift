@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 public extension UIView {
+	func addShadow(radius: CGFloat, opacity: Float) {
+		self.layer.shadowColor = UIColor.blackColor().CGColor
+		self.layer.shadowOffset = CGSize()
+		self.layer.shadowRadius = radius
+		self.layer.shadowOpacity = opacity
+	}
+	
 	@IBInspectable public var cornerRadius: CGFloat {
 		get {
 			return self.layer.cornerRadius
@@ -17,15 +24,6 @@ public extension UIView {
 		set {
 			self.layer.cornerRadius = newValue
 			self.layer.masksToBounds = newValue > 0
-		}
-	}
-	
-	@IBInspectable public var edgeAntiAliasing: Bool {
-		get {
-			return self.layer.allowsEdgeAntialiasing
-		}
-		set {
-			self.layer.allowsEdgeAntialiasing = newValue
 		}
 	}
 }

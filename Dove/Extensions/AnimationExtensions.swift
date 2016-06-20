@@ -62,8 +62,8 @@ public extension UIView {
 		
 		UIView.animateWithDuration(delay, animations: { [weak self] in
 			self?.alpha = alpha
-			}, completion: { finished in
-				block?()
+		}, completion: { finished in
+			block?()
 		})
 	}
 	
@@ -74,8 +74,8 @@ public extension UIView {
 		
 		UIView.animateWithDuration(delay, animations: { [weak self] in
 			self?.center = center
-			}, completion: { finished in
-				block?()
+		}, completion: { finished in
+			block?()
 		})
 	}
 }
