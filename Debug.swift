@@ -8,7 +8,7 @@
 
 import Foundation
 
-func debug(object: Any, file: String = #file) {
+public func debug(object: Any, file: String = #file) {
 	#if DEBUG
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = "HH:mm:ss"
