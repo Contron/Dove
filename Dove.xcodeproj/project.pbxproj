@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301A56DA1D59FA0800470744 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A56D91D59FA0800470744 /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
 		B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301A56D91D59FA0800470744 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = SOURCE_ROOT; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		B34383B51D0203B200E5F39E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				301A56D91D59FA0800470744 /* Debug.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */,
 				B3984D461D085CD4005A1183 /* AspectFitButton.swift in Sources */,
+				301A56DA1D59FA0800470744 /* Debug.swift in Sources */,
 				B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */,
 				B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
@@ -303,6 +307,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -322,6 +327,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
