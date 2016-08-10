@@ -11,14 +11,10 @@ import UIKit
 
 public extension UIView {
 	public func fadeIn(block: ActionBlock? = nil) {
-		self.alpha = 0
-		
 		self.animateAlpha(1, block: block)
 	}
 	
 	public func fadeOut(block: ActionBlock? = nil) {
-		self.alpha = 1
-		
 		self.animateAlpha(0, block: block)
 	}
 	

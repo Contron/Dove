@@ -1,8 +1,8 @@
 //
-//  StringExtensions.swift
+//  PrimitiveExtensions.swift
 //  Dove
 //
-//  Created by Connor Haigh on 02/06/2016.
+//  Created by Connor Haigh on 10/08/2016.
 //  Copyright © 2016 Connor Haigh. All rights reserved.
 //
 
@@ -19,5 +19,15 @@ public extension String {
 		}
 		
 		return self
+	}
+}
+
+extension Int {
+	var displayValue: String {
+		let formatter = NSNumberFormatter()
+		formatter.numberStyle = .DecimalStyle
+		formatter.groupingSeparator = ","
+		
+		return formatter.stringFromNumber(self) ?? String(self)
 	}
 }

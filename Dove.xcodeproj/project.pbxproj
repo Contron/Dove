@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		301A56DA1D59FA0800470744 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A56D91D59FA0800470744 /* Debug.swift */; };
+		30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */; };
+		30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */; };
+		30485E331D5B1A0500EB74EA /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E321D5B1A0500EB74EA /* Dispatch.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
 		B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */; };
 		B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */; };
 		B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BA1D0203FE00E5F39E /* DateExtensions.swift */; };
 		B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BB1D0203FE00E5F39E /* NibExtensions.swift */; };
-		B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BC1D0203FE00E5F39E /* StringExtensions.swift */; };
 		B34383C41D02041D00E5F39E /* Dove.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383C31D02041D00E5F39E /* Dove.swift */; };
 		B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984D411D0857C0005A1183 /* ViewExtensions.swift */; };
 		B3984D461D085CD4005A1183 /* AspectFitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984D451D085CD4005A1183 /* AspectFitButton.swift */; };
@@ -23,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		301A56D91D59FA0800470744 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = SOURCE_ROOT; };
+		30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
+		30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		30485E321D5B1A0500EB74EA /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dispatch.swift; path = Dove/Extensions/Dispatch.swift; sourceTree = SOURCE_ROOT; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
@@ -30,7 +35,6 @@
 		B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		B34383BA1D0203FE00E5F39E /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B34383BB1D0203FE00E5F39E /* NibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibExtensions.swift; sourceTree = "<group>"; };
-		B34383BC1D0203FE00E5F39E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B34383C31D02041D00E5F39E /* Dove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dove.swift; sourceTree = "<group>"; };
 		B3984D371D085371005A1183 /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3984D411D0857C0005A1183 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -82,8 +86,9 @@
 		B34383B41D0203B200E5F39E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */,
 				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
-				B34383BC1D0203FE00E5F39E /* StringExtensions.swift */,
+				30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */,
 				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
 				B3984D411D0857C0005A1183 /* ViewExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				301A56D91D59FA0800470744 /* Debug.swift */,
+				30485E321D5B1A0500EB74EA /* Dispatch.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -190,14 +196,16 @@
 				B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */,
 				B3984D461D085CD4005A1183 /* AspectFitButton.swift in Sources */,
 				301A56DA1D59FA0800470744 /* Debug.swift in Sources */,
-				B34383C21D0203FE00E5F39E /* StringExtensions.swift in Sources */,
 				B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
 				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
 				B34383C41D02041D00E5F39E /* Dove.swift in Sources */,
+				30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */,
 				B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */,
 				B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */,
+				30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */,
+				30485E331D5B1A0500EB74EA /* Dispatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

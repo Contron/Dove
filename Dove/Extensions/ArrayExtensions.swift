@@ -42,6 +42,14 @@ public extension Array where Element: Equatable {
 			self.removeAtIndex(index)
 		}
 	}
+	
+	var random: Element? {
+		if self.count <= 0 {
+			return nil
+		}
+		
+		return self[Int(arc4random_uniform(UInt32(self.count)))]
+	}
 }
 
 public extension Array {
