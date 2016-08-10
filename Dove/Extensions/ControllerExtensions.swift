@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
-	public func addToParent(parent: UIViewController, view: UIView) {
-		view.addSubview(self.view)
-		parent.addChildViewController(self)
+	public func addChild(controller: UIViewController, view: UIView) {
+		view.addSubview(controller.view)
+		self.addChildViewController(controller)
 	}
 	
-	public func addToParent(parent: UIViewController) {
-		self.addToParent(parent, view: parent.view)
+	public func addChild(controller: UIViewController) {
+		self.addChild(controller, view: self.view)
 	}
 	
-	public func removeFromParent() {
+	public func removeChild() {
 		self.view.removeFromSuperview()
 		self.removeFromParentViewController()
 	}
