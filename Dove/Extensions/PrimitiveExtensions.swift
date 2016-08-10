@@ -13,7 +13,7 @@ public extension String {
 		return count == 1 ? singular : plural ?? "\(singular)s"
 	}
 	
-	func truncate(length: Int) -> String {
+	public func truncate(length: Int) -> String {
 		if self.characters.count > length {
 			return self.substringToIndex(self.startIndex.advancedBy(length)) + "..."
 		}
@@ -22,8 +22,8 @@ public extension String {
 	}
 }
 
-extension Int {
-	var displayValue: String {
+public extension Int {
+	public var displayValue: String {
 		let formatter = NSNumberFormatter()
 		formatter.numberStyle = .DecimalStyle
 		formatter.groupingSeparator = ","

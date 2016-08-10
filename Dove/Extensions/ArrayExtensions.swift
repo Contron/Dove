@@ -43,7 +43,7 @@ public extension Array where Element: Equatable {
 		}
 	}
 	
-	var random: Element? {
+	public var random: Element? {
 		if self.count <= 0 {
 			return nil
 		}
