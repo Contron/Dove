@@ -11,3 +11,6 @@ import Foundation
 public typealias ActionBlock = Void -> Void
 
 public let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier ?? NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] ?? "app"
+
+public let animationConstant = 0.3
+public let doubleAnimationConstant = 0.3
