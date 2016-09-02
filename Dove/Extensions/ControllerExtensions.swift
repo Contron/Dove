@@ -24,3 +24,15 @@ public extension UIViewController {
 		self.removeFromParentViewController()
 	}
 }
+
+public extension UIApplication {
+	public var topmostViewController: UIViewController? {
+		var controller = self.keyWindow?.rootViewController
+		
+		while let next = controller?.presentedViewController {
+			controller = next
+		}
+		
+		return controller
+	}
+}
