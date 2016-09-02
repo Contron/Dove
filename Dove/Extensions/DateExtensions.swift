@@ -31,6 +31,22 @@ public extension NSDate {
 		
 		return formatter.stringFromDate(self)
 	}
+	
+	func isEarlier(date: NSDate) -> Bool {
+		return self.compare(date) == .OrderedAscending
+	}
+	
+	func isLater(date: NSDate) -> Bool {
+		return self.compare(date) == .OrderedDescending
+	}
+	
+	func isEarlierThanNow() -> Bool {
+		return self.isEarlier(NSDate())
+	}
+	
+	func isLaterThanNow() -> Bool {
+		return self.isLater(NSDate())
+	}
 }
 
 private let second = 1.0
