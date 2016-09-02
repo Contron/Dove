@@ -9,6 +9,7 @@
 import Foundation
 
 public typealias ActionBlock = Void -> Void
+public typealias Json = [String: AnyObject]
 
 public let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier ?? NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] ?? "app"
 
