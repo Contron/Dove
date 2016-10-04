@@ -26,7 +26,7 @@
 		30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
-		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dove/Info.plist; sourceTree = "<group>"; };
 		B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
@@ -60,6 +60,7 @@
 		B343839D1D01FBA500E5F39E = {
 			isa = PBXGroup;
 			children = (
+				B34383AC1D01FBA600E5F39E /* Info.plist */,
 				B34383A91D01FBA600E5F39E /* Dove */,
 				B3984D371D085371005A1183 /* Dove.framework */,
 			);
@@ -73,7 +74,6 @@
 				B34383B31D0203B200E5F39E /* Core */,
 				B34383B41D0203B200E5F39E /* Extensions */,
 				30F4D92B1D79C4FB0071B24B /* Utilities */,
-				B34383AC1D01FBA600E5F39E /* Info.plist */,
 			);
 			path = Dove;
 			sourceTree = "<group>";
@@ -300,6 +300,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,6 +322,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
