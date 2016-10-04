@@ -8,12 +8,12 @@
 
 import Foundation
 
-public typealias ActionBlock = Void -> Void
-public typealias BoolBlock = Void -> Bool
+public typealias ActionBlock = (Void) -> Void
+public typealias BoolBlock = (Void) -> Bool
 
-public typealias Json = [String: AnyObject]
+public typealias Json = [String: Any]
 
-public let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier ?? NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] ?? "application"
+public let bundleIdentifier = Bundle.main.bundleIdentifier ?? Bundle.main.infoDictionary?["CFBundleIdentifier"] ?? "application"
 
 public let animationConstant = 0.3
 public let shorterAnimationConstant = animationConstant / 2

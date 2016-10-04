@@ -11,7 +11,7 @@ import UIKit
 
 public extension UINib {
 	public func createView() -> UIView? {
-		let results = self.instantiateWithOwner(nil, options: nil)
+		let results = self.instantiate(withOwner: nil, options: nil)
 		
 		if let result = results.first {
 			if let view = result as? UIView {

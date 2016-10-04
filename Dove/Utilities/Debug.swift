@@ -8,15 +8,15 @@
 
 import Foundation
 
-public func debug(object: Any, file: String = #file) {
+public func debug(_ object: Any, _ file: String = #file) {
 	#if DEBUG
-		let formatter = NSDateFormatter()
+		let formatter = DateFormatter()
 		formatter.dateFormat = "HH:mm:ss"
 		
-		let date = formatter.stringFromDate(NSDate()) ?? "Now"
+		let date = "Now"
 		
-		let file = NSURL(string: file)?.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
-		let object = String(object)
+		let file = URL(string: file)?.lastPathComponent ?? "Unknown"
+		let object = String(describing: object)
 		
 		print("[\(date) \(file)] \(object)")
 	#endif

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSDate {
+public extension Date {
 	public func timeAgo() -> String {
 		let difference = abs(self.timeIntervalSinceNow)
 		
@@ -19,33 +19,33 @@ public extension NSDate {
 		for (time, divider, caption) in times {
 			if difference <= time {
 				let amount = Int(round(difference / divider))
-				let caption = String.pluralise(amount, singular: caption, plural: nil)
+				let caption = String.pluralise(count: amount, singular: caption, plural: nil)
 				
 				return "\(amount) \(caption) Ago"
 			}
 		}
 		
-		let formatter = NSDateFormatter()
-		formatter.timeStyle = .NoStyle
-		formatter.dateStyle = .MediumStyle
+		let formatter = DateFormatter()
+		formatter.timeStyle = .none
+		formatter.dateStyle = .medium
 		
-		return formatter.stringFromDate(self)
+		return formatter.string(from: self)
 	}
 	
-	func isEarlier(date: NSDate) -> Bool {
-		return self.compare(date) == .OrderedAscending
+	func isEarlier(date: Date) -> Bool {
+		return self.compare(date) == .orderedAscending
 	}
 	
-	func isLater(date: NSDate) -> Bool {
-		return self.compare(date) == .OrderedDescending
+	func isLater(date: Date) -> Bool {
+		return self.compare(date) == .orderedDescending
 	}
 	
-	func isEarlierThanNow() -> Bool {
-		return self.isEarlier(NSDate())
+	func isPast() -> Bool {
+		return self.isEarlier(date: Date())
 	}
 	
-	func isLaterThanNow() -> Bool {
-		return self.isLater(NSDate())
+	func isFuture() -> Bool {
+		return self.isLater(date: Date())
 	}
 }
 

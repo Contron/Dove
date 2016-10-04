@@ -19,7 +19,7 @@ public extension UIView {
 	}
 	
 	public func fadeOutAndRemove(block: ActionBlock? = nil) {
-		self.fadeOut({ [weak self] in
+		self.fadeOut(block: { [weak self] in
 			self?.removeFromSuperview()
 			
 			block?()
@@ -29,15 +29,15 @@ public extension UIView {
 
 public extension UIViewController {
 	public func fadeIn(block: ActionBlock? = nil) {
-		self.view.fadeIn(block)
+		self.view.fadeIn(block: block)
 	}
 	
 	public func fadeOut(block: ActionBlock? = nil) {
-		self.view.fadeOut(block)
+		self.view.fadeOut(block: block)
 	}
 	
 	public func fadeOutAndRemove(block: ActionBlock? = nil) {
-		self.view.fadeOut({ [weak self] in
+		self.view.fadeOut(block: { [weak self] in
 			self?.view.removeFromSuperview()
 			self?.removeFromParentViewController()
 			
@@ -47,28 +47,28 @@ public extension UIViewController {
 }
 
 public extension UIView {
-	public func animateVisible(visible: Bool, block: ActionBlock? = nil) {
+	public func animateVisible(_ visible: Bool, block: ActionBlock? = nil) {
 		self.animateAlpha(CGFloat(visible ? 1 : 0), block: block)
 	}
 	
-	public func animateAlpha(alpha: CGFloat, block: ActionBlock? = nil) {
+	public func animateAlpha(_ alpha: CGFloat, block: ActionBlock? = nil) {
 		if self.alpha == alpha {
 			return
 		}
 		
-		UIView.animateWithDuration(delay, animations: { [weak self] in
+		UIView.animate(withDuration: animationConstant, animations: { [weak self] in
 			self?.alpha = alpha
 		}, completion: { finished in
 			block?()
 		})
 	}
 	
-	public func animateCenter(center: CGPoint, block: ActionBlock? = nil) {
+	public func animateCenter(_ center: CGPoint, block: ActionBlock? = nil) {
 		if self.center == center {
 			return
 		}
 		
-		UIView.animateWithDuration(delay, animations: { [weak self] in
+		UIView.animate(withDuration: animationConstant, animations: { [weak self] in
 			self?.center = center
 		}, completion: { finished in
 			block?()
@@ -77,12 +77,12 @@ public extension UIView {
 }
 
 public extension UILabel {
-	public func animateText(text: String?, block: ActionBlock? = nil) {
+	public func animateText(_ text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
 		
-		UIView.transitionWithView(self, duration: delay, options: .TransitionFlipFromTop, animations: { [weak self] in
+		UIView.transition(with: self, duration: animationConstant, options: .transitionFlipFromTop, animations: { [weak self] in
 			self?.text = text
 		}, completion: { finished in
 			block?()
@@ -91,12 +91,12 @@ public extension UILabel {
 }
 
 public extension UITextField {
-	public func animateText(text: String?, block: ActionBlock? = nil) {
+	public func animateText(_ text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
 		
-		UIView.transitionWithView(self, duration: delay, options: .TransitionCrossDissolve, animations: { [weak self] in
+		UIView.transition(with: self, duration: animationConstant, options: .transitionCrossDissolve, animations: { [weak self] in
 			self?.text = text
 		}, completion: { finished in
 			block?()
@@ -105,13 +105,13 @@ public extension UITextField {
 }
 
 public extension UIButton {
-	public func animateEnabled(enabled: Bool, block: ActionBlock? = nil) {
-		if self.enabled == enabled {
+	public func animateEnabled(_ enabled: Bool, block: ActionBlock? = nil) {
+		if self.isEnabled == enabled {
 			return
 		}
 		
-		UIView.transitionWithView(self, duration: delay, options: .TransitionCrossDissolve, animations: { [weak self] in
-			self?.enabled = enabled
+		UIView.transition(with: self, duration: animationConstant, options: .transitionCrossDissolve, animations: { [weak self] in
+			self?.isEnabled = enabled
 		}, completion: { finished in
 			block?()
 		})
@@ -119,27 +119,15 @@ public extension UIButton {
 }
 
 public extension UIImageView {
-	public func animateImage(image: UIImage?, block: ActionBlock? = nil) {
+	public func animateImage(_ image: UIImage?, block: ActionBlock? = nil) {
 		if self.image == image {
 			return
 		}
 		
-		UIView.transitionWithView(self, duration: delay, options: .TransitionFlipFromTop, animations: { [weak self] in
+		UIView.transition(with: self, duration: animationConstant, options: .transitionFlipFromTop, animations: { [weak self] in
 			self?.image = image
 		}, completion: { finished in
 			block?()
 		})
 	}
 }
-
-public extension UITableView {
-	public func animateReloadData(block: ActionBlock? = nil) {
-		UIView.transitionWithView(self, duration: delay, options: .TransitionCrossDissolve, animations: { [weak self] in
-			self?.reloadData()
-		}, completion: { finished in
-			block?()
-		})
-	}
-}
-
-private let delay = 0.3

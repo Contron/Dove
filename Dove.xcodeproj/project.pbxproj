@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */; };
 		30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */; };
-		30F4D92D1D79C4FB0071B24B /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92C1D79C4FB0071B24B /* Dispatch.swift */; };
 		30F4D92F1D79C5080071B24B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92E1D79C5080071B24B /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
 		30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
-		30F4D92C1D79C4FB0071B24B /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				30F4D92E1D79C5080071B24B /* Debug.swift */,
-				30F4D92C1D79C4FB0071B24B /* Dispatch.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -147,6 +144,7 @@
 				TargetAttributes = {
 					B34383A61D01FBA500E5F39E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -190,7 +188,6 @@
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
 				B34383C41D02041D00E5F39E /* Dove.swift in Sources */,
 				30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */,
-				30F4D92D1D79C4FB0071B24B /* Dispatch.swift in Sources */,
 				B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */,
 				B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */,
 				30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */,
@@ -308,6 +305,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -327,6 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -10,24 +10,23 @@ import Foundation
 import UIKit
 
 public extension UIImage {
-	public func applyFilter(filter: String) -> UIImage? {
-		guard let inputImage = self.CGImage else {
+	public func apply(filter: CIFilter, options: [String: Any]? = nil) -> UIImage? {
+		guard let image = self.cgImage else {
 			return nil
 		}
 		
-		guard let filter = CIFilter(name: filter) else {
-			return nil
+		filter.setValue(CoreImage.CIImage(cgImage: image), forKey: kCIInputImageKey)
+		
+		if let options = options {
+			for (option, value) in options {
+				filter.setValue(value, forKey: option)
+			}
 		}
 		
-		let inputCoreImage = CoreImage.CIImage(CGImage: inputImage)
-		
-		filter.setValue(inputCoreImage, forKey: kCIInputImageKey)
-		
-		if let outputCoreImage = filter.outputImage {
-			let outputImage = context.createCGImage(outputCoreImage, fromRect: outputCoreImage.extent)
-			let output = UIImage(CGImage: outputImage)
-			
-			return output
+		if let output = filter.outputImage {
+			if let output = context.createCGImage(output, from: output.extent) {
+				return UIImage(cgImage: output)
+			}
 		}
 		
 		return nil
@@ -50,4 +49,4 @@ public extension UIColor {
 	}
 }
 
-private let context = CIContext()
+private let context = CIContext(eaglContext: EAGLContext(api: .openGLES2), options: [kCIContextWorkingColorSpace: NSNull()])

@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Array where Element: Equatable {
-	public func allEqual<T: Equatable>(predicate: Element -> T) -> Bool {
+	public func allEqual<T: Equatable>(_ predicate: (Element) -> T) -> Bool {
 		if let first = self.first {
 			let first = predicate(first)
 			
@@ -38,8 +38,16 @@ public extension Array where Element: Equatable {
 	}
 	
 	public mutating func remove(element: Element) {
-		if let index = self.indexOf(element) {
-			self.removeAtIndex(index)
+		if let index = self.index(of: element) {
+			self.remove(at: index)
+		}
+	}
+	
+	public mutating func remove(_ predicate: (Element) -> Bool) {
+		for element in self {
+			if predicate(element) {
+				self.remove(element: element)
+			}
 		}
 	}
 	
@@ -53,15 +61,15 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array {
-	public func any(predicate: Element -> Bool) -> Bool {
+	public func any(_ predicate: (Element) -> Bool) -> Bool {
 		return self.count(predicate) > 0
 	}
 	
-	public func all(predicate: Element -> Bool) -> Bool {
+	public func all(_ predicate: (Element) -> Bool) -> Bool {
 		return self.count(predicate) == self.count
 	}
 	
-	public func count(predicate: Element -> Bool) -> Int {
+	public func count(_ predicate: (Element) -> Bool) -> Int {
 		var count = 0
 		
 		for element in self {
