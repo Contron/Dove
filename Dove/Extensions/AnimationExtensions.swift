@@ -74,6 +74,14 @@ public extension UIView {
 			block?()
 		})
 	}
+	
+	public func animateLayout(block: ActionBlock? = nil) {
+		UIView.animate(withDuration: animationConstant, animations: { [weak self] in
+			self?.layoutIfNeeded()
+		}, completion: { finished in
+			block?()
+		})
+	}
 }
 
 public extension UILabel {

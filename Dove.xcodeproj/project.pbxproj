@@ -92,14 +92,14 @@
 		B34383B41D0203B200E5F39E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */,
-				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
-				30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */,
 				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
-				B3984D411D0857C0005A1183 /* ViewExtensions.swift */,
+				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
 				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
+				30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */,
 				B34383BB1D0203FE00E5F39E /* NibExtensions.swift */,
+				30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */,
+				B3984D411D0857C0005A1183 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
