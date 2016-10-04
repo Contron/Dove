@@ -31,6 +31,20 @@ public extension String {
 		
 		return String(first).uppercased() + String(self.characters.dropFirst(1))
 	}
+}
+
+public extension Int {
+	public static func align(number: Int, steps: Int) -> Int {
+		return Int(round(Double(number) / Double(steps))) * steps
+	}
+	
+	public var displayValue: String {
+		let formatter = NumberFormatter()
+		formatter.numberStyle = .decimal
+		formatter.groupingSeparator = ","
+		
+		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+	}
 	
 	public var ordinal: String {
 		let ones = self % 10
@@ -50,20 +64,6 @@ public extension String {
 		}
 		
 		return "th"
-	}
-}
-
-public extension Int {
-	public static func align(number: Int, steps: Int) -> Int {
-		return Int(round(Double(number) / Double(steps))) * steps
-	}
-	
-	public var displayValue: String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .decimal
-		formatter.groupingSeparator = ","
-		
-		return formatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
 
