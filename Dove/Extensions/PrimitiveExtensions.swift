@@ -23,9 +23,41 @@ public extension String {
 		
 		return self
 	}
+	
+	public var pascalCase: String {
+		guard let first = self.characters.first else {
+			return self
+		}
+		
+		return String(first).uppercased() + String(self.characters.dropFirst(1))
+	}
+	
+	public var ordinal: String {
+		let ones = self % 10
+		let tens = (self / 10) % 10
+		
+		if tens != 1 {
+			switch ones {
+			case 1:
+				return "st"
+			case 2:
+				return "nd"
+			case 3:
+				return "rd"
+			default:
+				break
+			}
+		}
+		
+		return "th"
+	}
 }
 
 public extension Int {
+	public static func align(number: Int, steps: Int) -> Int {
+		return Int(round(Double(number) / Double(steps))) * steps
+	}
+	
 	public var displayValue: String {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .decimal
