@@ -9,11 +9,11 @@
 import Foundation
 
 public extension String {
-	public static func pluralise(count: Int, singular: String, plural: String?) -> String {
+	public static func pluralise(amount: Int, singular: String, plural: String?) -> String {
 		let singular = singular.hasSuffix("s") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
 		let plural = plural ?? "\(singular)s"
 		
-		return count == 1 ? singular : plural
+		return amount == 1 ? singular : plural
 	}
 	
 	public func truncate(length: Int) -> String {

@@ -19,7 +19,7 @@ public extension Date {
 		for (time, divider, caption) in times {
 			if difference <= time {
 				let amount = Int(round(difference / divider))
-				let caption = String.pluralise(count: amount, singular: caption, plural: nil)
+				let caption = String.pluralise(amount: amount, singular: caption, plural: nil)
 				
 				return "\(amount) \(caption) Ago"
 			}
