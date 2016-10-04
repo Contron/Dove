@@ -15,7 +15,7 @@ public extension String {
 		
 		return count == 1 ? singular : plural
 	}
-
+	
 	public func truncate(length: Int) -> String {
 		if self.characters.count > length {
 			return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
@@ -38,14 +38,6 @@ public extension Int {
 		return Int(round(Double(number) / Double(steps))) * steps
 	}
 	
-	public var displayValue: String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .decimal
-		formatter.groupingSeparator = ","
-		
-		return formatter.string(from: NSNumber(value: self)) ?? String(self)
-	}
-	
 	public var ordinal: String {
 		let ones = self % 10
 		let tens = (self / 10) % 10
@@ -64,6 +56,14 @@ public extension Int {
 		}
 		
 		return "th"
+	}
+	
+	public var displayValue: String {
+		let formatter = NumberFormatter()
+		formatter.numberStyle = .decimal
+		formatter.groupingSeparator = ","
+		
+		return formatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
 

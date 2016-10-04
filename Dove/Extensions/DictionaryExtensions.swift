@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Dictionary {
-	public func collapse<Key: Hashable, Value>(transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
+	public func collapse<Key: Hashable, Value>(_ transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
 		let transforms = self.map(transform)
 		var result = [Key: Value]()
 		

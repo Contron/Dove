@@ -42,22 +42,6 @@ public extension Array where Element: Equatable {
 			self.remove(at: index)
 		}
 	}
-	
-	public mutating func remove(_ predicate: (Element) -> Bool) {
-		for element in self {
-			if predicate(element) {
-				self.remove(element: element)
-			}
-		}
-	}
-	
-	public var random: Element? {
-		if self.count <= 0 {
-			return nil
-		}
-		
-		return self[Int(arc4random_uniform(UInt32(self.count)))]
-	}
 }
 
 public extension Array {
@@ -79,5 +63,21 @@ public extension Array {
 		}
 		
 		return count
+	}
+	
+	public mutating func remove(_ predicate: (Element) -> Bool) {
+		for (index, element) in self.enumerated() {
+			if predicate(element) {
+				self.remove(at: index)
+			}
+		}
+	}
+	
+	public var random: Element? {
+		if self.count <= 0 {
+			return nil
+		}
+		
+		return self[Int(arc4random_uniform(UInt32(self.count)))]
 	}
 }
