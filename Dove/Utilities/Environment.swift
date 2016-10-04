@@ -8,20 +8,20 @@
 
 import Foundation
 
-class Environment {
-	enum Platform {
+public class Environment {
+	public enum Platform {
 		case phone
 		case tablet
 		case television
 		case vehicle
 	}
 	
-	enum Mode {
+	public enum Mode {
 		case debug
 		case release
 	}
 	
-	static var platform: Platform {
+	public static var platform: Platform {
 		switch UIDevice.current.userInterfaceIdiom {
 		case .pad:
 			return .tablet
@@ -34,7 +34,7 @@ class Environment {
 		}
 	}
 	
-	static var mode: Mode {
+	public static var mode: Mode {
 		#if DEBUG
 			return .debug
 		#else
@@ -42,15 +42,15 @@ class Environment {
 		#endif
 	}
 	
-	static var version: String? {
+	public static var version: String? {
 		return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 	}
 	
-	static var build: String? {
+	public static var build: String? {
 		return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
 	}
 	
-	static var identifier: String? {
+	public static var identifier: String? {
 		return UIDevice.current.identifierForVendor?.uuidString
 			.lowercased()
 			.replacingOccurrences(of: "-", with: "")
