@@ -9,7 +9,7 @@
 import Foundation
 
 public extension String {
-	public static func pluralise(amount: Int, singular: String, plural: String?) -> String {
+	public static func pluralise(amount: Int, singular: String, plural: String? = nil) -> String {
 		let singular = singular.hasSuffix("s") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
 		let plural = plural ?? "\(singular)s"
 		
