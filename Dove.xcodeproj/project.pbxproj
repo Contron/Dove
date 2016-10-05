@@ -64,8 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				B34383AC1D01FBA600E5F39E /* Info.plist */,
-				B34383A91D01FBA600E5F39E /* Dove */,
 				B3984D371D085371005A1183 /* Dove.framework */,
+				B34383A91D01FBA600E5F39E /* Dove */,
 			);
 			sourceTree = "<group>";
 		};

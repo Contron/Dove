@@ -10,8 +10,10 @@ import Foundation
 
 public typealias ActionBlock = (Void) -> Void
 public typealias BoolBlock = (Void) -> Bool
+public typealias IntBlock = (Void) -> Int
+public typealias StringBlock = (Void) -> String
 
-public typealias Json = [String: Any]
+public typealias KeyValues = [String: Any]
 
 public let bundleIdentifier = Bundle.main.bundleIdentifier ?? Bundle.main.infoDictionary?["CFBundleIdentifier"] ?? "application"
 
