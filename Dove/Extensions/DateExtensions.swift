@@ -27,7 +27,7 @@ public extension Date {
 		
 		let formatter = DateFormatter()
 		formatter.timeStyle = .none
-		formatter.dateStyle = .medium
+		formatter.dateFormat = "d MMMM, y"
 		
 		return formatter.string(from: self)
 	}
