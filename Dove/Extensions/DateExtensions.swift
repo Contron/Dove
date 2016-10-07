@@ -32,20 +32,12 @@ public extension Date {
 		return formatter.string(from: self)
 	}
 	
-	func isEarlier(date: Date) -> Bool {
-		return self.compare(date) == .orderedAscending
-	}
-	
-	func isLater(date: Date) -> Bool {
-		return self.compare(date) == .orderedDescending
-	}
-	
 	func isPast() -> Bool {
-		return self.isEarlier(date: Date())
+		return self < Date()
 	}
 	
 	func isFuture() -> Bool {
-		return self.isLater(date: Date())
+		return self > Date()
 	}
 }
 
