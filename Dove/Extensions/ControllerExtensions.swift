@@ -23,6 +23,16 @@ public extension UIViewController {
 		self.view.removeFromSuperview()
 		self.removeFromParentViewController()
 	}
+	
+	public func showAlert(title: String, message: String, block: ActionBlock? = nil) {
+		let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		
+		controller.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+			block?()
+		}))
+		
+		self.present(controller, animated: true, completion: nil)
+	}
 }
 
 public extension UIApplication {
