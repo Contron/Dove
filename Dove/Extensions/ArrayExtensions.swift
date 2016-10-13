@@ -37,6 +37,24 @@ public extension Array where Element: Equatable {
 		return results
 	}
 	
+	public func shuffle() -> [Element] {
+		if self.count < 2 {
+			return self
+		}
+		
+		var results = Array(self)
+		
+		for index in 0..<self.count - 1 {
+			let next = Int(arc4random_uniform(UInt32(self.count - index))) + index
+			
+			if next != index {
+				swap(&results[index], &results[next])
+			}
+		}
+		
+		return results
+	}
+
 	public mutating func remove(element: Element) {
 		if let index = self.index(of: element) {
 			self.remove(at: index)
