@@ -14,7 +14,7 @@ public extension Date {
 		let future = self.timeIntervalSinceNow > 0
 		
 		if future {
-			if difference >= 5 {
+			if difference <= 5 {
 				return "Few Seconds"
 			}
 		} else {
