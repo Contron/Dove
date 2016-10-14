@@ -11,9 +11,16 @@ import Foundation
 public extension Date {
 	public func timeAgo() -> String {
 		let difference = abs(self.timeIntervalSinceNow)
+		let future = self.timeIntervalSinceNow > 0
 		
-		if difference <= 15 {
-			return "Just Now"
+		if future {
+			if difference >= 5 {
+				return "Few Seconds"
+			}
+		} else {
+			if difference <= 15 {
+				return "Just Now"
+			}
 		}
 		
 		for (time, divider, caption) in times {
@@ -21,7 +28,13 @@ public extension Date {
 				let amount = Int(round(difference / divider))
 				let caption = String.pluralise(amount: amount, singular: caption, plural: nil)
 				
-				return "\(amount) \(caption) Ago"
+				let result = "\(amount) \(caption)"
+				
+				if future {
+					return result
+				} else {
+					return "\(result) Ago"
+				}
 			}
 		}
 		
@@ -32,11 +45,11 @@ public extension Date {
 		return formatter.string(from: self)
 	}
 	
-	func isPast() -> Bool {
+	public func isPast() -> Bool {
 		return self < Date()
 	}
 	
-	func isFuture() -> Bool {
+	public func isFuture() -> Bool {
 		return self > Date()
 	}
 }
