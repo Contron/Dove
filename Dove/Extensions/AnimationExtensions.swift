@@ -75,6 +75,18 @@ public extension UIView {
 		})
 	}
 	
+	public func animateTransform(_ transform: CGAffineTransform, block: ActionBlock? = nil) {
+		if self.transform == transform {
+			return
+		}
+		
+		UIView.animate(withDuration: animationConstant, animations: { [weak self] in
+			self?.transform = transform
+		}, completion: { finished in
+			block?()
+		}
+	}
+	
 	public func animateLayout(block: ActionBlock? = nil) {
 		UIView.animate(withDuration: animationConstant, animations: { [weak self] in
 			self?.layoutIfNeeded()
