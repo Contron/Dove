@@ -84,7 +84,7 @@ public extension UIView {
 			self?.transform = transform
 		}, completion: { finished in
 			block?()
-		}
+		})
 	}
 	
 	public func animateLayout(block: ActionBlock? = nil) {
