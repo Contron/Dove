@@ -22,6 +22,15 @@ public extension Dictionary {
 		return result
 	}
 	
+	public func urlQuery() -> String {
+		let query = self
+			.collapse({ (String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), String(describing: $1).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) })
+			.map({ "\($0.key)=\($0.value)" })
+			.joined(separator: "&")
+		
+		return "?\(query)"
+	}
+	
 	public var random: (Key, Value)? {
 		if self.count <= 0 {
 			return nil
