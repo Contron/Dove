@@ -55,7 +55,7 @@ public extension UITableViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			let view = self.selectedBackgroundView ?? UIView()
+			let view = UIView()
 			view.backgroundColor = newValue
 			
 			self.selectedBackgroundView = view
@@ -69,7 +69,7 @@ public extension UICollectionViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			let view = self.selectedBackgroundView ?? UIView()
+			let view = UIView()
 			view.backgroundColor = newValue
 			
 			self.selectedBackgroundView = view
