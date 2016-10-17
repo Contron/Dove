@@ -49,4 +49,32 @@ public extension UIColor {
 	}
 }
 
+public extension UITableViewCell {
+	public var selectedColour: UIColor? {
+		get {
+			return self.selectedBackgroundView?.backgroundColor
+		}
+		set {
+			let view = self.selectedBackgroundView ?? UIView()
+			view.backgroundColor = newValue
+			
+			self.selectedBackgroundView = view
+		}
+	}
+}
+
+public extension UICollectionViewCell {
+	public var selectedColour: UIColor? {
+		get {
+			return self.selectedBackgroundView?.backgroundColor
+		}
+		set {
+			let view = self.selectedBackgroundView ?? UIView()
+			view.backgroundColor = newValue
+			
+			self.selectedBackgroundView = view
+		}
+	}
+}
+
 private let context = CIContext(eaglContext: EAGLContext(api: .openGLES2), options: [kCIContextWorkingColorSpace: NSNull()])
