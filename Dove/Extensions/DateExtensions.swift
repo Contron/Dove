@@ -45,6 +45,16 @@ public extension Date {
 		return formatter.string(from: self)
 	}
 	
+	public func isBetween(startMonth: Int, startDay: Int, endMonth: Int, endDay: Int) -> Bool {
+		let calendar = Calendar(identifier: .gregorian)
+		let date = Date()
+		
+		let day = calendar.component(.day, from: date)
+		let month = calendar.component(.month, from: date)
+		
+		return (month >= startMonth && day >= startDay) || (month <= endMonth && day <= endDay)
+	}
+
 	public func isPast() -> Bool {
 		return self < Date()
 	}
