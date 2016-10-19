@@ -15,7 +15,7 @@ public typealias StringBlock = (Void) -> String
 
 public typealias KeyValues = [String: Any]
 
-public let bundleIdentifier = Bundle.main.bundleIdentifier ?? Bundle.main.infoDictionary?["CFBundleIdentifier"] ?? "application"
+public let bundleIdentifier = Bundle.main.bundleIdentifier ?? Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String ?? "application"
 
 public let animationConstant = 0.3
 public let shorterAnimationConstant = animationConstant / 2
