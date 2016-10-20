@@ -31,6 +31,18 @@ public extension UIImage {
 		
 		return nil
 	}
+	
+	public func isEqualData(image: UIImage) -> Bool {
+		if let first = UIImagePNGRepresentation(self), let second = UIImagePNGRepresentation(image) {
+			if first.count != second.count {
+				return first == second
+			} else {
+				return true
+			}
+		}
+		
+		return false
+	}
 }
 
 public extension UIColor {
