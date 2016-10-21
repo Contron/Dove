@@ -33,11 +33,11 @@ public extension UIView {
 		}
 		
 		if let offset = offset {
-			self.centerXAnchor.constraint(equalTo: parent.centerXAnchor, constant: offset.width)
-			self.centerYAnchor.constraint(equalTo: parent.centerYAnchor, constant: offset.height)
+			self.centerXAnchor.constraint(equalTo: parent.centerXAnchor, constant: offset.width).isActive = true
+			self.centerYAnchor.constraint(equalTo: parent.centerYAnchor, constant: offset.height).isActive = true
 		} else {
-			self.centerXAnchor.constraint(equalTo: parent.centerXAnchor)
-			self.centerYAnchor.constraint(equalTo: parent.centerYAnchor)
+			self.centerXAnchor.constraint(equalTo: parent.centerXAnchor).isActive = true
+			self.centerYAnchor.constraint(equalTo: parent.centerYAnchor).isActive = true
 		}
 	}
 	
