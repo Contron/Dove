@@ -12,6 +12,7 @@
 		30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */; };
 		3079FF861DACE998008D1402 /* AutoFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079FF841DACE998008D1402 /* AutoFlowLayout.swift */; };
 		3079FF871DACE998008D1402 /* FitFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079FF851DACE998008D1402 /* FitFlowLayout.swift */; };
+		30D2C5581DBA16A400F37C4B /* ConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2C5571DBA16A400F37C4B /* ConstraintExtensions.swift */; };
 		30F4D92F1D79C5080071B24B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92E1D79C5080071B24B /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
@@ -30,6 +31,7 @@
 		30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		3079FF841DACE998008D1402 /* AutoFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFlowLayout.swift; sourceTree = "<group>"; };
 		3079FF851DACE998008D1402 /* FitFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitFlowLayout.swift; sourceTree = "<group>"; };
+		30D2C5571DBA16A400F37C4B /* ConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintExtensions.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dove/Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
 				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
+				30D2C5571DBA16A400F37C4B /* ConstraintExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
 				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
 				30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */,
@@ -207,6 +210,7 @@
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
 				B34383C41D02041D00E5F39E /* Dove.swift in Sources */,
 				30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */,
+				30D2C5581DBA16A400F37C4B /* ConstraintExtensions.swift in Sources */,
 				B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */,
 				B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */,
 				3079FF861DACE998008D1402 /* AutoFlowLayout.swift in Sources */,
