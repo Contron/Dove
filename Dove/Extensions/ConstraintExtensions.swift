@@ -9,16 +9,16 @@
 import Foundation
 
 public extension UIView {
-	public func constraintSuperview(constant: CGFloat? = nil) {
+	public func constraintSuperview(padding: CGFloat? = nil) {
 		guard let parent = self.superview else {
 			return
 		}
 		
-		if let constant = constant {
-			self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: constant).isActive = true
-			self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: constant).isActive = true
-			self.topAnchor.constraint(equalTo: parent.topAnchor, constant: constant).isActive = true
-			self.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: constant).isActive = true
+		if let padding = padding {
+			self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: padding).isActive = true
+			self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -padding).isActive = true
+			self.topAnchor.constraint(equalTo: parent.topAnchor, constant: padding).isActive = true
+			self.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -padding).isActive = true
 		} else {
 			self.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
 			self.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
