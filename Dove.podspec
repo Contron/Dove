@@ -1,10 +1,11 @@
-Pod::Spec.new do |specification|
-  specification.name = "Dove"
-  specification.version = "1.0.0"
-  specification.description = "Swift framework with helpful classes and extensions"
-  specification.homepage = "https://github.com/Contron/Dove"
-  specification.license = { :type => "MIT", :file => "LICENSE" }
-  specification.authors = { "Contron" => "https://github.com/Contron" }
-  specification.source = { :git => "https://github.com/Contron/Dove.git" }
-  specification.source_files = "Dove", "*.swift", "*.{h,m}"
+Pod::Spec.new do |s|
+  s.name = "Dove"
+  s.version = "1.0.0"
+  s.summary = "Swift framework with helpful classes and extensions"
+  s.homepage = "https://github.com/Contron/Dove"
+  s.license = "MIT"
+  s.author = { "Contron" => "https://github.com/Contron" }
+  s.source = { :git => "https://github.com/Contron/Dove.git", :tag => s.version.to_s }
+  s.platform = :ios, "9.0"
+  s.source_files  = "Dove", "*.swift", "*.{h,m}"
 end
