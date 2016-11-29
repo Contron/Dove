@@ -39,7 +39,7 @@ public extension Date {
 		let day = calendar.component(.day, from: date)
 		let month = calendar.component(.month, from: date)
 		
-		return (month >= startMonth && day >= startDay) || (month <= endMonth && day <= endDay)
+		return (month >= startMonth && day >= startDay) && (month <= endMonth && day <= endDay)
 	}
 
 	public func isPast() -> Bool {
