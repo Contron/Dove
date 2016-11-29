@@ -34,10 +34,9 @@ public extension Date {
 	
 	public func isBetween(startMonth: Int, startDay: Int, endMonth: Int, endDay: Int) -> Bool {
 		let calendar = Calendar(identifier: .gregorian)
-		let date = Date()
 		
-		let day = calendar.component(.day, from: date)
-		let month = calendar.component(.month, from: date)
+		let day = calendar.component(.day, from: self)
+		let month = calendar.component(.month, from: self)
 		
 		return (month >= startMonth && day >= startDay) && (month <= endMonth && day <= endDay)
 	}
