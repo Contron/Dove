@@ -8,16 +8,16 @@
 
 import Foundation
 
-public func debug(_ object: Any, file: String = #file) {
+public func debug(_ object: Any) {
 	#if DEBUG
 		let formatter = DateFormatter()
 		formatter.dateFormat = "HH:mm:ss"
 		
 		let date = formatter.string(from: Date())
 		
-		let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
+		let type = String(describing: type(of: object))
 		let object = String(describing: object)
 		
-		print("[\(date) \(file)] \(object)")
+		print("[\(date) \(type)] \(object)")
 	#endif
 }
