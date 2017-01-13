@@ -17,9 +17,9 @@ public extension Date {
 		
 		if let date = formatter.date(from: string) {
 			self.init(timeInterval: 0, since: date)
+		} else {
+			return nil
 		}
-		
-		return nil
 	}
 	
 	public func timeAgo() -> String {
