@@ -45,6 +45,18 @@ public extension Dictionary {
 	}
 }
 
+public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
+	var result = [Key: Value]()
+	
+	for (key, value) in dictionary {
+		if let value = value {
+			result[key] = value
+		}
+	}
+	
+	return result
+}
+
 public func +<Key, Value>(first: [Key: Value]?, second: [Key: Value]?) -> [Key: Value] {
 	var result = [Key: Value]()
 	

@@ -99,3 +99,15 @@ public extension Array {
 		return self[Int(arc4random_uniform(UInt32(self.count)))]
 	}
 }
+
+public func unwrap<Element>(_ array: [Element?]) -> [Element] {
+	var results = [Element]()
+	
+	for element in array {
+		if let element = element {
+			results.append(element)
+		}
+	}
+	
+	return results
+}
