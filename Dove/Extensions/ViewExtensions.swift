@@ -25,7 +25,7 @@ public extension UIImage {
 		
 		if let output = filter.outputImage {
 			if let output = context.createCGImage(output, from: output.extent) {
-				return UIImage(cgImage: output)
+				return UIImage(cgImage: output, scale: self.scale, orientation: self.imageOrientation)
 			}
 		}
 		
