@@ -9,7 +9,7 @@
 import Foundation
 
 public class MemoryCache<Key, Value> where Key: Hashable {
-	public func exists(key: Key) -> Bool {
+	public func contains(_ key: Key) -> Bool {
 		return self.cache.object(forKey: key as AnyObject) != nil
 	}
 	
@@ -22,7 +22,11 @@ public class MemoryCache<Key, Value> where Key: Hashable {
 			return self.cache.object(forKey: key as AnyObject) as? Value
 		}
 		set {
-			self.cache.setObject(newValue as AnyObject, forKey: key as AnyObject)
+			if newValue != nil {
+				self.cache.setObject(newValue as AnyObject, forKey: key as AnyObject)
+			} else {
+				self.cache.removeObject(forKey: key as AnyObject)
+			}
 		}
 	}
 	

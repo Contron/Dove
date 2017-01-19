@@ -105,8 +105,8 @@
 		B34383B31D0203B200E5F39E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				B3ABC9AE1D0237F40066ED72 /* Service.swift */,
 				303258D61E30FAB50059C525 /* MemoryCache.swift */,
+				B3ABC9AE1D0237F40066ED72 /* Service.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
