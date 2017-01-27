@@ -24,7 +24,6 @@
 		B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383BB1D0203FE00E5F39E /* NibExtensions.swift */; };
 		B34383C41D02041D00E5F39E /* Dove.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383C31D02041D00E5F39E /* Dove.swift */; };
 		B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984D411D0857C0005A1183 /* ViewExtensions.swift */; };
-		B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABC9AE1D0237F40066ED72 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +46,6 @@
 		B34383C31D02041D00E5F39E /* Dove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dove.swift; sourceTree = "<group>"; };
 		B3984D371D085371005A1183 /* Dove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3984D411D0857C0005A1183 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		B3ABC9AE1D0237F40066ED72 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				303258D61E30FAB50059C525 /* MemoryCache.swift */,
-				B3ABC9AE1D0237F40066ED72 /* Service.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -212,7 +209,6 @@
 				30F4D92F1D79C5080071B24B /* Debug.swift in Sources */,
 				303258D71E30FAB50059C525 /* MemoryCache.swift in Sources */,
 				3023A41F1E2E3E4500915B20 /* AspectFitImageView.swift in Sources */,
-				B3ABC9AF1D0237F40066ED72 /* Service.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
 				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
