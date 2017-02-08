@@ -29,7 +29,20 @@ public extension String {
 			return self
 		}
 		
-		return String(first).uppercased() + String(self.characters.dropFirst(1))
+		let start = String(first).uppercased()
+		let rest = String(self.characters.dropFirst(1))
+		
+		return "\(start)\(rest)"
+	}
+	
+	public var titleCase: String {
+		return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex)
+	}
+	
+	public var snakeCase: String {
+		return self
+			.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex)
+			.lowercased()
 	}
 }
 
