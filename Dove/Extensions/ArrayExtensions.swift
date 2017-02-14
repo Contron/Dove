@@ -36,7 +36,7 @@ public extension Array where Element: Equatable {
 		
 		return results
 	}
-
+	
 	public mutating func remove(element: Element) {
 		if let index = self.index(of: element) {
 			self.remove(at: index)

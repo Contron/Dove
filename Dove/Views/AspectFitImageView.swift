@@ -42,8 +42,8 @@ import UIKit
 			self.removeConstraint(constraint)
 		}
 		
-		let ratio = image.size.height / image.size.width
-		let constraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
+		let ratio = image.size.width / image.size.height
+		let constraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: ratio, constant: 0)
 		
 		self.addConstraint(constraint)
 	}
