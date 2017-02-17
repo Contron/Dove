@@ -97,7 +97,7 @@ public extension Array {
 	}
 	
 	public mutating func remove(_ predicate: (Element) -> Bool) {
-		for (index, element) in self.enumerated() {
+		for (index, element) in self.enumerated().reversed() {
 			if predicate(element) {
 				self.remove(at: index)
 			}
