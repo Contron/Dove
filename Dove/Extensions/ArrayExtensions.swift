@@ -78,18 +78,6 @@ public extension Array {
 		return count
 	}
 	
-	public mutating func remove(_ predicate: (Element) -> Bool) {
-		var results = [Element]()
-		
-		for element in self {
-			if !predicate(element) {
-				results.append(element)
-			}
-		}
-		
-		self = results
-	}
-	
 	public func shuffle() -> [Element] {
 		if self.count < 2 {
 			return self
@@ -106,6 +94,14 @@ public extension Array {
 		}
 		
 		return results
+	}
+	
+	public mutating func remove(_ predicate: (Element) -> Bool) {
+		for (index, element) in self.enumerated() {
+			if predicate(element) {
+				self.remove(at: index)
+			}
+		}
 	}
 	
 	public var random: Element? {

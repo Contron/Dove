@@ -17,13 +17,13 @@ public class MemoryCache<Key, Value> where Key: Hashable {
 		self.cache.removeAllObjects()
 	}
 	
-	public subscript(key: Key) -> Value? {
+	public subscript(_ key: Key) -> Value? {
 		get {
 			return self.cache.object(forKey: key as AnyObject) as? Value
 		}
 		set {
-			if newValue != nil {
-				self.cache.setObject(newValue as AnyObject, forKey: key as AnyObject)
+			if let value = newValue {
+				self.cache.setObject(value as AnyObject, forKey: key as AnyObject)
 			} else {
 				self.cache.removeObject(forKey: key as AnyObject)
 			}
