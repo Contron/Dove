@@ -13,6 +13,9 @@ import UIKit
 		super.prepare()
 		
 		if let view = self.collectionView {
+			view.isScrollEnabled = true
+			view.isPagingEnabled = false
+			
 			self.itemSize = CGSize(width: view.frame.size.width * self.multiplier, height: view.frame.size.height)
 		}
 		
