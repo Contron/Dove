@@ -16,6 +16,19 @@ public extension String {
 		return amount == 1 ? singular : plural
 	}
 	
+	public static func generate(length: Int) -> String {
+		var result = String()
+		
+		for _ in 1...length {
+			let offset = Int(arc4random_uniform(UInt32(letters.characters.count)))
+			let index = letters.characters.index(letters.characters.startIndex, offsetBy: offset)
+			
+			result.append(letters.characters[index])
+		}
+		
+		return result
+	}
+	
 	public func truncate(length: Int) -> String {
 		if self.characters.count > length {
 			return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
@@ -29,10 +42,7 @@ public extension String {
 			return self
 		}
 		
-		let start = String(first).uppercased()
-		let rest = String(self.characters.dropFirst(1))
-		
-		return "\(start)\(rest)"
+		return String(first).uppercased() + String(self.characters.dropFirst(1))
 	}
 	
 	public var titleCase: String {
@@ -103,3 +113,5 @@ public func inspect(_ value: Any) -> String {
 		return String(describing: value)
 	}
 }
+
+private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
