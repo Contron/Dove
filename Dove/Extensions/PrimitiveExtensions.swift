@@ -16,6 +16,22 @@ public extension String {
 		return amount == 1 ? singular : plural
 	}
 	
+	public static func stitch(_ strings: [String]) -> String? {
+		var strings = strings
+		
+		guard let last = strings.popLast() else {
+			return nil
+		}
+		
+		if strings.count > 0 {
+			let message = strings.joined(separator: ", ")
+			
+			return "\(message) and \(last)"
+		} else {
+			return last
+		}
+	}
+	
 	public static func generate(length: Int) -> String {
 		var result = String()
 		
