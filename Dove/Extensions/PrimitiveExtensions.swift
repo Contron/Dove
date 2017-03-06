@@ -16,7 +16,7 @@ public extension String {
 		return amount == 1 ? singular : plural
 	}
 	
-	public static func stitch(_ strings: [String]) -> String? {
+	public static func stitch(strings: [String]) -> String? {
 		var strings = strings
 		
 		guard let last = strings.popLast() else {
