@@ -28,5 +28,25 @@ import UIKit
 		self.minimumInteritemSpacing = 0
 	}
 	
+	override public func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+		guard let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) else {
+			return nil
+		}
+		
+		attributes.alpha = 1
+		
+		return attributes
+	}
+	
+	override public func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+		guard let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath) else {
+			return nil
+		}
+		
+		attributes.alpha = 1
+		
+		return attributes
+	}
+	
 	@IBInspectable public var spacing: CGFloat = 8
 }
