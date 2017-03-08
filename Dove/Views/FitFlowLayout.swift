@@ -2,8 +2,8 @@
 //  FitFlowLayout.swift
 //  Dove
 //
-//  Created by Connor Haigh on 11/10/2016.
-//  Copyright © 2016 Connor Haigh. All rights reserved.
+//  Created by Connor Haigh on 08/03/2017.
+//  Copyright © 2017 Connor Haigh. All rights reserved.
 //
 
 import UIKit
@@ -17,20 +17,16 @@ import UIKit
 			view.isPagingEnabled = false
 			
 			let count = CGFloat(view.numberOfItems(inSection: 0))
+			let offset = (self.spacing * (count - 1)) / count
 			
-			let items = (view.frame.size.width - (self.padding * 2)) / count
-			let spacing = self.spacing * ((count - 1) / count)
-			
-			self.itemSize = CGSize(width: items - spacing, height: view.frame.size.height)
+			self.itemSize = CGSize(width: (view.frame.size.width / count) - offset, height: view.frame.size.height)
 		}
 		
 		self.scrollDirection = .horizontal
-		self.sectionInset = UIEdgeInsets(top: 0, left: self.padding, bottom: 0, right: self.padding)
 		
 		self.minimumLineSpacing = self.spacing
-		self.minimumInteritemSpacing = self.spacing
+		self.minimumInteritemSpacing = 0
 	}
 	
 	@IBInspectable public var spacing: CGFloat = 8
-	@IBInspectable public var padding: CGFloat = 8
 }

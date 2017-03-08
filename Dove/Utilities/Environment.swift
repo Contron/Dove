@@ -16,6 +16,11 @@ public class Environment {
 		case vehicle
 	}
 	
+	public enum Orientation {
+		case portrait
+		case landscape
+	}
+	
 	public enum Mode {
 		case debug
 		case release
@@ -31,6 +36,15 @@ public class Environment {
 			return .vehicle
 		default:
 			return .phone
+		}
+	}
+	
+	public static var orientation: Orientation {
+		switch UIDevice.current.orientation {
+		case .landscapeLeft, .landscapeRight:
+			return .landscape
+		default:
+			return .portrait
 		}
 	}
 	
