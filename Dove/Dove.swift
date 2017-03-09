@@ -9,9 +9,7 @@
 import Foundation
 
 public typealias ActionBlock = (Void) -> Void
-public typealias BoolBlock = (Void) -> Bool
-public typealias IntBlock = (Void) -> Int
-public typealias StringBlock = (Void) -> String
+public typealias ResultBlock = (Bool) -> Void
 
 public typealias KeyValues = [String: Any]
 
