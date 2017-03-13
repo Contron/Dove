@@ -9,6 +9,14 @@
 import Foundation
 
 public extension String {
+	public enum Case {
+		case camel
+		case pascal
+		case title
+		case snake
+		case kebab
+	}
+	
 	public static func pluralise(amount: Int, singular: String, plural: String? = nil) -> String {
 		let singular = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
 		let plural = plural ?? "\(singular)s"
@@ -45,30 +53,27 @@ public extension String {
 		return result
 	}
 	
+	public func convert(case: Case) -> String {
+		switch `case` {
+		case .camel:
+			return String(self.characters.prefix(1)).lowercased() + String(self.characters.dropFirst())
+		case .pascal:
+			return String(self.characters.prefix(1)).uppercased() + String(self.characters.dropFirst())
+		case .title:
+			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
+		case .snake:
+			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+		case .kebab:
+			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1-$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+		}
+	}
+	
 	public func truncate(length: Int) -> String {
 		if self.characters.count > length {
 			return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
 		}
 		
 		return self
-	}
-	
-	public var pascalCase: String {
-		guard let first = self.characters.first else {
-			return self
-		}
-		
-		return String(first).uppercased() + String(self.characters.dropFirst(1))
-	}
-	
-	public var titleCase: String {
-		return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex)
-	}
-	
-	public var snakeCase: String {
-		return self
-			.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex)
-			.lowercased()
 	}
 }
 
