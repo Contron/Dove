@@ -60,11 +60,11 @@ public extension String {
 		case .pascal:
 			return String(self.characters.prefix(1)).uppercased() + String(self.characters.dropFirst())
 		case .title:
-			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
+			return self.replacingOccurrences(of: regex, with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
 		case .snake:
-			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+			return self.replacingOccurrences(of: regex, with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
 		case .kebab:
-			return self.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1-$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+			return self.replacingOccurrences(of: regex, with: "$1-$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
 		}
 	}
 	
@@ -89,17 +89,17 @@ public extension Int {
 		if tens != 1 {
 			switch ones {
 			case 1:
-				return "st"
+				return "\(self)st"
 			case 2:
-				return "nd"
+				return "\(self)nd"
 			case 3:
-				return "rd"
+				return "\(self)rd"
 			default:
 				break
 			}
 		}
 		
-		return "th"
+		return "\(self)th"
 	}
 	
 	public var displayValue: String {
@@ -128,6 +128,8 @@ public func inspect(_ value: Any) -> String {
 		return "{\(value.map({ "\($0): \(inspect($1))" }).joined(separator: ", "))}"
 	case let value as [Any]:
 		return "[\(value.map({ inspect($0) }).joined(separator: ", "))]"
+	case let value as String:
+		return "\"\(value)\""
 	case let value as Bool:
 		return value ? "true" : "false"
 	default:
@@ -136,3 +138,4 @@ public func inspect(_ value: Any) -> String {
 }
 
 private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+private let regex = "([a-z])([A-Z])"
