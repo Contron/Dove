@@ -102,6 +102,10 @@ public extension Int {
 		return "\(self)th"
 	}
 	
+	public var date: Date {
+		return Date(timeIntervalSinceNow: Double(self))
+	}
+	
 	public var displayValue: String {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .decimal
@@ -112,6 +116,10 @@ public extension Int {
 }
 
 public extension Double {
+	public var date: Date {
+		return Date(timeIntervalSinceNow: Double(self))
+	}
+	
 	public var displayValue: String {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .decimal
