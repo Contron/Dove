@@ -103,7 +103,7 @@ public extension Int {
 	}
 	
 	public var date: Date {
-		return Date(timeIntervalSinceNow: Double(self))
+		return Date(timeIntervalSince1970: Double(self))
 	}
 	
 	public var displayValue: String {
@@ -117,7 +117,7 @@ public extension Int {
 
 public extension Double {
 	public var date: Date {
-		return Date(timeIntervalSinceNow: Double(self))
+		return Date(timeIntervalSince1970: Double(self))
 	}
 	
 	public var displayValue: String {
