@@ -18,26 +18,10 @@ public extension String {
 	}
 	
 	public static func pluralise(amount: Int, singular: String, plural: String? = nil) -> String {
-		let singular = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
+		let singular = singular.lowercased().hasSuffix("s") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
 		let plural = plural ?? "\(singular)s"
 		
 		return amount == 1 ? singular : plural
-	}
-	
-	public static func stitch(strings: [String]) -> String? {
-		var strings = strings
-		
-		guard let last = strings.popLast() else {
-			return nil
-		}
-		
-		if strings.count > 0 {
-			let message = strings.joined(separator: ", ")
-			
-			return "\(message) and \(last)"
-		} else {
-			return last
-		}
 	}
 	
 	public static func generate(length: Int) -> String {
@@ -102,10 +86,6 @@ public extension Int {
 		return "\(self)th"
 	}
 	
-	public var date: Date {
-		return Date(timeIntervalSince1970: Double(self))
-	}
-	
 	public var displayValue: String {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .decimal
@@ -116,14 +96,6 @@ public extension Int {
 }
 
 public extension Double {
-	public static var random: Double {
-		return Double(arc4random()) / Double(UInt32.max)
-	}
-	
-	public var date: Date {
-		return Date(timeIntervalSince1970: Double(self))
-	}
-	
 	public var displayValue: String {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .decimal
@@ -131,6 +103,20 @@ public extension Double {
 		formatter.maximumFractionDigits = 3
 		
 		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+	}
+}
+
+public extension FloatingPoint {
+	public static var random: Self {
+		return Self(arc4random()) / Self(UInt32.max)
+	}
+	
+	public var radians: Self {
+		return self * .pi / 180
+	}
+	
+	public var degrees: Self {
+		return self * 180 / .pi
 	}
 }
 
