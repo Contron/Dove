@@ -116,6 +116,10 @@ public extension Int {
 }
 
 public extension Double {
+	public static var random: Double {
+		return Double(arc4random()) / Double(UInt32.max)
+	}
+	
 	public var date: Date {
 		return Date(timeIntervalSince1970: Double(self))
 	}
