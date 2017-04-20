@@ -89,4 +89,4 @@ public extension UICollectionViewCell {
 	}
 }
 
-private let context = CIContext(eaglContext: EAGLContext(api: .openGLES2), options: [kCIContextWorkingColorSpace: NSNull()])
+private let context = CIContext()
