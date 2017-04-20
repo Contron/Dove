@@ -9,11 +9,47 @@
 import Foundation
 
 public extension String {
+	public enum Case {
+		case camel
+		case pascal
+		case title
+		case snake
+		case kebab
+	}
+	
 	public static func pluralise(amount: Int, singular: String, plural: String? = nil) -> String {
-		let singular = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
+		let singular = singular.lowercased().hasSuffix("s") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
 		let plural = plural ?? "\(singular)s"
 		
 		return amount == 1 ? singular : plural
+	}
+	
+	public static func generate(length: Int) -> String {
+		var result = String()
+		
+		for _ in 1...length {
+			let offset = Int(arc4random_uniform(UInt32(letters.characters.count)))
+			let index = letters.characters.index(letters.characters.startIndex, offsetBy: offset)
+			
+			result.append(letters.characters[index])
+		}
+		
+		return result
+	}
+	
+	public func convert(case: Case) -> String {
+		switch `case` {
+		case .camel:
+			return String(self.characters.prefix(1)).lowercased() + String(self.characters.dropFirst())
+		case .pascal:
+			return String(self.characters.prefix(1)).uppercased() + String(self.characters.dropFirst())
+		case .title:
+			return self.replacingOccurrences(of: regex, with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
+		case .snake:
+			return self.replacingOccurrences(of: regex, with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+		case .kebab:
+			return self.replacingOccurrences(of: regex, with: "$1-$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+		}
 	}
 	
 	public func truncate(length: Int) -> String {
@@ -22,14 +58,6 @@ public extension String {
 		}
 		
 		return self
-	}
-	
-	public var pascalCase: String {
-		guard let first = self.characters.first else {
-			return self
-		}
-		
-		return String(first).uppercased() + String(self.characters.dropFirst(1))
 	}
 }
 
@@ -45,17 +73,17 @@ public extension Int {
 		if tens != 1 {
 			switch ones {
 			case 1:
-				return "st"
+				return "\(self)st"
 			case 2:
-				return "nd"
+				return "\(self)nd"
 			case 3:
-				return "rd"
+				return "\(self)rd"
 			default:
 				break
 			}
 		}
 		
-		return "th"
+		return "\(self)th"
 	}
 	
 	public var displayValue: String {
@@ -77,3 +105,35 @@ public extension Double {
 		return formatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
+
+public extension FloatingPoint {
+	public static var random: Self {
+		return Self(arc4random()) / Self(UInt32.max)
+	}
+	
+	public var radians: Self {
+		return self * .pi / 180
+	}
+	
+	public var degrees: Self {
+		return self * 180 / .pi
+	}
+}
+
+public func inspect(_ value: Any) -> String {
+	switch value {
+	case let value as [AnyHashable: Any]:
+		return "{\(value.map({ "\($0): \(inspect($1))" }).joined(separator: ", "))}"
+	case let value as [Any]:
+		return "[\(value.map({ inspect($0) }).joined(separator: ", "))]"
+	case let value as String:
+		return "\"\(value)\""
+	case let value as Bool:
+		return value ? "true" : "false"
+	default:
+		return String(describing: value)
+	}
+}
+
+private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+private let regex = "([a-z])([A-Z])"

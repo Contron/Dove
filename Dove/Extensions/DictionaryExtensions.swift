@@ -8,8 +8,8 @@
 
 import Foundation
 
-public extension Dictionary {
-	public func collapse<Key: Hashable, Value>(_ transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
+public extension Dictionary where Key: Hashable {
+	public func collapse<Key, Value>(_ transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
 		let transforms = self.map(transform)
 		var result = [Key: Value]()
 		
@@ -21,8 +21,10 @@ public extension Dictionary {
 		
 		return result
 	}
-	
-	public func urlQuery() -> String {
+}
+
+public extension Dictionary {
+	public var urlQuery: String {
 		let query = self
 			.collapse({ (String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), String(describing: $1).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) })
 			.map({ "\($0.key)=\($0.value)" })
