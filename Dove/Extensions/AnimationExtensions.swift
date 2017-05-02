@@ -11,11 +11,11 @@ import UIKit
 
 public extension UIView {
 	public func fadeIn(block: ActionBlock? = nil) {
-		self.animateAlpha(1, block: block)
+		self.animate(alpha: 1, block: block)
 	}
 	
 	public func fadeOut(block: ActionBlock? = nil) {
-		self.animateAlpha(0, block: block)
+		self.animate(alpha: 0, block: block)
 	}
 	
 	public func fadeOutAndRemove(block: ActionBlock? = nil) {
@@ -38,6 +38,7 @@ public extension UIViewController {
 	
 	public func fadeOutAndRemove(block: ActionBlock? = nil) {
 		self.view.fadeOut(block: { [weak self] in
+			self?.willMove(toParentViewController: nil)
 			self?.view.removeFromSuperview()
 			self?.removeFromParentViewController()
 			
@@ -47,11 +48,21 @@ public extension UIViewController {
 }
 
 public extension UIView {
-	public func animateVisible(_ visible: Bool, block: ActionBlock? = nil) {
-		self.animateAlpha(CGFloat(visible ? 1 : 0), block: block)
+	public func transition(block: @escaping ActionBlock) {
+		UIView.animate(withDuration: shorterAnimationConstant, animations: { [weak self] in
+			self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+			self?.alpha = 0
+		}, completion: { _ in
+			block()
+			
+			UIView.animate(withDuration: shorterAnimationConstant, animations: { [weak self] in
+				self?.transform = .identity
+				self?.alpha = 1
+			})
+		})
 	}
 	
-	public func animateAlpha(_ alpha: CGFloat, block: ActionBlock? = nil) {
+	public func animate(alpha: CGFloat, block: ActionBlock? = nil) {
 		if self.alpha == alpha {
 			return
 		}
@@ -63,7 +74,7 @@ public extension UIView {
 		})
 	}
 	
-	public func animateCenter(_ center: CGPoint, block: ActionBlock? = nil) {
+	public func animate(center: CGPoint, block: ActionBlock? = nil) {
 		if self.center == center {
 			return
 		}
@@ -75,7 +86,7 @@ public extension UIView {
 		})
 	}
 	
-	public func animateTransform(_ transform: CGAffineTransform, block: ActionBlock? = nil) {
+	public func animate(transform: CGAffineTransform, block: ActionBlock? = nil) {
 		if self.transform == transform {
 			return
 		}
@@ -97,7 +108,7 @@ public extension UIView {
 }
 
 public extension UILabel {
-	public func animateText(_ text: String?, block: ActionBlock? = nil) {
+	public func animate(text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
@@ -111,7 +122,7 @@ public extension UILabel {
 }
 
 public extension UITextField {
-	public func animateText(_ text: String?, block: ActionBlock? = nil) {
+	public func animate(text: String?, block: ActionBlock? = nil) {
 		if self.text == text {
 			return
 		}
@@ -125,7 +136,7 @@ public extension UITextField {
 }
 
 public extension UIButton {
-	public func animateEnabled(_ enabled: Bool, block: ActionBlock? = nil) {
+	public func animate(enabled: Bool, block: ActionBlock? = nil) {
 		if self.isEnabled == enabled {
 			return
 		}
@@ -139,7 +150,7 @@ public extension UIButton {
 }
 
 public extension UIImageView {
-	public func animateImage(_ image: UIImage?, block: ActionBlock? = nil) {
+	public func animate(image: UIImage?, block: ActionBlock? = nil) {
 		if self.image == image {
 			return
 		}

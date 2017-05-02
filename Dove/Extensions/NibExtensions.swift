@@ -10,15 +10,7 @@ import Foundation
 import UIKit
 
 public extension UINib {
-	public func createView() -> UIView? {
-		let results = self.instantiate(withOwner: nil, options: nil)
-		
-		if let result = results.first {
-			if let view = result as? UIView {
-				return view
-			}
-		}
-		
-		return nil
+	public func create() -> UIView? {
+		return self.instantiate(withOwner: nil, options: nil).first as? UIView
 	}
 }
