@@ -48,20 +48,6 @@ public extension UIViewController {
 }
 
 public extension UIView {
-	public func transition(block: @escaping ActionBlock) {
-		UIView.animate(withDuration: shorterAnimationConstant, animations: { [weak self] in
-			self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-			self?.alpha = 0
-		}, completion: { _ in
-			block()
-			
-			UIView.animate(withDuration: shorterAnimationConstant, animations: { [weak self] in
-				self?.transform = .identity
-				self?.alpha = 1
-			})
-		})
-	}
-	
 	public func animate(alpha: CGFloat, block: ActionBlock? = nil) {
 		if self.alpha == alpha {
 			return
