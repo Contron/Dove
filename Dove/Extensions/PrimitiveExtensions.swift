@@ -66,6 +66,10 @@ public extension Int {
 		return Int(round(Double(number) / Double(steps))) * steps
 	}
 	
+	public static func random(maximum: Int) -> Int {
+		return Int(arc4random_uniform(UInt32(maximum)))
+	}
+	
 	public var ordinal: String {
 		let ones = self % 10
 		let tens = (self / 10) % 10
