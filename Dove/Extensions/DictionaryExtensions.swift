@@ -35,7 +35,7 @@ public extension Dictionary {
 	
 	public var random: (Key, Value)? {
 		guard self.count > 0 else {
-			return
+			return nil
 		}
 		
 		let keys = Array(self.keys)
