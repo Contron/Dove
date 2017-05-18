@@ -10,6 +10,22 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
+	public static func topmost(controller: UIViewController?) -> UIViewController? {
+		if let controller = controller as? UINavigationController, let visible = controller.visibleViewController {
+			return UIViewController.topmost(controller: visible)
+		}
+		
+		if let controller = controller as? UITabBarController, let selected = controller.selectedViewController {
+			return UIViewController.topmost(controller: selected)
+		}
+		
+		if let controller = controller?.presentedViewController {
+			return UIViewController.topmost(controller: controller)
+		}
+		
+		return controller
+	}
+	
 	public func addChild(controller: UIViewController, view: UIView) {
 		view.addSubview(controller.view)
 		self.addChildViewController(controller)
@@ -34,22 +50,6 @@ public extension UIViewController {
 		}))
 		
 		self.present(controller, animated: true, completion: nil)
-	}
-	
-	public static func topmost(controller: UIViewController?) -> UIViewController? {
-		if let controller = controller as? UINavigationController, let visible = controller.visibleViewController {
-			return UIViewController.topmost(controller: visible)
-		}
-		
-		if let controller = controller as? UITabBarController, let selected = controller.selectedViewController {
-			return UIViewController.topmost(controller: selected)
-		}
-		
-		if let controller = controller?.presentedViewController {
-			return UIViewController.topmost(controller: controller)
-		}
-		
-		return controller
 	}
 }
 

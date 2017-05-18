@@ -34,8 +34,8 @@ public extension Dictionary {
 	}
 	
 	public var random: (Key, Value)? {
-		if self.count <= 0 {
-			return nil
+		guard self.count > 0 else {
+			return
 		}
 		
 		let keys = Array(self.keys)

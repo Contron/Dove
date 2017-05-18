@@ -14,9 +14,7 @@ public extension Array where Element: Equatable {
 			let first = predicate(first)
 			
 			for element in self {
-				let element = predicate(element)
-				
-				if element != first {
+				if predicate(element) != first {
 					return false
 				}
 			}
@@ -37,7 +35,7 @@ public extension Array where Element: Equatable {
 		return results
 	}
 	
-	public mutating func remove(element: Element) {
+	public mutating func remove(_ element: Element) {
 		if let index = self.index(of: element) {
 			self.remove(at: index)
 		}
