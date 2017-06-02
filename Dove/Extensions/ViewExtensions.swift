@@ -89,4 +89,10 @@ public extension UICollectionViewCell {
 	}
 }
 
+public extension UITraitCollection {
+	public func equals(_ horizontal: UIUserInterfaceSizeClass, _ vertical: UIUserInterfaceSizeClass) -> Bool {
+		return self.horizontalSizeClass == horizontal && self.verticalSizeClass == vertical
+	}
+}
+
 private let context = CIContext()
