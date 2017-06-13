@@ -9,7 +9,7 @@
 import Foundation
 
 public extension String {
-	public enum Case {
+	public enum ConversionCase {
 		case camel
 		case pascal
 		case title
@@ -37,7 +37,7 @@ public extension String {
 		return result
 	}
 	
-	public func convert(case: Case) -> String {
+	public func convert(case: ConversionCase) -> String {
 		switch `case` {
 		case .camel:
 			return String(self.characters.prefix(1)).lowercased() + String(self.characters.dropFirst())
