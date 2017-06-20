@@ -93,6 +93,10 @@ public extension UITraitCollection {
 	public func equals(_ horizontal: UIUserInterfaceSizeClass, _ vertical: UIUserInterfaceSizeClass) -> Bool {
 		return self.horizontalSizeClass == horizontal && self.verticalSizeClass == vertical
 	}
+	
+	public func equals(_ horizontal: [UIUserInterfaceSizeClass], _ vertical: [UIUserInterfaceSizeClass]) -> Bool {
+		return horizontal.contains(self.horizontalSizeClass) && vertical.contains(self.verticalSizeClass)
+	}
 }
 
 private let context = CIContext()
