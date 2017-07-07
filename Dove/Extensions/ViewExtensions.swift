@@ -32,6 +32,14 @@ public extension UIImage {
 		return nil
 	}
 	
+	public func flip(orientation: UIImageOrientation) -> UIImage? {
+		guard let image = self.cgImage else {
+			return nil
+		}
+		
+		return UIImage(cgImage: image, scale: self.scale, orientation: orientation)
+	}
+	
 	public func isEqualData(image: UIImage) -> Bool {
 		if let first = UIImagePNGRepresentation(self), let second = UIImagePNGRepresentation(image) {
 			if first.count != second.count {
