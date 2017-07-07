@@ -26,15 +26,17 @@ public extension Date {
 		let difference = abs(self.timeIntervalSinceNow)
 		
 		if difference <= 15 {
-			return "Just Now"
+			return "just now"
 		}
 		
 		for (time, divider, caption) in times {
 			if difference <= time {
 				let amount = Int(round(difference / divider))
-				let caption = String.pluralise(amount: amount, singular: caption, plural: nil)
 				
-				return "\(amount) \(caption) Ago"
+				let first = amount == 1 ? "one" : String(amount)
+				let second = String.pluralise(amount: amount, singular: caption, plural: nil)
+				
+				return "\(first) \(second) ago"
 			}
 		}
 		
@@ -70,9 +72,9 @@ private let day = 86400.0
 private let week = 604800.0
 
 private let times = [
-	(second * 59, second, "Second"),
-	(minute * 59, minute, "Minute"),
-	(hour * 23, hour, "Hour"),
-	(day * 6, day, "Day"),
-	(week * 2, week, "Week")
+	(second * 59, second, "second"),
+	(minute * 59, minute, "minute"),
+	(hour * 23, hour, "hour"),
+	(day * 6, day, "day"),
+	(week * 3, week, "week")
 ]
