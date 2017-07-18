@@ -16,10 +16,16 @@ import UIKit
 			view.isScrollEnabled = false
 			view.isPagingEnabled = false
 			
-			let count = CGFloat(view.numberOfItems(inSection: 0))
-			let offset = (self.spacing * (count - 1)) / count
+			let items = view.numberOfItems(inSection: 0)
 			
-			self.itemSize = CGSize(width: (view.frame.size.width / count) - offset, height: view.frame.size.height)
+			if items > 0 {
+				let count = CGFloat(items)
+				let offset = (self.spacing * (count - 1)) / count
+				
+				self.itemSize = CGSize(width: (view.frame.size.width / count) - offset, height: view.frame.size.height)
+			} else {
+				self.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
+			}
 		}
 		
 		self.scrollDirection = .horizontal

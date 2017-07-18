@@ -9,6 +9,24 @@
 import Foundation
 import UIKit
 
+public extension UIView {
+	public func render() -> UIImage? {
+		UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
+		
+		defer {
+			UIGraphicsEndImageContext()
+		}
+		
+		guard let context = UIGraphicsGetCurrentContext() else {
+			return nil
+		}
+		
+		self.layer.render(in: context)
+		
+		return UIGraphicsGetImageFromCurrentImageContext()
+	}
+}
+
 public extension UIImage {
 	public func apply(filter: CIFilter, options: [String: Any]? = nil) -> UIImage? {
 		guard let image = self.cgImage else {
@@ -75,10 +93,8 @@ public extension UITableViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			let view = UIView()
-			view.backgroundColor = newValue
-			
-			self.selectedBackgroundView = view
+			self.selectedBackgroundView = self.selectedBackgroundView ?? UIView()
+			self.selectedBackgroundView?.backgroundColor = newValue
 		}
 	}
 }
@@ -89,10 +105,8 @@ public extension UICollectionViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			let view = UIView()
-			view.backgroundColor = newValue
-			
-			self.selectedBackgroundView = view
+			self.selectedBackgroundView = self.selectedBackgroundView ?? UIView()
+			self.selectedBackgroundView?.backgroundColor = newValue
 		}
 	}
 }
