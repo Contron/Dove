@@ -120,7 +120,7 @@ public extension UITraitCollection {
 }
 
 private extension UIView {
-	convenience init(colour: UIColor) {
+	convenience init(colour: UIColor?) {
 		self.init()
 		
 		self.backgroundColor = colour
