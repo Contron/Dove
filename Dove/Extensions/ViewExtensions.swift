@@ -93,8 +93,7 @@ public extension UITableViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			self.selectedBackgroundView = self.selectedBackgroundView ?? UIView()
-			self.selectedBackgroundView?.backgroundColor = newValue
+			self.selectedBackgroundView = UIView(colour: newValue)
 		}
 	}
 }
@@ -105,8 +104,7 @@ public extension UICollectionViewCell {
 			return self.selectedBackgroundView?.backgroundColor
 		}
 		set {
-			self.selectedBackgroundView = self.selectedBackgroundView ?? UIView()
-			self.selectedBackgroundView?.backgroundColor = newValue
+			self.selectedBackgroundView = UIView(colour: newValue)
 		}
 	}
 }
@@ -118,6 +116,14 @@ public extension UITraitCollection {
 	
 	public func equals(_ horizontal: [UIUserInterfaceSizeClass], _ vertical: [UIUserInterfaceSizeClass]) -> Bool {
 		return horizontal.contains(self.horizontalSizeClass) && vertical.contains(self.verticalSizeClass)
+	}
+}
+
+private extension UIView {
+	convenience init(colour: UIColor) {
+		self.init()
+		
+		self.backgroundColor = colour
 	}
 }
 
