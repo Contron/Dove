@@ -72,15 +72,27 @@ public extension UIImage {
 }
 
 public extension UIColor {
-	func adjust(amount: CGFloat) -> UIColor {
+	public func adjust(colour amount: CGFloat) -> UIColor {
 		var red = CGFloat(0)
 		var green = CGFloat(0)
 		var blue = CGFloat(0)
-		
 		var alpha = CGFloat(0)
 		
 		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
 			return UIColor(red: red + amount, green: green + amount, blue: blue + amount, alpha: alpha)
+		}
+		
+		return self
+	}
+	
+	public func adjust(saturation amount: CGFloat) -> UIColor {
+		var hue = CGFloat(0)
+		var saturation = CGFloat(0)
+		var brightness = CGFloat(0)
+		var alpha = CGFloat(0)
+		
+		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+			return UIColor(hue: hue, saturation: saturation + amount, brightness: brightness, alpha: alpha)
 		}
 		
 		return self

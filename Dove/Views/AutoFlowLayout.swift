@@ -13,15 +13,16 @@ import UIKit
 	override public func prepare() {
 		super.prepare()
 		
-		if let view = self.collectionView {
-			view.isScrollEnabled = true
-			view.isPagingEnabled = false
-			
-			self.itemSize = CGSize(width: view.frame.size.width * self.multiplier, height: view.frame.size.height)
+		guard let view = self.collectionView else {
+			return
 		}
 		
-		self.scrollDirection = .horizontal
+		view.isScrollEnabled = true
+		view.isPagingEnabled = false
+			
+		self.itemSize = CGSize(width: view.frame.size.width * self.multiplier, height: view.frame.size.height)
 		
+		self.scrollDirection = .horizontal
 		self.minimumLineSpacing = self.spacing
 		self.minimumInteritemSpacing = self.spacing
 	}

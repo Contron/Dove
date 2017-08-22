@@ -12,20 +12,22 @@ import UIKit
 	override public func prepare() {
 		super.prepare()
 		
-		if let view = self.collectionView {
-			view.isScrollEnabled = false
-			view.isPagingEnabled = false
+		guard let view = self.collectionView else {
+			return
+		}
+		
+		view.isScrollEnabled = false
+		view.isPagingEnabled = false
+		
+		let items = view.numberOfItems(inSection: 0)
+		
+		if items > 0 {
+			let count = CGFloat(items)
+			let offset = (self.spacing * (count - 1)) / count
 			
-			let items = view.numberOfItems(inSection: 0)
-			
-			if items > 0 {
-				let count = CGFloat(items)
-				let offset = (self.spacing * (count - 1)) / count
-				
-				self.itemSize = CGSize(width: (view.frame.size.width / count) - offset, height: view.frame.size.height)
-			} else {
-				self.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-			}
+			self.itemSize = CGSize(width: (view.frame.size.width / count) - offset, height: view.frame.size.height)
+		} else {
+			self.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
 		}
 		
 		self.scrollDirection = .horizontal
