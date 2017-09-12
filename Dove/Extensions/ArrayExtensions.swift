@@ -10,13 +10,26 @@ import Foundation
 
 public extension Array where Element: Equatable {
 	public func allEqual<T: Equatable>(_ predicate: (Element) -> T) -> Bool {
-		if let first = self.first {
-			let first = predicate(first)
-			
-			for element in self {
-				if predicate(element) != first {
-					return false
-				}
+		guard let first = self.first else {
+			return true
+		}
+		
+		let template = predicate(first)
+		
+		for element in self {
+			if predicate(element) != template {
+				return false
+			}
+		}
+		
+		return true
+	}
+	
+	
+	public func contains(_ array: [Element]) -> Bool {
+		for element in array {
+			if !self.contains(element) {
+				return false
 			}
 		}
 		
