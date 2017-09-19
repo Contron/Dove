@@ -34,7 +34,7 @@ public extension Date {
 				let amount = Int(round(difference / divider))
 				
 				let first = amount == 1 ? "one" : String(amount)
-				let second = String.pluralise(amount: amount, singular: caption, plural: nil)
+				let second = String.pluralise(amount: amount, caption)
 				
 				return "\(first) \(second) ago"
 			}

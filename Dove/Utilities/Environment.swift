@@ -67,6 +67,6 @@ public class Environment {
 	public static var identifier: String? {
 		return UIDevice.current.identifierForVendor?.uuidString
 			.lowercased()
-			.replacingOccurrences(of: "-", with: "")
+			.replacingOccurrences(of: "-", with: String())
 	}
 }

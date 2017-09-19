@@ -17,11 +17,29 @@ public extension String {
 		case kebab
 	}
 	
-	public static func pluralise(amount: Int, singular: String, plural: String? = nil) -> String {
-		let singular = singular.lowercased().hasSuffix("s") ? singular.substring(to: singular.characters.index(before: singular.endIndex)) : singular
-		let plural = plural ?? "\(singular)s"
+	public static func pluralise(amount: Int, _ singular: String, _ plural: String? = nil) -> String {
+		guard amount != 1 else {
+			return singular
+		}
 		
-		return amount == 1 ? singular : plural
+		if let plural = plural {
+			return plural
+		}
+		
+		let suffix = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.substring(from: singular.index(before: singular.endIndex)) : "s"
+		let result = "\(singular)\(suffix)"
+		
+		return result
+	}
+	
+	public static func replace(transforms: [String: Any]) -> String {
+		var result = String(describing: self)
+		
+		for (source, replacement) in transforms {
+			result = result.replacingOccurrences(of: source, with: String(describing: replacement))
+		}
+		
+		return result
 	}
 	
 	public static func generate(length: Int) -> String {
