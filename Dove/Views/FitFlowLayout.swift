@@ -31,7 +31,7 @@ import UIKit
 			return nil
 		}
 		
-		attributes.alpha = 1
+		attributes.alpha = 0
 		
 		return attributes
 	}
@@ -41,7 +41,7 @@ import UIKit
 			return nil
 		}
 		
-		attributes.alpha = 1
+		attributes.alpha = 0
 		
 		return attributes
 	}
