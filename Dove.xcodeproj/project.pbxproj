@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		30139C4D1DA3F09D00A4DBC1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30139C4C1DA3F09D00A4DBC1 /* Environment.swift */; };
-		3023A41F1E2E3E4500915B20 /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3023A41E1E2E3E4500915B20 /* AspectFitImageView.swift */; };
 		303258D71E30FAB50059C525 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303258D61E30FAB50059C525 /* MemoryCache.swift */; };
 		3040763F1E5B0C3C00E63D60 /* PageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040763E1E5B0C3C00E63D60 /* PageFlowLayout.swift */; };
 		30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		30139C4C1DA3F09D00A4DBC1 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		3023A41E1E2E3E4500915B20 /* AspectFitImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
 		303258D61E30FAB50059C525 /* MemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 		3040763E1E5B0C3C00E63D60 /* PageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageFlowLayout.swift; sourceTree = "<group>"; };
 		30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 		3079FF831DACE998008D1402 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3023A41E1E2E3E4500915B20 /* AspectFitImageView.swift */,
 				3079FF841DACE998008D1402 /* AutoFlowLayout.swift */,
 				3040763E1E5B0C3C00E63D60 /* PageFlowLayout.swift */,
 				308F313A1E702E9200DEB579 /* FitFlowLayout.swift */,
@@ -210,7 +207,6 @@
 				30139C4D1DA3F09D00A4DBC1 /* Environment.swift in Sources */,
 				30F4D92F1D79C5080071B24B /* Debug.swift in Sources */,
 				303258D71E30FAB50059C525 /* MemoryCache.swift in Sources */,
-				3023A41F1E2E3E4500915B20 /* AspectFitImageView.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
 				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
