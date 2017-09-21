@@ -9,28 +9,45 @@
 import Foundation
 
 public extension Dictionary where Key: Hashable {
-	public func collapse<Key, Value>(_ transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
-		let transforms = self.map(transform)
+	public func transform<Key, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
 		var result = [Key: Value]()
 		
-		for (key, value) in transforms {
-			if let key = key, let value = value {
-				result[key] = value
-			}
-		}
+		self.map(transform).forEach({ result[$0] = $1 })
 		
 		return result
 	}
 }
 
 public extension Dictionary {
+	public func any(_ predicate: (Key, Value) -> Bool) -> Bool {
+		return self.count(predicate) > 0
+	}
+	
+	public func all(_ predicate: (Key, Value) -> Bool) -> Bool {
+		return self.count(predicate) >= self.count
+	}
+	
+	public func count(_ predicate: (Key, Value) -> Bool) -> Int {
+		var count = 0
+		
+		for (key, value) in self {
+			if predicate(key, value) {
+				count += 1
+			}
+		}
+		
+		return count
+	}
+	
 	public var urlQuery: String {
-		let query = self
-			.collapse({ (String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), String(describing: $1).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) })
-			.map({ "\($0.key)=\($0.value)" })
+		let keys = self.keys.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
+		let values = self.values.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
+		
+		let result = zip(keys, values)
+			.map({ "\($0)=\($1)" })
 			.joined(separator: "&")
 		
-		return "?\(query)"
+		return "?\(result)"
 	}
 	
 	public var random: (Key, Value)? {
@@ -40,7 +57,6 @@ public extension Dictionary {
 		
 		let keys = Array(self.keys)
 		let values = Array(self.values)
-		
 		let index = Int(arc4random_uniform(UInt32(self.count)))
 		
 		return (keys[index], values[index])
@@ -59,20 +75,11 @@ public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
 	return result
 }
 
-public func +<Key, Value>(first: [Key: Value]?, second: [Key: Value]?) -> [Key: Value] {
+public func +<Key, Value>(first: [Key: Value], second: [Key: Value]) -> [Key: Value] {
 	var result = [Key: Value]()
 	
-	if let first = first {
-		for (key, value) in first {
-			result[key] = value
-		}
-	}
-	
-	if let second = second {
-		for (key, value) in second {
-			result[key] = value
-		}
-	}
+	first.forEach({ result[$0.key] = $0.value })
+	second.forEach({ result[$0.key] = $0.value })
 	
 	return result
 }

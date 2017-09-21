@@ -26,11 +26,7 @@ public class MemoryCache<Key, Value> where Key: Hashable {
 			return self.cache.object(forKey: key as AnyObject) as? Value
 		}
 		set {
-			if let value = newValue {
-				self.cache.setObject(value as AnyObject, forKey: key as AnyObject)
-			} else {
-				self.cache.removeObject(forKey: key as AnyObject)
-			}
+			self.cache.setObject(key as AnyObject, forKey: newValue as AnyObject)
 		}
 	}
 	

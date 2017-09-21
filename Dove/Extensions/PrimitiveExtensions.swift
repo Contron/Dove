@@ -35,9 +35,7 @@ public extension String {
 	public static func replace(transforms: [String: Any]) -> String {
 		var result = String(describing: self)
 		
-		for (source, replacement) in transforms {
-			result = result.replacingOccurrences(of: source, with: String(describing: replacement))
-		}
+		transforms.forEach({ result = result.replacingOccurrences(of: $0.key, with: String(describing: $0.value)) })
 		
 		return result
 	}
@@ -71,11 +69,11 @@ public extension String {
 	}
 	
 	public func truncate(length: Int) -> String {
-		if self.characters.count > length {
-			return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
+		guard self.characters.count > length else {
+			return self
 		}
 		
-		return self
+		return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
 	}
 }
 

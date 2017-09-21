@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Array where Element: Equatable {
-	public func allEqual<T: Equatable>(_ predicate: (Element) -> T) -> Bool {
+	public func all<T: Equatable>(equal predicate: (Element) -> T) -> Bool {
 		guard let first = self.first else {
 			return true
 		}
@@ -56,15 +56,26 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array {
-	public func expand<Key: Hashable, Value>(_ transform: (Element) -> (Key?, Value?)) -> [Key: Value] {
-		let transforms = self.map(transform)
-		var result = [Key: Value]()
-		
-		for (key, value) in transforms {
-			if let key = key, let value = value {
-				result[key] = value
+	public mutating func remove(_ predicate: (Element) -> Bool) {
+		for (index, element) in self.enumerated().reversed() {
+			if predicate(element) {
+				self.remove(at: index)
 			}
 		}
+	}
+	
+	public func transform<Key: Hashable, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
+		var result = [Key: Value]()
+		
+		self.map(transform).forEach({ result[$0] = $1 })
+		
+		return result
+	}
+	
+	public func group<Key: Hashable>(_ transform: (Element) -> Key) -> [Key: Element] {
+		var result = [Key: Element]()
+		
+		self.forEach({ result[transform($0)] = $0 })
 		
 		return result
 	}
@@ -74,7 +85,7 @@ public extension Array {
 	}
 	
 	public func all(_ predicate: (Element) -> Bool) -> Bool {
-		return self.count(predicate) == self.count
+		return self.count(predicate) >= self.count
 	}
 	
 	public func count(_ predicate: (Element) -> Bool) -> Int {
@@ -90,7 +101,7 @@ public extension Array {
 	}
 	
 	public func shuffle() -> [Element] {
-		if self.count < 2 {
+		guard self.count > 1 else {
 			return self
 		}
 		
@@ -107,16 +118,8 @@ public extension Array {
 		return results
 	}
 	
-	public mutating func remove(_ predicate: (Element) -> Bool) {
-		for (index, element) in self.enumerated().reversed() {
-			if predicate(element) {
-				self.remove(at: index)
-			}
-		}
-	}
-	
 	public var random: Element? {
-		if self.count <= 0 {
+		guard self.count > 0 else {
 			return nil
 		}
 		
