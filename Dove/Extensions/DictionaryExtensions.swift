@@ -63,6 +63,18 @@ public extension Dictionary {
 	}
 }
 
+public func instantiate<Target: RawRepresentable, Value>(_ dictionary: [String: Value], _ type: Target.Type) -> [Target: Value] where Target.RawValue == String {
+	var result = [Target: Value]()
+	
+	for (key, value) in dictionary {
+		if let target = type.init(rawValue: key) {
+			result[target] = value
+		}
+	}
+	
+	return result
+}
+
 public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
 	var result = [Key: Value]()
 	
