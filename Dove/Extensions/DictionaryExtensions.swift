@@ -18,30 +18,21 @@ public extension Dictionary where Key: Hashable {
 	}
 	
 	public func contains(_ key: Key) -> Bool {
-		return self.contains(where: { $0.key == key })
+		return self[key] != nil
 	}
-	
 }
 
 public extension Dictionary {
-	public func any(_ predicate: (Key, Value) -> Bool) -> Bool {
+	public func any(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
 		return self.count(predicate) > 0
 	}
 	
-	public func all(_ predicate: (Key, Value) -> Bool) -> Bool {
+	public func all(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
 		return self.count(predicate) >= self.count
 	}
 	
-	public func count(_ predicate: (Key, Value) -> Bool) -> Int {
-		var count = 0
-		
-		for (key, value) in self {
-			if predicate(key, value) {
-				count += 1
-			}
-		}
-		
-		return count
+	public func count(_ predicate: ((key: Key, value: Value)) -> Bool) -> Int {
+		return self.reduce(0, { $0 + (predicate($1) ? 1 : 0) })
 	}
 	
 	public var urlQuery: String {
@@ -55,7 +46,7 @@ public extension Dictionary {
 		return "?\(result)"
 	}
 	
-	public var random: (Key, Value)? {
+	public var random: (key: Key, value: Value)? {
 		guard self.count > 0 else {
 			return nil
 		}
