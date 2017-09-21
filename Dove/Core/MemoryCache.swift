@@ -26,7 +26,7 @@ public class MemoryCache<Key, Value> where Key: Hashable {
 			return self.cache.object(forKey: key as AnyObject) as? Value
 		}
 		set {
-			self.cache.setObject(key as AnyObject, forKey: newValue as AnyObject)
+			self.cache.setObject(newValue as AnyObject, forKey: key as AnyObject)
 		}
 	}
 	
