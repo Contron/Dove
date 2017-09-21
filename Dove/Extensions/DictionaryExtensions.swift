@@ -16,6 +16,11 @@ public extension Dictionary where Key: Hashable {
 		
 		return result
 	}
+	
+	public func contains(_ key: Key) -> Bool {
+		return self.contains(where: { $0.key == key })
+	}
+	
 }
 
 public extension Dictionary {
