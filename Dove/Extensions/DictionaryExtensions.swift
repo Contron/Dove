@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Dictionary where Key: Hashable {
+public extension Dictionary {
 	public func transform<Key, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
 		var result = [Key: Value]()
 		
@@ -17,12 +17,6 @@ public extension Dictionary where Key: Hashable {
 		return result
 	}
 	
-	public func contains(_ key: Key) -> Bool {
-		return self[key] != nil
-	}
-}
-
-public extension Dictionary {
 	public func any(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
 		return self.count(predicate) > 0
 	}
@@ -33,6 +27,10 @@ public extension Dictionary {
 	
 	public func count(_ predicate: ((key: Key, value: Value)) -> Bool) -> Int {
 		return self.reduce(0, { $0 + (predicate($1) ? 1 : 0) })
+	}
+	
+	public func contains(_ key: Key) -> Bool {
+		return self[key] != nil
 	}
 	
 	public var urlQuery: String {

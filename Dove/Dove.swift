@@ -8,8 +8,8 @@
 
 import Foundation
 
-public typealias ActionBlock = (Void) -> Void
-public typealias ResultBlock = (Bool) -> Void
+public typealias ActionBlock = () -> ()
+public typealias ResultBlock = () -> ()
 
 public typealias KeyValues = [String: Any]
 

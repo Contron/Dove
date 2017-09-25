@@ -111,7 +111,7 @@ public extension Array {
 			let next = Int(arc4random_uniform(UInt32(self.count - index))) + index
 			
 			if next != index {
-				swap(&results[index], &results[next])
+				results.swapAt(index, next)
 			}
 		}
 		

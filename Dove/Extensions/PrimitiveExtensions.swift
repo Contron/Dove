@@ -26,7 +26,7 @@ public extension String {
 			return plural
 		}
 		
-		let suffix = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.substring(from: singular.index(before: singular.endIndex)) : "s"
+		let suffix = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.suffix(1) : "s"
 		let result = "\(singular)\(suffix)"
 		
 		return result
@@ -73,7 +73,7 @@ public extension String {
 			return self
 		}
 		
-		return self.substring(to: self.characters.index(self.startIndex, offsetBy: length)) + "..."
+		return self.prefix(length) + "..."
 	}
 }
 
