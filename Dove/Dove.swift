@@ -9,7 +9,7 @@
 import Foundation
 
 public typealias ActionBlock = () -> ()
-public typealias ResultBlock = () -> ()
+public typealias ResultBlock = (Bool) -> ()
 
 public typealias KeyValues = [String: Any]
 
