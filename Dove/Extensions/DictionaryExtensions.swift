@@ -29,10 +29,6 @@ public extension Dictionary {
 		return self.reduce(0, { $0 + (predicate($1) ? 1 : 0) })
 	}
 	
-	public func contains(_ key: Key) -> Bool {
-		return self[key] != nil
-	}
-	
 	public var urlQuery: String {
 		let keys = self.keys.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
 		let values = self.values.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })

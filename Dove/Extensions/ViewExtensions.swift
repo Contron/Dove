@@ -72,6 +72,14 @@ public extension UIImage {
 }
 
 public extension UIColor {
+	public convenience init(hex: Int, alpha: CGFloat = 1) {
+		let red = CGFloat((hex >> 16) & 0xFF) / 255
+		let green = CGFloat((hex >> 8) & 0xFF) / 255
+		let blue = CGFloat((hex >> 0) & 0xFF) / 255
+		
+		self.init(red: red, green: green, blue: blue, alpha: alpha)
+	}
+	
 	public func adjust(colour amount: CGFloat) -> UIColor {
 		var red = CGFloat(0)
 		var green = CGFloat(0)

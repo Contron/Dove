@@ -75,6 +75,10 @@ public extension String {
 		
 		return self.prefix(length) + "..."
 	}
+	
+	public var url: URL? {
+		return URL(string: self)
+	}
 }
 
 public extension Int {

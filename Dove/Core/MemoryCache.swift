@@ -9,10 +9,6 @@
 import Foundation
 
 public class MemoryCache<Key, Value> where Key: Hashable {
-	public init() {
-		
-	}
-	
 	public func contains(_ key: Key) -> Bool {
 		return self.cache.object(forKey: key as AnyObject) != nil
 	}

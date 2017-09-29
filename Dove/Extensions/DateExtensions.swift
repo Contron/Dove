@@ -15,18 +15,18 @@ public extension Date {
 		formatter.timeZone = TimeZone(abbreviation: "UTC")
 		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 		
-		if let date = formatter.date(from: string) {
-			self.init(timeInterval: 0, since: date)
-		} else {
+		guard let date = formatter.date(from: string) else {
 			return nil
 		}
+		
+		self.init(timeInterval: 0, since: date)
 	}
 	
 	public func timeAgo() -> String {
 		let difference = abs(self.timeIntervalSinceNow)
 		
 		if difference <= 15 {
-			return "just now"
+			return "Just now"
 		}
 		
 		for (time, divider, caption) in times {
@@ -47,13 +47,13 @@ public extension Date {
 		return formatter.string(from: self)
 	}
 	
-	public func isBetween(startMonth: Int, startDay: Int, endMonth: Int, endDay: Int) -> Bool {
+	public func isBetween(start: (month: Int, day: Int), end: (month: Int, day: Int)) -> Bool {
 		let calendar = Calendar(identifier: .gregorian)
 		
 		let day = calendar.component(.day, from: self)
 		let month = calendar.component(.month, from: self)
 		
-		return (month >= startMonth && day >= startDay) && (month <= endMonth && day <= endDay)
+		return (month >= start.month && day >= start.day) && (month <= end.month && day <= end.day)
 	}
 
 	public func isPast() -> Bool {

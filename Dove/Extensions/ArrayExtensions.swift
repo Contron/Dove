@@ -9,6 +9,12 @@
 import Foundation
 
 public extension Array where Element: Equatable {
+	public mutating func remove(_ element: Element) {
+		if let index = self.index(of: element) {
+			self.remove(at: index)
+		}
+	}
+	
 	public func all<T: Equatable>(equal predicate: (Element) -> T) -> Bool {
 		guard let first = self.first else {
 			return true
@@ -46,12 +52,6 @@ public extension Array where Element: Equatable {
 		}
 		
 		return results
-	}
-	
-	public mutating func remove(_ element: Element) {
-		if let index = self.index(of: element) {
-			self.remove(at: index)
-		}
 	}
 }
 
