@@ -64,6 +64,20 @@ public extension Array {
 		}
 	}
 	
+	public mutating func shuffle() {
+		guard self.count > 1 else {
+			return
+		}
+		
+		for index in 0..<self.count - 1 {
+			let next = Int(arc4random_uniform(UInt32(self.count - index))) + index
+			
+			if next != index {
+				self.swapAt(index, next)
+			}
+		}
+	}
+	
 	public func transform<Key: Hashable, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
 		var result = [Key: Value]()
 		
@@ -98,24 +112,6 @@ public extension Array {
 		}
 		
 		return count
-	}
-	
-	public func shuffle() -> [Element] {
-		guard self.count > 1 else {
-			return self
-		}
-		
-		var results = Array(self)
-		
-		for index in 0..<self.count - 1 {
-			let next = Int(arc4random_uniform(UInt32(self.count - index))) + index
-			
-			if next != index {
-				results.swapAt(index, next)
-			}
-		}
-		
-		return results
 	}
 	
 	public var random: Element? {
