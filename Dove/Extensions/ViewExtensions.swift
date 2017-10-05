@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
 	public func render() -> UIImage? {
-		UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
+		UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
 		
 		defer {
 			UIGraphicsEndImageContext()
@@ -24,86 +24,6 @@ public extension UIView {
 		self.layer.render(in: context)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
-	}
-}
-
-public extension UIImage {
-	public func apply(filter: CIFilter, options: [String: Any]? = nil) -> UIImage? {
-		guard let image = self.cgImage else {
-			return nil
-		}
-		
-		filter.setValue(CoreImage.CIImage(cgImage: image), forKey: kCIInputImageKey)
-		
-		if let options = options {
-			for (option, value) in options {
-				filter.setValue(value, forKey: option)
-			}
-		}
-		
-		if let output = filter.outputImage {
-			if let output = context.createCGImage(output, from: output.extent) {
-				return UIImage(cgImage: output, scale: self.scale, orientation: self.imageOrientation)
-			}
-		}
-		
-		return nil
-	}
-	
-	public func flip(orientation: UIImageOrientation) -> UIImage? {
-		guard let image = self.cgImage else {
-			return nil
-		}
-		
-		return UIImage(cgImage: image, scale: self.scale, orientation: orientation)
-	}
-	
-	public func isEqualData(image: UIImage) -> Bool {
-		if let first = UIImagePNGRepresentation(self), let second = UIImagePNGRepresentation(image) {
-			if first.count != second.count {
-				return first == second
-			} else {
-				return true
-			}
-		}
-		
-		return false
-	}
-}
-
-public extension UIColor {
-	public convenience init(hex: Int, alpha: CGFloat = 1) {
-		let red = CGFloat((hex >> 16) & 0xFF) / 255
-		let green = CGFloat((hex >> 8) & 0xFF) / 255
-		let blue = CGFloat((hex >> 0) & 0xFF) / 255
-		
-		self.init(red: red, green: green, blue: blue, alpha: alpha)
-	}
-	
-	public func adjust(colour amount: CGFloat) -> UIColor {
-		var red = CGFloat(0)
-		var green = CGFloat(0)
-		var blue = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-			return UIColor(red: red + amount, green: green + amount, blue: blue + amount, alpha: alpha)
-		}
-		
-		return self
-	}
-	
-	public func adjust(saturation amount: CGFloat) -> UIColor {
-		var hue = CGFloat(0)
-		var saturation = CGFloat(0)
-		var brightness = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
-			return UIColor(hue: hue, saturation: saturation + amount, brightness: brightness, alpha: alpha)
-		}
-		
-		return self
 	}
 }
 
@@ -146,5 +66,3 @@ private extension UIView {
 		self.backgroundColor = colour
 	}
 }
-
-private let context = CIContext()
