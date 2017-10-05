@@ -51,10 +51,7 @@ public extension UIImage {
 		let frame = CGRect(origin: CGPoint(), size: self.size)
 		
 		context.setFillColor(colour.cgColor)
-		context.setBlendMode(.softLight)
-		
 		context.clip(to: frame, mask: image)
-		context.draw(image, in: frame)
 		context.fill(frame)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
