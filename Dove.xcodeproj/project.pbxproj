@@ -16,6 +16,7 @@
 		3079FF861DACE998008D1402 /* AutoFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079FF841DACE998008D1402 /* AutoFlowLayout.swift */; };
 		308F313B1E702E9200DEB579 /* FitFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308F313A1E702E9200DEB579 /* FitFlowLayout.swift */; };
 		30D723C71F862C160055D70A /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D723C61F862C160055D70A /* ImageExtensions.swift */; };
+		30D902391F87BA710042E0D9 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D902381F87BA710042E0D9 /* CalendarExtensions.swift */; };
 		30F4D92F1D79C5080071B24B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92E1D79C5080071B24B /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
@@ -37,6 +38,7 @@
 		3079FF841DACE998008D1402 /* AutoFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFlowLayout.swift; sourceTree = "<group>"; };
 		308F313A1E702E9200DEB579 /* FitFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitFlowLayout.swift; sourceTree = "<group>"; };
 		30D723C61F862C160055D70A /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
+		30D902381F87BA710042E0D9 /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dove/Info.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
 				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
+				30D902381F87BA710042E0D9 /* CalendarExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
 				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
 				30485E301D5B19DF00EB74EA /* DictionaryExtensions.swift */,
@@ -219,6 +222,7 @@
 				B34383BE1D0203FE00E5F39E /* ArrayExtensions.swift in Sources */,
 				30D723C71F862C160055D70A /* ImageExtensions.swift in Sources */,
 				3040763F1E5B0C3C00E63D60 /* PageFlowLayout.swift in Sources */,
+				30D902391F87BA710042E0D9 /* CalendarExtensions.swift in Sources */,
 				3079FF861DACE998008D1402 /* AutoFlowLayout.swift in Sources */,
 				30485E311D5B19DF00EB74EA /* DictionaryExtensions.swift in Sources */,
 				308F313B1E702E9200DEB579 /* FitFlowLayout.swift in Sources */,
