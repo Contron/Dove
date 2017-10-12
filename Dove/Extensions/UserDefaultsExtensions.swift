@@ -10,7 +10,7 @@ import Foundation
 
 public extension UserDefaults {
 	public func get<Target: Decodable>(decodable key: String, _ type: Target.Type) -> Target? {
-		guard let data = self.data(forKey: key), let instance = try? PropertyListDecoder().decode(type, from: data) else {
+		guard let data = self.data(forKey: key), let instance = try? decoder.decode(type, from: data) else {
 			return nil
 		}
 		
@@ -18,10 +18,13 @@ public extension UserDefaults {
 	}
 	
 	public func set<Type: Encodable>(encodable: Type, key: String) {
-		guard let data = try? PropertyListEncoder().encode(encodable) else {
+		guard let data = try? encoder.encode(encodable) else {
 			return
 		}
 		
 		self.set(data, forKey: key)
 	}
 }
+
+private let encoder = PropertyListEncoder()
+private let decoder = PropertyListDecoder()
