@@ -26,6 +26,10 @@ public class Environment {
 		case release
 	}
 	
+	private init() {
+		
+	}
+	
 	public static var platform: Platform {
 		switch UIDevice.current.userInterfaceIdiom {
 		case .pad:

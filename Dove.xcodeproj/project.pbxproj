@@ -19,6 +19,7 @@
 		30D723C71F862C160055D70A /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D723C61F862C160055D70A /* ImageExtensions.swift */; };
 		30D902391F87BA710042E0D9 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D902381F87BA710042E0D9 /* CalendarExtensions.swift */; };
 		30DC4A601F8E0D440011B18D /* NodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC4A5F1F8E0D440011B18D /* NodeExtensions.swift */; };
+		30F104421F90D7D80006F707 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F104411F90D7D80006F707 /* Storage.swift */; };
 		30F4D92F1D79C5080071B24B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92E1D79C5080071B24B /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */; };
@@ -43,6 +44,7 @@
 		30D723C61F862C160055D70A /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		30D902381F87BA710042E0D9 /* CalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		30DC4A5F1F8E0D440011B18D /* NodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeExtensions.swift; sourceTree = "<group>"; };
+		30F104411F90D7D80006F707 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
 		B34383AC1D01FBA600E5F39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dove/Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				30F4D92E1D79C5080071B24B /* Debug.swift */,
 				30139C4C1DA3F09D00A4DBC1 /* Environment.swift */,
+				30F104411F90D7D80006F707 /* Storage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
 				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
+				30F104421F90D7D80006F707 /* Storage.swift in Sources */,
 				B34383C41D02041D00E5F39E /* Dove.swift in Sources */,
 				30485E2F1D5B197900EB74EA /* PrimitiveExtensions.swift in Sources */,
 				B34383BD1D0203FE00E5F39E /* AnimationExtensions.swift in Sources */,
