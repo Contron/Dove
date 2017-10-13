@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable public class PageFlowLayout: UICollectionViewFlowLayout {
+@IBDesignable public final class PageFlowLayout: UICollectionViewFlowLayout {
 	override public func prepare() {
 		super.prepare()
 		

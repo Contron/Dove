@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Environment {
+public final class Environment {
 	public enum Platform {
 		case phone
 		case tablet

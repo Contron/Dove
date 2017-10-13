@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MemoryCache<Key, Value> where Key: Hashable {
+public final class MemoryCache<Key, Value> where Key: Hashable {
 	public init() {
 		
 	}

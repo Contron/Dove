@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Storage {
+public final class Storage {
 	private init() {
 		
 	}
