@@ -57,11 +57,15 @@ public extension Date {
 	}
 
 	public func isPast() -> Bool {
-		return self < Date()
+		return self < .now
 	}
 	
 	public func isFuture() -> Bool {
-		return self > Date()
+		return self > .now
+	}
+	
+	public static var now: Date {
+		return Date()
 	}
 }
 

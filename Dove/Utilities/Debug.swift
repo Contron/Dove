@@ -13,7 +13,7 @@ public func debug(_ object: Any, file: String = #file) {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "HH:mm:ss"
 		
-		let date = formatter.string(from: Date())
+		let date = formatter.string(from: .now)
 		
 		let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
 		let object = String(describing: object)
