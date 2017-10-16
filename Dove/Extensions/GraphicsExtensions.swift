@@ -9,11 +9,8 @@
 import Foundation
 import UIKit
 
-public extension CGPoint {
-	public func roundedEquals(_ point: CGPoint) -> Bool {
-		return Int(self.x) == Int(point.x) && Int(self.y) == Int(point.y)
-	}
-}
+infix operator ≈≈: ComparisonPrecedence
+infix operator !≈: ComparisonPrecedence
 
 public extension CGSize {
 	public enum AspectPriority {
@@ -36,16 +33,22 @@ public extension CGSize {
 		
 		return CGSize(width: original.width * factor, height: original.height * factor)
 	}
-	
-	public func roundedEquals(_ size: CGSize) -> Bool {
-		return Int(self.width) == Int(size.width) && Int(self.height) == Int(size.height)
-	}
 }
 
-public extension CGRect {
-	public func roundedEquals(_ rect: CGRect) -> Bool {
-		return self.origin.roundedEquals(rect.origin) && self.size.roundedEquals(rect.size)
-	}
+public func ≈≈(first: CGPoint, second: CGPoint) -> Bool {
+	return Int(first.x) == Int(second.x) && Int(first.y) == Int(second.y)
+}
+
+public func !≈(first: CGPoint, second: CGPoint) -> Bool {
+	return Int(first.x) != Int(second.x) || Int(first.y) != Int(second.y)
+}
+
+public func ≈≈(first: CGSize, second: CGSize) -> Bool {
+	return Int(first.width) == Int(second.width) && Int(first.height) == Int(second.height)
+}
+
+public func !≈(first: CGSize, second: CGSize) -> Bool {
+	return Int(first.width) != Int(second.width) || Int(first.height) != Int(second.height)
 }
 
 public func +(first: CGPoint, second: CGPoint) -> CGPoint {
