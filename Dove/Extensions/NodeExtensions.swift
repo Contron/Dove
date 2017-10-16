@@ -9,6 +9,18 @@
 import Foundation
 import SpriteKit
 
+public extension SKNode {
+	public func intersects(_ nodes: [SKNode]) -> Bool {
+		for node in nodes {
+			if self.intersects(node) {
+				return true
+			}
+		}
+		
+		return false
+	}
+}
+
 public extension SKAction {
 	public func timing(mode: SKActionTimingMode) -> SKAction {
 		self.timingMode = mode
