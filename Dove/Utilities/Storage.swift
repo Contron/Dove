@@ -18,7 +18,7 @@ public final class Storage {
 	}
 	
 	public static func save<Target: Encodable>(to file: String, value: Target) throws {
-		try encoder.encode(value).write(to: Storage.url(for: file))
+		try encoder.encode(value).write(to: Storage.url(for: file), options: .atomic)
 	}
 	
 	public static func delete(file: String) throws {
