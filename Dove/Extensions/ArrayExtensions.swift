@@ -64,34 +64,38 @@ public extension Array {
 		}
 	}
 	
-	public mutating func shuffle() {
+	public func shuffle() -> [Element] {
 		guard self.count > 1 else {
-			return
+			return self
 		}
 		
-		for index in 0..<self.count - 1 {
-			let next = Int(arc4random_uniform(UInt32(self.count - index))) + index
+		var results = Array(self)
+		
+		for index in 0..<results.count - 1 {
+			let next = Int(arc4random_uniform(UInt32(results.count - index))) + index
 			
 			if next != index {
-				self.swapAt(index, next)
+				results.swapAt(index, next)
 			}
 		}
+		
+		return results
 	}
 	
 	public func transform<Key: Hashable, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
-		var result = [Key: Value]()
+		var results = [Key: Value]()
 		
-		self.map(transform).forEach({ result[$0] = $1 })
+		self.map(transform).forEach({ results[$0] = $1 })
 		
-		return result
+		return results
 	}
 	
 	public func group<Key: Hashable>(_ transform: (Element) -> Key) -> [Key: Element] {
-		var result = [Key: Element]()
+		var results = [Key: Element]()
 		
-		self.forEach({ result[transform($0)] = $0 })
+		self.forEach({ results[transform($0)] = $0 })
 		
-		return result
+		return results
 	}
 	
 	public func any(_ predicate: (Element) -> Bool) -> Bool {
