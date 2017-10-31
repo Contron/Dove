@@ -17,6 +17,10 @@ public final class Storage {
 		return try decoder.decode(type, from: try Data(contentsOf: Storage.url(for: file)))
 	}
 	
+	public static func download<Target: Decodable>(from url: URL, type: Target.Type) throws -> Target {
+		return try decoder.decode(type, from: Data(contentsOf: url))
+	}
+	
 	public static func save<Target: Encodable>(to file: String, value: Target) throws {
 		try encoder.encode(value).write(to: Storage.url(for: file), options: .atomic)
 	}

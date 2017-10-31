@@ -47,13 +47,11 @@ public extension Date {
 		return formatter.string(from: self)
 	}
 	
-	public func isBetween(start: (month: Int, day: Int), end: (month: Int, day: Int)) -> Bool {
-		let calendar = Calendar(identifier: .gregorian)
+	public func isBetween(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {
+		let day = Calendar.current.component(.day, from: self)
+		let month = Calendar.current.component(.month, from: self)
 		
-		let day = calendar.component(.day, from: self)
-		let month = calendar.component(.month, from: self)
-		
-		return (month >= start.month && day >= start.day) && (month <= end.month && day <= end.day)
+		return (day >= start.day && month >= start.month) && (day <= end.day && month <= end.month)
 	}
 
 	public func isPast() -> Bool {
