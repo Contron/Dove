@@ -44,10 +44,10 @@ public extension String {
 		var result = String()
 		
 		for _ in 1...length {
-			let offset = Int(arc4random_uniform(UInt32(letters.characters.count)))
-			let index = letters.characters.index(letters.characters.startIndex, offsetBy: offset)
+			let offset = Int(arc4random_uniform(UInt32(letters.count)))
+			let index = letters.index(letters.startIndex, offsetBy: offset)
 			
-			result.append(letters.characters[index])
+			result.append(letters[index])
 		}
 		
 		return result
@@ -56,9 +56,9 @@ public extension String {
 	public func convert(case: ConversionCase) -> String {
 		switch `case` {
 		case .camel:
-			return String(self.characters.prefix(1)).lowercased() + String(self.characters.dropFirst())
+			return String(self.prefix(1)).lowercased() + String(self.dropFirst())
 		case .pascal:
-			return String(self.characters.prefix(1)).uppercased() + String(self.characters.dropFirst())
+			return String(self.prefix(1)).uppercased() + String(self.dropFirst())
 		case .title:
 			return self.replacingOccurrences(of: regex, with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
 		case .snake:
@@ -69,7 +69,7 @@ public extension String {
 	}
 	
 	public func truncate(length: Int) -> String {
-		guard self.characters.count > length else {
+		guard self.count > length else {
 			return self
 		}
 		
@@ -125,6 +125,14 @@ public extension Double {
 		formatter.numberStyle = .decimal
 		formatter.groupingSeparator = ","
 		formatter.maximumFractionDigits = 3
+		
+		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+	}
+	
+	public var percentageValue: String {
+		let formatter = NumberFormatter()
+		formatter.numberStyle = .percent
+		formatter.maximumFractionDigits = 2
 		
 		return formatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
