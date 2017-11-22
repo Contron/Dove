@@ -12,11 +12,61 @@ import UIKit
 infix operator ≈≈: ComparisonPrecedence
 infix operator !≈: ComparisonPrecedence
 
+public extension CGPoint {
+	public static func ≈≈(first: CGPoint, second: CGPoint) -> Bool {
+		return Int(first.x) == Int(second.x) && Int(first.y) == Int(second.y)
+	}
+	
+	public static func !≈(first: CGPoint, second: CGPoint) -> Bool {
+		return Int(first.x) != Int(second.x) || Int(first.y) != Int(second.y)
+	}
+	
+	public static func +(first: CGPoint, second: CGPoint) -> CGPoint {
+		return CGPoint(x: first.x + second.x, y: first.y + second.y)
+	}
+	
+	public static func -(first: CGPoint, second: CGPoint) -> CGPoint {
+		return CGPoint(x: first.x - second.x, y: first.y - second.y)
+	}
+	
+	public static func +(point: CGPoint, value: CGFloat) -> CGPoint {
+		return CGPoint(x: point.x + value, y: point.y + value)
+	}
+	
+	public static func -(point: CGPoint, value: CGFloat) -> CGPoint {
+		return CGPoint(x: point.x - value, y: point.y - value)
+	}
+}
+
 public extension CGSize {
 	public enum AspectPriority {
 		case automatic
 		case width
 		case height
+	}
+	
+	public static func ≈≈(first: CGSize, second: CGSize) -> Bool {
+		return Int(first.width) == Int(second.width) && Int(first.height) == Int(second.height)
+	}
+	
+	public static func !≈(first: CGSize, second: CGSize) -> Bool {
+		return Int(first.width) != Int(second.width) || Int(first.height) != Int(second.height)
+	}
+	
+	public static func +(first: CGSize, second: CGSize) -> CGSize {
+		return CGSize(width: first.width + second.width, height: first.height + second.height)
+	}
+	
+	public static func -(first: CGSize, second: CGSize) -> CGSize {
+		return CGSize(width: first.width - second.width, height: first.height - second.height)
+	}
+	
+	public static func +(size: CGSize, value: CGFloat) -> CGSize {
+		return CGSize(width: size.width + value, height: size.height + value)
+	}
+	
+	public static func -(size: CGSize, value: CGFloat) -> CGSize {
+		return CGSize(width: size.width - value, height: size.height - value)
 	}
 	
 	public static func aspect(priority: AspectPriority, original: CGSize, target: CGSize) -> CGSize {
@@ -34,52 +84,3 @@ public extension CGSize {
 		return CGSize(width: original.width * factor, height: original.height * factor)
 	}
 }
-
-public func ≈≈(first: CGPoint, second: CGPoint) -> Bool {
-	return Int(first.x) == Int(second.x) && Int(first.y) == Int(second.y)
-}
-
-public func !≈(first: CGPoint, second: CGPoint) -> Bool {
-	return Int(first.x) != Int(second.x) || Int(first.y) != Int(second.y)
-}
-
-public func ≈≈(first: CGSize, second: CGSize) -> Bool {
-	return Int(first.width) == Int(second.width) && Int(first.height) == Int(second.height)
-}
-
-public func !≈(first: CGSize, second: CGSize) -> Bool {
-	return Int(first.width) != Int(second.width) || Int(first.height) != Int(second.height)
-}
-
-public func +(first: CGPoint, second: CGPoint) -> CGPoint {
-	return CGPoint(x: first.x + second.x, y: first.y + second.y)
-}
-
-public func -(first: CGPoint, second: CGPoint) -> CGPoint {
-	return CGPoint(x: first.x - second.x, y: first.y - second.y)
-}
-
-public func +(first: CGSize, second: CGSize) -> CGSize {
-	return CGSize(width: first.width + second.width, height: first.height + second.height)
-}
-
-public func -(first: CGSize, second: CGSize) -> CGSize {
-	return CGSize(width: first.width - second.width, height: first.height - second.height)
-}
-
-public func +(point: CGPoint, value: CGFloat) -> CGPoint {
-	return CGPoint(x: point.x + value, y: point.y + value)
-}
-
-public func -(point: CGPoint, value: CGFloat) -> CGPoint {
-	return CGPoint(x: point.x - value, y: point.y - value)
-}
-
-public func +(size: CGSize, value: CGFloat) -> CGSize {
-	return CGSize(width: size.width + value, height: size.height + value)
-}
-
-public func -(size: CGSize, value: CGFloat) -> CGSize {
-	return CGSize(width: size.width - value, height: size.height - value)
-}
-

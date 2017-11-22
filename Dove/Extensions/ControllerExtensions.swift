@@ -26,14 +26,14 @@ public extension UIViewController {
 		return controller
 	}
 	
-	public func addChild(controller: UIViewController, view: UIView) {
+	public func addChild(controller: UIViewController, to view: UIView) {
 		view.addSubview(controller.view)
 		self.addChildViewController(controller)
 		controller.didMove(toParentViewController: self)
 	}
 	
 	public func addChild(controller: UIViewController) {
-		self.addChild(controller: controller, view: self.view)
+		self.addChild(controller: controller, to: self.view)
 	}
 	
 	public func removeChild() {

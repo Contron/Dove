@@ -9,7 +9,26 @@
 import Foundation
 import UIKit
 
+infix operator ≈≈: ComparisonPrecedence
+infix operator !≈: ComparisonPrecedence
+
 public extension UIImage {
+	public static func ≈≈(first: UIImage, second: UIImage) -> Bool {
+		guard let first = UIImagePNGRepresentation(first), let second = UIImagePNGRepresentation(second) else {
+			return false
+		}
+		
+		return first == second
+	}
+	
+	public static func !≈(first: UIImage, second: UIImage) -> Bool {
+		guard let first = UIImagePNGRepresentation(first), let second = UIImagePNGRepresentation(second) else {
+			return false
+		}
+		
+		return first != second
+	}
+	
 	public func apply(filter: CIFilter, options: [String: Any]? = nil) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
@@ -25,7 +44,7 @@ public extension UIImage {
 		return UIImage(cgImage: result, scale: self.scale, orientation: self.imageOrientation)
 	}
 	
-	public func flip(orientation: UIImageOrientation) -> UIImage? {
+	public func flip(to orientation: UIImageOrientation) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
 		}
@@ -55,18 +74,6 @@ public extension UIImage {
 		context.fill(frame)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
-	}
-	
-	public func isEqualData(image: UIImage) -> Bool {
-		if let first = UIImagePNGRepresentation(self), let second = UIImagePNGRepresentation(image) {
-			if first.count != second.count {
-				return first == second
-			} else {
-				return true
-			}
-		}
-		
-		return false
 	}
 }
 

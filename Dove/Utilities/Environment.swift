@@ -9,46 +9,43 @@
 import Foundation
 
 public final class Environment {
-	public enum Platform {
-		case phone
-		case tablet
-		case television
-		case vehicle
-	}
-	
-	public enum Orientation {
-		case portrait
-		case landscape
-	}
-	
 	public enum Mode {
 		case debug
 		case release
+	}
+	
+	public enum Stamp {
+		case build
+		case compilation
 	}
 	
 	private init() {
 		
 	}
 	
-	public static var platform: Platform {
-		switch UIDevice.current.userInterfaceIdiom {
-		case .pad:
-			return .tablet
-		case .tv:
-			return .television
-		case .carPlay:
-			return .vehicle
-		default:
-			return .phone
-		}
-	}
-	
-	public static var orientation: Orientation {
-		switch UIDevice.current.orientation {
-		case .landscapeLeft, .landscapeRight:
-			return .landscape
-		default:
-			return .portrait
+	public static func date(for stamp: Stamp) -> Date? {
+		switch stamp {
+		case .build:
+			guard
+				let url = Bundle.main.url(forResource: "Info", withExtension: "plist"),
+				let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+				let date = attributes[.creationDate] as? Date
+			else {
+				return nil
+			}
+			
+			return date
+		case .compilation:
+			guard
+				let name = Bundle.main.infoDictionary?["CFBundleName"] as? String,
+				let url = Bundle.main.url(forResource: name, withExtension: nil),
+				let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+				let date = attributes[.creationDate] as? Date
+			else {
+				return nil
+			}
+			
+			return date
 		}
 	}
 	

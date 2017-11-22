@@ -9,15 +9,21 @@
 import Foundation
 
 public func debug(_ object: Any, file: String = #file) {
-	#if DEBUG
-		let formatter = DateFormatter()
-		formatter.dateFormat = "HH:mm:ss"
-		
-		let date = formatter.string(from: .now)
-		
-		let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
-		let object = String(describing: object)
-		
-		print("[\(date) \(file)] \(object)")
+	#if !DEBUG
+		return
 	#endif
+	
+	let date = formatter.string(from: .now)
+	
+	let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
+	let object = String(describing: object)
+	
+	print("[\(date) \(file)] \(object)")
 }
+
+private let formatter: DateFormatter = {
+	let formatter = DateFormatter()
+	formatter.dateFormat = "HH:mm:ss"
+	
+	return formatter
+}()

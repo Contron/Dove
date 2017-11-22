@@ -46,6 +46,15 @@ import UIKit
 		return attributes
 	}
 	
-	@IBInspectable public var multiplier: CGFloat = 1
-	@IBInspectable public var spacing: CGFloat = 8
+	@IBInspectable public var multiplier: CGFloat = 1 {
+		didSet {
+			self.invalidateLayout()
+		}
+	}
+	
+	@IBInspectable public var spacing: CGFloat = 8 {
+		didSet {
+			self.invalidateLayout()
+		}
+	}
 }

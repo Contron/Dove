@@ -9,12 +9,21 @@
 import Foundation
 
 public extension Dictionary {
+	public static func +<Key, Value>(first: [Key: Value], second: [Key: Value]) -> [Key: Value] {
+		var results = [Key: Value]()
+		
+		first.forEach({ results[$0.key] = $0.value })
+		second.forEach({ results[$0.key] = $0.value })
+		
+		return results
+	}
+	
 	public func transform<Key, Value>(_ transform: (Element) -> (Key, Value)) -> [Key: Value] {
-		var result = [Key: Value]()
+		var results = [Key: Value]()
 		
-		self.map(transform).forEach({ result[$0] = $1 })
+		self.map(transform).forEach({ results[$0] = $1 })
 		
-		return result
+		return results
 	}
 	
 	public func any(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
@@ -58,34 +67,25 @@ public extension Dictionary {
 }
 
 public func instantiate<Target: RawRepresentable, Value>(_ dictionary: [String: Value], _ type: Target.Type) -> [Target: Value] where Target.RawValue == String {
-	var result = [Target: Value]()
+	var results = [Target: Value]()
 	
 	for (key, value) in dictionary {
 		if let target = type.init(rawValue: key) {
-			result[target] = value
+			results[target] = value
 		}
 	}
 	
-	return result
+	return results
 }
 
 public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
-	var result = [Key: Value]()
+	var results = [Key: Value]()
 	
 	for (key, value) in dictionary {
 		if let value = value {
-			result[key] = value
+			results[key] = value
 		}
 	}
 	
-	return result
-}
-
-public func +<Key, Value>(first: [Key: Value], second: [Key: Value]) -> [Key: Value] {
-	var result = [Key: Value]()
-	
-	first.forEach({ result[$0.key] = $0.value })
-	second.forEach({ result[$0.key] = $0.value })
-	
-	return result
+	return results
 }

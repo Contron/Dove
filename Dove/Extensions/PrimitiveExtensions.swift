@@ -68,7 +68,7 @@ public extension String {
 		}
 	}
 	
-	public func truncate(length: Int) -> String {
+	public func truncate(to length: Int) -> String {
 		guard self.count > length else {
 			return self
 		}
@@ -111,32 +111,44 @@ public extension Int {
 	}
 	
 	public var displayValue: String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .decimal
-		formatter.groupingSeparator = ","
-		
-		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+		return integerFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
 
+private let integerFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .decimal
+	formatter.groupingSeparator = ","
+	
+	return formatter
+}()
+
 public extension Double {
 	public var displayValue: String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .decimal
-		formatter.groupingSeparator = ","
-		formatter.maximumFractionDigits = 3
-		
-		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+		return doubleFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 	
 	public var percentageValue: String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .percent
-		formatter.maximumFractionDigits = 2
-		
-		return formatter.string(from: NSNumber(value: self)) ?? String(self)
+		return percentageFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
+
+private let doubleFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .decimal
+	formatter.groupingSeparator = ","
+	formatter.maximumFractionDigits = 3
+	
+	return formatter
+}()
+
+private let percentageFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .percent
+	formatter.maximumFractionDigits = 2
+	
+	return formatter
+}()
 
 public extension FloatingPoint {
 	public static var random: Self {

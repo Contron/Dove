@@ -10,12 +10,7 @@ import Foundation
 
 public extension Date {
 	public init?(string: String) {
-		let formatter = DateFormatter()
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		formatter.timeZone = TimeZone(abbreviation: "UTC")
-		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-		
-		guard let date = formatter.date(from: string) else {
+		guard let date = posixFormatter.date(from: string) else {
 			return nil
 		}
 		
@@ -40,11 +35,7 @@ public extension Date {
 			}
 		}
 		
-		let formatter = DateFormatter()
-		formatter.timeStyle = .none
-		formatter.dateFormat = "d MMMM, y"
-		
-		return formatter.string(from: self)
+		return timeAgoFormatter.string(from: self)
 	}
 	
 	public func isBetween(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {
@@ -66,6 +57,23 @@ public extension Date {
 		return Date()
 	}
 }
+
+private let posixFormatter: DateFormatter = {
+	let formatter = DateFormatter()
+	formatter.locale = Locale(identifier: "en_US_POSIX")
+	formatter.timeZone = TimeZone(abbreviation: "UTC")
+	formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+	
+	return formatter
+}()
+
+private let timeAgoFormatter: DateFormatter = {
+	let formatter = DateFormatter()
+	formatter.timeStyle = .none
+	formatter.dateFormat = "d MMMM, y"
+	
+	return formatter
+}()
 
 private let second = 1.0
 private let minute = 60.0
