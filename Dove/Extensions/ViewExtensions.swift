@@ -17,10 +17,6 @@ public extension UIView {
 			UIGraphicsEndImageContext()
 		}
 		
-		guard let context = UIGraphicsGetCurrentContext() else {
-			return nil
-		}
-		
 		self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
