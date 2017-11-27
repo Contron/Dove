@@ -14,39 +14,8 @@ public final class Environment {
 		case release
 	}
 	
-	public enum Stamp {
-		case build
-		case compilation
-	}
-	
 	private init() {
 		
-	}
-	
-	public static func date(for stamp: Stamp) -> Date? {
-		switch stamp {
-		case .build:
-			guard
-				let url = Bundle.main.url(forResource: "Info", withExtension: "plist"),
-				let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
-				let date = attributes[.creationDate] as? Date
-			else {
-				return nil
-			}
-			
-			return date
-		case .compilation:
-			guard
-				let name = Bundle.main.infoDictionary?["CFBundleName"] as? String,
-				let url = Bundle.main.url(forResource: name, withExtension: nil),
-				let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
-				let date = attributes[.creationDate] as? Date
-			else {
-				return nil
-			}
-			
-			return date
-		}
 	}
 	
 	public static var mode: Mode {
@@ -69,5 +38,30 @@ public final class Environment {
 		return UIDevice.current.identifierForVendor?.uuidString
 			.lowercased()
 			.replacingOccurrences(of: "-", with: String())
+	}
+	
+	public static var buildDate: Date? {
+		guard
+			let url = Bundle.main.url(forResource: "Info", withExtension: "plist"),
+			let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+			let date = attributes[.creationDate] as? Date
+		else {
+			return nil
+		}
+		
+		return date
+	}
+	
+	public static var compilationDate: Date? {
+		guard
+			let name = Bundle.main.infoDictionary?["CFBundleName"] as? String,
+			let url = Bundle.main.url(forResource: name, withExtension: nil),
+			let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+			let date = attributes[.creationDate] as? Date
+		else {
+			return nil
+		}
+		
+		return date
 	}
 }

@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
 	public func render() -> UIImage? {
-		UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
+		UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
 		
 		defer {
 			UIGraphicsEndImageContext()
@@ -21,7 +21,7 @@ public extension UIView {
 			return nil
 		}
 		
-		self.layer.render(in: context)
+		self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
 	}

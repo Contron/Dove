@@ -10,51 +10,29 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
-	public static func topmost(controller: UIViewController?) -> UIViewController? {
-		if let controller = controller as? UINavigationController, let visible = controller.visibleViewController {
-			return UIViewController.topmost(controller: visible)
+	public static func topmost(viewController: UIViewController) -> UIViewController? {
+		if let controller = viewController as? UINavigationController, let visible = controller.visibleViewController {
+			return UIViewController.topmost(viewController: visible)
 		}
 		
-		if let controller = controller as? UITabBarController, let selected = controller.selectedViewController {
-			return UIViewController.topmost(controller: selected)
+		if let controller = viewController as? UITabBarController, let selected = controller.selectedViewController {
+			return UIViewController.topmost(viewController: selected)
 		}
 		
-		if let controller = controller?.presentedViewController {
-			return UIViewController.topmost(controller: controller)
+		if let controller = viewController.presentedViewController {
+			return UIViewController.topmost(viewController: controller)
 		}
 		
-		return controller
-	}
-	
-	public func addChild(controller: UIViewController, to view: UIView) {
-		view.addSubview(controller.view)
-		self.addChildViewController(controller)
-		controller.didMove(toParentViewController: self)
-	}
-	
-	public func addChild(controller: UIViewController) {
-		self.addChild(controller: controller, to: self.view)
-	}
-	
-	public func removeChild() {
-		self.willMove(toParentViewController: nil)
-		self.view.removeFromSuperview()
-		self.removeFromParentViewController()
-	}
-	
-	public func showAlert(title: String, message: String, block: ActionBlock? = nil) {
-		let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		
-		controller.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
-			block?()
-		}))
-		
-		self.present(controller, animated: true, completion: nil)
+		return viewController
 	}
 }
 
 public extension UIApplication {
-	public var topmostController: UIViewController? {
-		return UIViewController.topmost(controller: self.keyWindow?.rootViewController)
+	public var topmostViewController: UIViewController? {
+		guard let controller = self.keyWindow?.rootViewController else {
+			return nil
+		}
+		
+		return UIViewController.topmost(viewController: controller)
 	}
 }
