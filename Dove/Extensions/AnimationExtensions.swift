@@ -38,6 +38,14 @@ public extension UIViewController {
 }
 
 public extension UIView {
+	public func animate(frame: CGRect, block: ActionBlock? = nil) {
+		UIView.animate(withDuration: animationConstant, animations: {
+			self.frame = frame
+		}, completion: { finished in
+			block?()
+		})
+	}
+	
 	public func animate(alpha: CGFloat, block: ActionBlock? = nil) {
 		UIView.animate(withDuration: animationConstant, animations: {
 			self.alpha = alpha
@@ -73,6 +81,10 @@ public extension UIView {
 
 public extension UILabel {
 	public func animate(text: String?, block: ActionBlock? = nil) {
+		guard self.text != text else {
+			return
+		}
+		
 		UIView.transition(with: self, duration: animationConstant, options: .transitionFlipFromTop, animations: {
 			self.text = text
 		}, completion: { finished in
@@ -83,8 +95,24 @@ public extension UILabel {
 
 public extension UITextField {
 	public func animate(text: String?, block: ActionBlock? = nil) {
+		guard self.text != text else {
+			return
+		}
+		
 		UIView.transition(with: self, duration: animationConstant, options: .transitionCrossDissolve, animations: {
 			self.text = text
+		}, completion: { finished in
+			block?()
+		})
+	}
+	
+	public func animate(enabled: Bool, block: ActionBlock? = nil) {
+		guard self.isEnabled != enabled else {
+			return
+		}
+		
+		UIView.transition(with: self, duration: animationConstant, options: .transitionCrossDissolve, animations: {
+			self.isEnabled = enabled
 		}, completion: { finished in
 			block?()
 		})
@@ -93,6 +121,10 @@ public extension UITextField {
 
 public extension UIButton {
 	public func animate(enabled: Bool, block: ActionBlock? = nil) {
+		guard self.isEnabled != enabled else {
+			return
+		}
+		
 		UIView.transition(with: self, duration: animationConstant, options: .transitionCrossDissolve, animations: {
 			self.isEnabled = enabled
 		}, completion: { finished in
@@ -103,6 +135,10 @@ public extension UIButton {
 
 public extension UIImageView {
 	public func animate(image: UIImage?, block: ActionBlock? = nil) {
+		guard self.image != image else {
+			return
+		}
+		
 		UIView.transition(with: self, duration: animationConstant, options: .transitionFlipFromTop, animations: {
 			self.image = image
 		}, completion: { finished in
