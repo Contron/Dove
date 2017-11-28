@@ -29,6 +29,23 @@ public extension UIImage {
 		return first != second
 	}
 	
+	public static func generate(colour: UIColor) -> UIImage? {
+		UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+		
+		defer {
+			UIGraphicsEndImageContext()
+		}
+		
+		guard let context = UIGraphicsGetCurrentContext() else {
+			return nil
+		}
+		
+		context.setFillColor(colour.cgColor)
+		context.fill(CGRect(origin: .zero, size: CGSize(width: 1, height: 1)))
+		
+		return UIGraphicsGetImageFromCurrentImageContext()
+	}
+	
 	public func apply(filter: CIFilter, options: [String: Any]? = nil) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
