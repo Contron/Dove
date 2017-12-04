@@ -9,16 +9,14 @@
 import Foundation
 
 public func debug(_ object: Any, file: String = #file) {
-	#if !DEBUG
-		return
-	#endif
-	
-	let date = formatter.string(from: .now)
-	
-	let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
-	let object = String(describing: object)
-	
-	print("[\(date) \(file)] \(object)")
+	#if DEBUG
+        let date = formatter.string(from: .now)
+        
+        let file = URL(string: file)?.deletingPathExtension().lastPathComponent ?? "Unknown"
+        let object = String(describing: object)
+        
+        print("[\(date) \(file)] \(object)")
+    #endif
 }
 
 private let formatter: DateFormatter = {
