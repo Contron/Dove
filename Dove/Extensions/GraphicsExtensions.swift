@@ -29,12 +29,28 @@ public extension CGPoint {
 		return CGPoint(x: first.x - second.x, y: first.y - second.y)
 	}
 	
+	public static func *(first: CGPoint, second: CGPoint) -> CGPoint {
+		return CGPoint(x: first.x * second.x, y: first.y * second.y)
+	}
+	
+	public static func /(first: CGPoint, second: CGPoint) -> CGPoint {
+		return CGPoint(x: first.x / second.x, y: first.y / second.y)
+	}
+	
 	public static func +(point: CGPoint, value: CGFloat) -> CGPoint {
 		return CGPoint(x: point.x + value, y: point.y + value)
 	}
 	
 	public static func -(point: CGPoint, value: CGFloat) -> CGPoint {
 		return CGPoint(x: point.x - value, y: point.y - value)
+	}
+	
+	public static func *(point: CGPoint, value: CGFloat) -> CGPoint {
+		return CGPoint(x: point.x * value, y: point.y * value)
+	}
+	
+	public static func /(point: CGPoint, value: CGFloat) -> CGPoint {
+		return CGPoint(x: point.x / value, y: point.y / value)
 	}
 }
 
@@ -61,6 +77,14 @@ public extension CGSize {
 		return CGSize(width: first.width - second.width, height: first.height - second.height)
 	}
 	
+	public static func *(first: CGSize, second: CGSize) -> CGSize {
+		return CGSize(width: first.width * second.width, height: first.height * second.height)
+	}
+	
+	public static func /(first: CGSize, second: CGSize) -> CGSize {
+		return CGSize(width: first.width / second.width, height: first.height / second.height)
+	}
+	
 	public static func +(size: CGSize, value: CGFloat) -> CGSize {
 		return CGSize(width: size.width + value, height: size.height + value)
 	}
@@ -69,18 +93,37 @@ public extension CGSize {
 		return CGSize(width: size.width - value, height: size.height - value)
 	}
 	
-	public static func aspect(priority: AspectPriority, original: CGSize, target: CGSize) -> CGSize {
-		let factor: CGFloat
+	public static func *(size: CGSize, value: CGFloat) -> CGSize {
+		return CGSize(width: size.width * value, height: size.height * value)
+	}
+	
+	public static func /(size: CGSize, value: CGFloat) -> CGSize {
+		return CGSize(width: size.width / value, height: size.height / value)
+	}
+}
+
+public extension CGRect {
+	public enum ResizeMode {
+		case fit
+		case fill
+	}
+	
+	public static func resize(to mode: ResizeMode, size: CGSize, inside rect: CGRect) -> CGRect {
+		let width = rect.size.width / size.width
+		let height = rect.size.height / size.height
 		
-		switch priority {
-		case .automatic:
-			factor = original.width > original.height ? target.width / original.width : target.height / original.height
-		case .width:
-			factor = target.width / original.width
-		case .height:
-			factor = target.height / original.height
+		let ratio: CGFloat
+		
+		switch mode {
+		case .fit:
+			ratio = min(width, height)
+		case .fill:
+			ratio = max(width, height)
 		}
 		
-		return CGSize(width: original.width * factor, height: original.height * factor)
+		let size = CGSize(width: size.width * ratio, height: size.height * ratio)
+		let origin = CGPoint(x: (rect.size.width - size.width) / 2, y: (rect.size.height - size.height) / 2)
+		
+		return CGRect(origin: origin, size: size)
 	}
 }
