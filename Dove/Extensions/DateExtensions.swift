@@ -28,7 +28,7 @@ public extension Date {
 			if difference <= time {
 				let amount = Int(round(difference / divider))
 				
-				let first = amount == 1 ? "one" : String(amount)
+				let first = amount == 1 ? "One" : String(amount)
 				let second = String.pluralise(amount: amount, caption)
 				
 				return "\(first) \(second) ago"
