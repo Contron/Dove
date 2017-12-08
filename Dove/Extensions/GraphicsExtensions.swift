@@ -127,9 +127,9 @@ public extension CGRect {
 		return CGRect(origin: origin, size: size)
 	}
 	
-	func fitting(to frame: CGRect, padding: CGFloat) -> CGRect {
-		let x = max(min(self.origin.x, (frame.size.width - self.size.width) - padding), frame.origin.x + padding)
-		let y = max(min(self.origin.y, (frame.size.height - self.size.height) - padding), frame.origin.y + padding)
+	func fitting(to rect: CGRect, padding: CGFloat) -> CGRect {
+		let x = max(min(self.origin.x, (rect.size.width - self.size.width) - padding), rect.origin.x + padding)
+		let y = max(min(self.origin.y, (rect.size.height - self.size.height) - padding), rect.origin.y + padding)
 		
 		return CGRect(origin: CGPoint(x: x, y: y), size: self.size)
 	}
