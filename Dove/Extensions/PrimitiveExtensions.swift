@@ -164,6 +164,20 @@ public extension FloatingPoint {
 	}
 }
 
+public extension Date {
+	public var displayValue: String {
+		return
+	}
+}
+
+private let dateFormatter: DateFormatter = {
+	let formatter = DateFormatter()
+	formatter.dateStyle = .long
+	formatter.timeStyle = .long
+	
+	return formatter
+}()
+
 public func inspect(_ value: Any) -> String {
 	switch value {
 	case let value as [AnyHashable: Any]:
