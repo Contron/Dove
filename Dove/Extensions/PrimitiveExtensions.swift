@@ -166,7 +166,7 @@ public extension FloatingPoint {
 
 public extension Date {
 	public var displayValue: String {
-		return
+		return dateFormatter.string(from: self)
 	}
 }
 
