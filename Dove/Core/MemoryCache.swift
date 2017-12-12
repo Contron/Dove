@@ -8,9 +8,17 @@
 
 import Foundation
 
-public final class MemoryCache<Key, Value> where Key: Hashable {
+public final class MemoryCache<Key: Hashable, Value> {
 	public init() {
-		
+		self.cache.name = "Cache"
+	}
+	
+	public func add(_ value: Value, forKey key: Key, costing cost: Int) {
+		self.cache.setObject(value as AnyObject, forKey: key as AnyObject, cost: cost)
+	}
+	
+	public func remove(_ key: Key) {
+		self.cache.removeObject(forKey: key as AnyObject)
 	}
 	
 	public func contains(_ key: Key) -> Bool {
@@ -27,6 +35,33 @@ public final class MemoryCache<Key, Value> where Key: Hashable {
 		}
 		set {
 			self.cache.setObject(newValue as AnyObject, forKey: key as AnyObject)
+		}
+	}
+	
+	public var name: String {
+		get {
+			return self.cache.name
+		}
+		set {
+			self.cache.name = newValue
+		}
+	}
+	
+	public var maximumCount: Int {
+		get {
+			return self.cache.countLimit
+		}
+		set {
+			self.cache.countLimit = newValue
+		}
+	}
+	
+	public var maximumCost: Int {
+		get {
+			return self.cache.totalCostLimit
+		}
+		set {
+			self.cache.totalCostLimit = newValue
 		}
 	}
 	
