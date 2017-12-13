@@ -10,6 +10,7 @@ import Foundation
 
 public typealias ActionBlock = () -> ()
 public typealias ResultBlock = (Bool) -> ()
+public typealias ProgressBlock = () -> Double
 
 public typealias KeyValues = [String: Any]
 
