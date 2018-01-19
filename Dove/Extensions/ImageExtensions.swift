@@ -138,7 +138,7 @@ public extension UIColor {
 		var alpha = CGFloat(0)
 		
 		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-			return UIColor(red: red, green: green, blue: blue, alpha: alpha + alpha)
+			return UIColor(red: red, green: green, blue: blue, alpha: alpha + amount)
 		}
 		
 		return self
