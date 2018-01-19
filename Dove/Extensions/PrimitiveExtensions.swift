@@ -90,24 +90,8 @@ public extension Int {
 		return Int(arc4random_uniform(UInt32(maximum)))
 	}
 	
-	public var ordinal: String {
-		let ones = self % 10
-		let tens = (self / 10) % 10
-		
-		if tens != 1 {
-			switch ones {
-			case 1:
-				return "\(self)st"
-			case 2:
-				return "\(self)nd"
-			case 3:
-				return "\(self)rd"
-			default:
-				break
-			}
-		}
-		
-		return "\(self)th"
+	public var ordinalValue: String {
+		return ordinalFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 	
 	public var displayValue: String {
@@ -119,6 +103,13 @@ private let integerFormatter: NumberFormatter = {
 	let formatter = NumberFormatter()
 	formatter.numberStyle = .decimal
 	formatter.groupingSeparator = ","
+	
+	return formatter
+}()
+
+private let ordinalFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .ordinal
 	
 	return formatter
 }()

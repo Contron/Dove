@@ -84,7 +84,7 @@ public extension UIImage {
 			return nil
 		}
 		
-		let frame = CGRect(origin: CGPoint(), size: self.size)
+		let frame = CGRect(origin: .zero, size: self.size)
 		
 		context.setFillColor(colour.cgColor)
 		context.clip(to: frame, mask: image)
@@ -126,6 +126,19 @@ public extension UIColor {
 		
 		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
 			return UIColor(hue: hue, saturation: saturation + amount, brightness: brightness, alpha: alpha)
+		}
+		
+		return self
+	}
+	
+	public func adjust(alpha amount: CGFloat) -> UIColor {
+		var red = CGFloat(0)
+		var green = CGFloat(0)
+		var blue = CGFloat(0)
+		var alpha = CGFloat(0)
+		
+		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+			return UIColor(red: red, green: green, blue: blue, alpha: alpha + alpha)
 		}
 		
 		return self

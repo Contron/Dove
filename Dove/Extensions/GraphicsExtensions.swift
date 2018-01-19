@@ -55,12 +55,6 @@ public extension CGPoint {
 }
 
 public extension CGSize {
-	public enum AspectPriority {
-		case automatic
-		case width
-		case height
-	}
-	
 	public static func ≈≈(first: CGSize, second: CGSize) -> Bool {
 		return Int(first.width) == Int(second.width) && Int(first.height) == Int(second.height)
 	}
