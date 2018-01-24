@@ -118,6 +118,19 @@ public extension UIColor {
 		return self
 	}
 	
+	public func adjust(alpha amount: CGFloat) -> UIColor {
+		var red = CGFloat(0)
+		var green = CGFloat(0)
+		var blue = CGFloat(0)
+		var alpha = CGFloat(0)
+		
+		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+			return UIColor(red: red, green: green, blue: blue, alpha: alpha + amount)
+		}
+		
+		return self
+	}
+	
 	public func adjust(saturation amount: CGFloat) -> UIColor {
 		var hue = CGFloat(0)
 		var saturation = CGFloat(0)
@@ -131,14 +144,14 @@ public extension UIColor {
 		return self
 	}
 	
-	public func adjust(alpha amount: CGFloat) -> UIColor {
-		var red = CGFloat(0)
-		var green = CGFloat(0)
-		var blue = CGFloat(0)
+	public func adjust(brightness amount: CGFloat) -> UIColor {
+		var hue = CGFloat(0)
+		var saturation = CGFloat(0)
+		var brightness = CGFloat(0)
 		var alpha = CGFloat(0)
 		
-		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-			return UIColor(red: red, green: green, blue: blue, alpha: alpha + amount)
+		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+			return UIColor(hue: hue, saturation: saturation, brightness: brightness + amount, alpha: alpha)
 		}
 		
 		return self
