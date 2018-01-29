@@ -24,9 +24,9 @@ public struct Difference {
 		self.similarities = similarities
 	}
 	
-	let insertions: [Int]
-	let deletions: [Int]
-	let similarities: [Int]
+	public let insertions: [Int]
+	public let deletions: [Int]
+	public let similarities: [Int]
 }
 
 public extension UITableView {
