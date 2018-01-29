@@ -172,7 +172,7 @@ private let dateFormatter: DateFormatter = {
 public func inspect(_ value: Any) -> String {
 	switch value {
 	case let value as [AnyHashable: Any]:
-		return "{\(value.map({ "\($0): \(inspect($1))" }).joined(separator: ", "))}"
+		return "{\(value.map({ "\(inspect($0)): \(inspect($1))" }).joined(separator: ", "))}"
 	case let value as [Any]:
 		return "[\(value.map({ inspect($0) }).joined(separator: ", "))]"
 	case let value as String:
