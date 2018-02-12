@@ -18,33 +18,16 @@ public extension Date {
 	}
 	
 	public func timeAgo() -> String {
-		let difference = abs(self.timeIntervalSinceNow)
-		
-		if difference <= 15 {
-			return "Just now"
-		}
-		
-		for (time, divider, caption) in times {
-			if difference <= time {
-				let amount = Int(round(difference / divider))
-				
-				let first = amount == 1 ? "One" : String(amount)
-				let second = String.pluralise(amount: amount, caption)
-				
-				return "\(first) \(second) ago"
-			}
-		}
-		
-		return timeAgoFormatter.string(from: self)
+		return "\(timeAgoFormatter.string(from: self, to: .now) ?? "Time") ago"
 	}
 	
-	public func isBetween(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {
+	public func between(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {
 		let day = Calendar.current.component(.day, from: self)
 		let month = Calendar.current.component(.month, from: self)
 		
 		return (day >= start.day && month >= start.month) && (day <= end.day && month <= end.month)
 	}
-
+	
 	public func isPast() -> Bool {
 		return self < .now
 	}
@@ -67,24 +50,10 @@ private let posixFormatter: DateFormatter = {
 	return formatter
 }()
 
-private let timeAgoFormatter: DateFormatter = {
-	let formatter = DateFormatter()
-	formatter.timeStyle = .none
-	formatter.dateFormat = "d MMMM, y"
+private let timeAgoFormatter: DateComponentsFormatter = {
+	let formatter = DateComponentsFormatter()
+	formatter.maximumUnitCount = 1
+	formatter.unitsStyle = .full
 	
 	return formatter
 }()
-
-private let second = 1.0
-private let minute = 60.0
-private let hour = 3600.0
-private let day = 86400.0
-private let week = 604800.0
-
-private let times = [
-	(second * 59, second, "second"),
-	(minute * 59, minute, "minute"),
-	(hour * 23, hour, "hour"),
-	(day * 6, day, "day"),
-	(week * 3, week, "week")
-]
