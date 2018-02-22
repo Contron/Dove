@@ -96,15 +96,31 @@ public extension CGSize {
 	}
 }
 
+public enum ResizeMode {
+	case fit
+	case fill
+}
+
 public extension CGRect {
-	public enum ResizeMode {
-		case fit
-		case fill
+	public func resize(to mode: ResizeMode, inside rect: CGRect) -> CGRect {
+		let size = self.size.resize(to: mode, inside: rect.size)
+		let origin = CGPoint(x: (self.size.width - size.width) / 2, y: (self.size.height - size.height) / 2)
+		
+		return CGRect(origin: origin, size: size)
 	}
 	
-	public static func resize(to mode: ResizeMode, size: CGSize, inside rect: CGRect) -> CGRect {
-		let width = rect.size.width / size.width
-		let height = rect.size.height / size.height
+	func fitting(to rect: CGRect, padding: CGFloat) -> CGRect {
+		let x = max(min(self.origin.x, (rect.size.width - self.size.width) - padding), rect.origin.x + padding)
+		let y = max(min(self.origin.y, (rect.size.height - self.size.height) - padding), rect.origin.y + padding)
+		
+		return CGRect(origin: CGPoint(x: x, y: y), size: self.size)
+	}
+}
+
+public extension CGSize {
+	public func resize(to mode: ResizeMode, inside target: CGSize) -> CGSize {
+		let width = target.width / self.width
+		let height = target.height / self.height
 		
 		let ratio: CGFloat
 		
@@ -115,16 +131,6 @@ public extension CGRect {
 			ratio = max(width, height)
 		}
 		
-		let size = CGSize(width: size.width * ratio, height: size.height * ratio)
-		let origin = CGPoint(x: (rect.size.width - size.width) / 2, y: (rect.size.height - size.height) / 2)
-		
-		return CGRect(origin: origin, size: size)
-	}
-	
-	func fitting(to rect: CGRect, padding: CGFloat) -> CGRect {
-		let x = max(min(self.origin.x, (rect.size.width - self.size.width) - padding), rect.origin.x + padding)
-		let y = max(min(self.origin.y, (rect.size.height - self.size.height) - padding), rect.origin.y + padding)
-		
-		return CGRect(origin: CGPoint(x: x, y: y), size: self.size)
+		return CGSize(width: self.width * ratio, height: self.height * ratio)
 	}
 }

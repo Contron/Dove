@@ -18,7 +18,7 @@ public extension Date {
 	}
 	
 	public func timeAgo() -> String {
-		return "\(timeAgoFormatter.string(from: self, to: .now) ?? "Time") ago"
+		return "\(timeAgoFormatter.string(from: self, to: .now) ?? "long") ago"
 	}
 	
 	public func between(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {

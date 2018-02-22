@@ -13,8 +13,8 @@ public final class MemoryCache<Key: Hashable, Value> {
 		self.cache.name = "Cache"
 	}
 	
-	public func add(_ value: Value, forKey key: Key, costing cost: Int) {
-		self.cache.setObject(value as AnyObject, forKey: key as AnyObject, cost: cost)
+	public func add(_ value: Value, for key: Key, costing amount: Int) {
+		self.cache.setObject(value as AnyObject, forKey: key as AnyObject, cost: amount)
 	}
 	
 	public func remove(_ key: Key) {

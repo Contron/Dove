@@ -17,21 +17,6 @@ public extension String {
 		case kebab
 	}
 	
-	public static func pluralise(amount: Int, _ singular: String, _ plural: String? = nil) -> String {
-		guard amount != 1 else {
-			return singular
-		}
-		
-		if let plural = plural {
-			return plural
-		}
-		
-		let suffix = singular.hasSuffix("s") || singular.hasSuffix("S") ? singular.suffix(1) : "s"
-		let result = "\(singular)\(suffix)"
-		
-		return result
-	}
-	
 	public static func replace(transforms: [String: Any]) -> String {
 		var result = String(describing: self)
 		
@@ -99,21 +84,6 @@ public extension Int {
 	}
 }
 
-private let integerFormatter: NumberFormatter = {
-	let formatter = NumberFormatter()
-	formatter.numberStyle = .decimal
-	formatter.groupingSeparator = ","
-	
-	return formatter
-}()
-
-private let ordinalFormatter: NumberFormatter = {
-	let formatter = NumberFormatter()
-	formatter.numberStyle = .ordinal
-	
-	return formatter
-}()
-
 public extension Double {
 	public var displayValue: String {
 		return doubleFormatter.string(from: NSNumber(value: self)) ?? String(self)
@@ -123,23 +93,6 @@ public extension Double {
 		return percentageFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
-
-private let doubleFormatter: NumberFormatter = {
-	let formatter = NumberFormatter()
-	formatter.numberStyle = .decimal
-	formatter.groupingSeparator = ","
-	formatter.maximumFractionDigits = 3
-	
-	return formatter
-}()
-
-private let percentageFormatter: NumberFormatter = {
-	let formatter = NumberFormatter()
-	formatter.numberStyle = .percent
-	formatter.maximumFractionDigits = 2
-	
-	return formatter
-}()
 
 public extension FloatingPoint {
 	public static var random: Self {
@@ -161,6 +114,41 @@ public extension Date {
 	}
 }
 
+private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+private let regex = "([a-z])([A-Z])"
+
+private let integerFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .decimal
+	formatter.groupingSeparator = ","
+	
+	return formatter
+}()
+
+private let ordinalFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .ordinal
+	
+	return formatter
+}()
+
+private let doubleFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .decimal
+	formatter.groupingSeparator = ","
+	formatter.maximumFractionDigits = 3
+	
+	return formatter
+}()
+
+private let percentageFormatter: NumberFormatter = {
+	let formatter = NumberFormatter()
+	formatter.numberStyle = .percent
+	formatter.maximumFractionDigits = 2
+	
+	return formatter
+}()
+
 private let dateFormatter: DateFormatter = {
 	let formatter = DateFormatter()
 	formatter.dateStyle = .long
@@ -168,21 +156,3 @@ private let dateFormatter: DateFormatter = {
 	
 	return formatter
 }()
-
-public func inspect(_ value: Any) -> String {
-	switch value {
-	case let value as [AnyHashable: Any]:
-		return "{\(value.map({ "\(inspect($0)): \(inspect($1))" }).joined(separator: ", "))}"
-	case let value as [Any]:
-		return "[\(value.map({ inspect($0) }).joined(separator: ", "))]"
-	case let value as String:
-		return "\"\(value)\""
-	case let value as Bool:
-		return value ? "true" : "false"
-	default:
-		return String(describing: value)
-	}
-}
-
-private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-private let regex = "([a-z])([A-Z])"

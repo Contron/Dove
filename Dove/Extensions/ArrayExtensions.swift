@@ -10,9 +10,11 @@ import Foundation
 
 public extension Array where Element: Equatable {
 	public mutating func remove(_ element: Element) {
-		if let index = self.index(of: element) {
-			self.remove(at: index)
+		guard let index = self.index(of: element) else {
+			return
 		}
+		
+		self.remove(at: index)
 	}
 	
 	public func all<T: Equatable>(equal predicate: (Element) -> T) -> Bool {
@@ -30,7 +32,6 @@ public extension Array where Element: Equatable {
 		
 		return true
 	}
-	
 	
 	public func contains(_ array: [Element]) -> Bool {
 		for element in array {
