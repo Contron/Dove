@@ -46,15 +46,7 @@ public extension UICollectionViewCell {
 }
 
 public extension UITraitCollection {
-	public func equals(_ horizontal: UIUserInterfaceSizeClass, _ vertical: UIUserInterfaceSizeClass) -> Bool {
-		return self.horizontalSizeClass == horizontal && self.verticalSizeClass == vertical
-	}
-	
-	public func equals(_ horizontal: [UIUserInterfaceSizeClass], _ vertical: [UIUserInterfaceSizeClass]) -> Bool {
-		return horizontal.contains(self.horizontalSizeClass) && vertical.contains(self.verticalSizeClass)
-	}
-	
-	public var sizeClass: (horizontal: UIUserInterfaceSizeClass, vertical: UIUserInterfaceSizeClass) {
+	public var sizeClasses: (horizontal: UIUserInterfaceSizeClass, vertical: UIUserInterfaceSizeClass) {
 		return (self.horizontalSizeClass, self.verticalSizeClass)
 	}
 }
