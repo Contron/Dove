@@ -8,6 +8,12 @@
 
 import Foundation
 
+infix operator ?=: AssignmentPrecedence
+
+public func ?= <Value>(first: inout Value, second: Value?) {
+	return first = second ?? first
+}
+
 public extension String {
 	public enum ConversionCase {
 		case camel

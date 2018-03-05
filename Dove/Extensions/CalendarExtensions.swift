@@ -10,15 +10,15 @@ import Foundation
 
 public extension Calendar {
 	public func startOfYear(for date: Date) -> Date {
-		return self.date(from: self.dateComponents([.year], from: self.startOfDay(for: date)))!
+		return self.date(from: self.dateComponents([.era, .year], from: self.startOfDay(for: date)))!
 	}
 	
 	public func startOfMonth(for date: Date) -> Date {
-		return self.date(from: self.dateComponents([.year, .month], from: self.startOfDay(for: date)))!
+		return self.date(from: self.dateComponents([.era, .year, .month], from: self.startOfDay(for: date)))!
 	}
 	
 	public func startOfWeek(for date: Date) -> Date {
-		return self.date(from: self.dateComponents([.year, .month, .weekOfMonth], from: self.startOfDay(for: date)))!
+		return self.date(from: self.dateComponents([.era, .year, .month, .weekOfMonth], from: self.startOfDay(for: date)))!
 	}
 	
 	public func endOfYear(for date: Date) -> Date {
