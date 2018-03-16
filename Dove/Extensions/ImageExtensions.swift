@@ -69,7 +69,7 @@ public extension UIImage {
 		return UIImage(cgImage: image, scale: self.scale, orientation: orientation)
 	}
 	
-	public func colourise(to colour: UIColor, using mask: UIImage?) -> UIImage? {
+	public func colourise(to colour: UIColor, mask: UIImage?) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
 		}
@@ -86,10 +86,19 @@ public extension UIImage {
 		
 		let frame = CGRect(origin: .zero, size: self.size)
 		
+		context.translateBy(x: 0, y: self.size.height)
+		
+		context.scaleBy(x: 1, y: -1)
+		context.setBlendMode(.normal)
 		context.draw(image, in: frame)
-		context.setBlendMode(.softLight)
+		
+		context.setBlendMode(.color)
 		context.setFillColor(colour.cgColor)
-		context.clip(to: frame, mask: mask?.cgImage ?? image)
+		
+		if let mask = mask?.cgImage {
+			context.clip(to: frame, mask: mask)
+		}
+		
 		context.fill(frame)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
