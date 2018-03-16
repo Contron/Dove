@@ -69,7 +69,7 @@ public extension UIImage {
 		return UIImage(cgImage: image, scale: self.scale, orientation: orientation)
 	}
 	
-	public func colourise(colour: UIColor) -> UIImage? {
+	public func colourise(to colour: UIColor, using mask: UIImage?) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
 		}
@@ -86,8 +86,10 @@ public extension UIImage {
 		
 		let frame = CGRect(origin: .zero, size: self.size)
 		
+		context.draw(image, in: frame)
+		context.setBlendMode(.softLight)
 		context.setFillColor(colour.cgColor)
-		context.clip(to: frame, mask: image)
+		context.clip(to: frame, mask: mask?.cgImage ?? image)
 		context.fill(frame)
 		
 		return UIGraphicsGetImageFromCurrentImageContext()
@@ -97,6 +99,14 @@ public extension UIImage {
 private let context = CIContext()
 
 public extension UIColor {
+	public enum AdjustmentMode {
+		case colour
+		case alpha
+		case hue
+		case saturation
+		case brightness
+	}
+	
 	public convenience init(hex: Int, alpha: CGFloat = 1) {
 		let red = CGFloat((hex >> 16) & 0xFF) / 255
 		let green = CGFloat((hex >> 8) & 0xFF) / 255
@@ -105,53 +115,46 @@ public extension UIColor {
 		self.init(red: red, green: green, blue: blue, alpha: alpha)
 	}
 	
-	public func adjust(colour amount: CGFloat) -> UIColor {
-		var red = CGFloat(0)
-		var green = CGFloat(0)
-		var blue = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-			return UIColor(red: red + amount, green: green + amount, blue: blue + amount, alpha: alpha)
-		}
-		
-		return self
-	}
-	
-	public func adjust(alpha amount: CGFloat) -> UIColor {
-		var red = CGFloat(0)
-		var green = CGFloat(0)
-		var blue = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-			return UIColor(red: red, green: green, blue: blue, alpha: alpha + amount)
-		}
-		
-		return self
-	}
-	
-	public func adjust(saturation amount: CGFloat) -> UIColor {
-		var hue = CGFloat(0)
-		var saturation = CGFloat(0)
-		var brightness = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
-			return UIColor(hue: hue, saturation: saturation + amount, brightness: brightness, alpha: alpha)
-		}
-		
-		return self
-	}
-	
-	public func adjust(brightness amount: CGFloat) -> UIColor {
-		var hue = CGFloat(0)
-		var saturation = CGFloat(0)
-		var brightness = CGFloat(0)
-		var alpha = CGFloat(0)
-		
-		if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
-			return UIColor(hue: hue, saturation: saturation, brightness: brightness + amount, alpha: alpha)
+	public func adjust(mode: AdjustmentMode, amount: CGFloat) -> UIColor {
+		switch mode {
+		case .colour, .alpha:
+			var red = CGFloat(0)
+			var green = CGFloat(0)
+			var blue = CGFloat(0)
+			var alpha = CGFloat(0)
+			
+			guard self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+				break
+			}
+			
+			switch mode {
+			case .colour:
+				return UIColor(red: red + amount, green: green + amount, blue: blue + amount, alpha: alpha)
+			case .alpha:
+				return UIColor(red: red, green: green, blue: blue, alpha: alpha + amount)
+			default:
+				break
+			}
+		case .hue, .saturation, .brightness:
+			var hue = CGFloat(0)
+			var saturation = CGFloat(0)
+			var brightness = CGFloat(0)
+			var alpha = CGFloat(0)
+			
+			guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else {
+				break
+			}
+			
+			switch mode {
+			case .hue:
+				return UIColor(hue: hue + amount, saturation: saturation, brightness: brightness, alpha: alpha)
+			case .saturation:
+				return UIColor(hue: hue, saturation: saturation + amount, brightness: brightness, alpha: alpha)
+			case .brightness:
+				return UIColor(hue: hue, saturation: saturation, brightness: brightness + amount, alpha: alpha)
+			default:
+				break
+			}
 		}
 		
 		return self
