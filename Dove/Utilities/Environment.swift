@@ -34,10 +34,8 @@ public final class Environment {
 		return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
 	}
 	
-	public static var identifier: String? {
-		return UIDevice.current.identifierForVendor?.uuidString
-			.lowercased()
-			.replacingOccurrences(of: "-", with: String())
+	public static var bundleIdentifier: String? {
+		return Bundle.main.bundleIdentifier ?? Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
 	}
 	
 	public static var buildDate: Date? {
