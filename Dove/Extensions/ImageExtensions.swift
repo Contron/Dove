@@ -85,14 +85,14 @@ public extension UIImage {
 		}
 		
 		let frame = CGRect(origin: .zero, size: self.size)
-		
+		 
 		context.translateBy(x: 0, y: self.size.height)
 		
 		context.scaleBy(x: 1, y: -1)
 		context.setBlendMode(.normal)
 		context.draw(image, in: frame)
 		
-		context.setBlendMode(.color)
+		context.setBlendMode(.overlay)
 		context.setFillColor(colour.cgColor)
 		
 		if let mask = mask?.cgImage {
