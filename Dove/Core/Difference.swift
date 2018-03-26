@@ -9,44 +9,93 @@
 import Foundation
 import UIKit
 
-public struct Difference {
-	public static func calculate<Element: Equatable>(old: [Element], new: [Element]) -> Difference {
-		let insertions = new.filter({ !old.contains($0) }).flatMap({ new.index(of: $0) })
-		let deletions = old.filter({ !new.contains($0) }).flatMap({ old.index(of: $0) })
-		let similarities = old.filter({ new.contains($0) }).flatMap({ old.index(of: $0) })
+public enum Difference {
+	case none(index: Int)
+	case insertion(index: Int)
+	case deletion(index: Int)
+	case move(source: Int, destination: Int)
+	
+	public static func calculate<Element: Equatable>(old: [Element], new: [Element]) -> [Difference] {
+		let similarities = new
+			.filter({ old.contains($0) })
+			.map({ Difference.none(index: new.index(of: $0)!) })
 		
-		return Difference(insertions: insertions, deletions: deletions, similarities: similarities)
-	}
-	
-	private init(insertions: [Int], deletions: [Int], similarities: [Int]) {
-		self.insertions = insertions
-		self.deletions = deletions
-		self.similarities = similarities
-	}
-	
-	public let insertions: [Int]
-	public let deletions: [Int]
-	public let similarities: [Int]
-}
-
-public extension UITableView {
-	public func reload(using difference: Difference, with animation: UITableViewRowAnimation) {
-		self.beginUpdates()
-		self.insertRows(at: project(indexes: difference.insertions), with: animation)
-		self.deleteRows(at: project(indexes: difference.deletions), with: animation)
-		self.endUpdates()
+		let insertions = new
+			.filter({ !old.contains($0) })
+			.map({ Difference.insertion(index: new.index(of: $0)!) })
+		
+		let deletions = old
+			.filter({ !new.contains($0) })
+			.map({ Difference.deletion(index: old.index(of: $0)!) })
+		
+		let moves = new
+			.filter({ old.contains($0) })
+			.filter({ new.index(of: $0) != old.index(of: $0) })
+			.map({ Difference.move(source: old.index(of: $0)!, destination: new.index(of: $0)!) })
+		
+		return similarities + insertions + deletions + moves
 	}
 }
 
 public extension UICollectionView {
-	public func reload(using difference: Difference) {
+	public func reload(using differences: [Difference]) {
+		let indexes = BatchUpdate(from: differences)
+		
 		self.performBatchUpdates({
-			self.insertItems(at: project(indexes: difference.insertions))
-			self.deleteItems(at: project(indexes: difference.deletions))
+			self.insertItems(at: indexes.insertions)
+			self.deleteItems(at: indexes.deletions)
+			
+			for move in indexes.moves {
+				self.moveItem(at: move.source, to: move.destination)
+			}
 		}, completion: nil)
 	}
 }
 
-private func project(indexes: [Int]) -> [IndexPath] {
-	return indexes.map({ IndexPath(row: $0, section: 0) })
+public extension UITableView {
+	public func reload(using differences: [Difference], with animation: UITableViewRowAnimation) {
+		let indexes = BatchUpdate(from: differences)
+		
+		self.beginUpdates()
+		self.insertRows(at: indexes.insertions, with: animation)
+		self.deleteRows(at: indexes.deletions, with: animation)
+		
+		for move in indexes.moves {
+			self.moveRow(at: move.source, to: move.destination)
+		}
+		
+		self.endUpdates()
+	}
+}
+
+private struct BatchUpdate {
+	public init(from differences: [Difference]) {
+		self.insertions = differences.flatMap({ difference -> IndexPath? in
+			guard case let .insertion(index) = difference else {
+				return nil
+			}
+			
+			return IndexPath(row: index, section: 0)
+		})
+		
+		self.deletions = differences.flatMap({ difference -> IndexPath? in
+			guard case let .deletion(index) = difference else {
+				return nil
+			}
+			
+			return IndexPath(row: index, section: 0)
+		})
+		
+		self.moves = differences.flatMap({ difference -> (IndexPath, IndexPath)? in
+			guard case let .move(source, destination) = difference else {
+				return nil
+			}
+			
+			return (IndexPath(row: source, section: 0), IndexPath(row: destination, section: 0))
+		})
+	}
+	
+	public let insertions: [IndexPath]
+	public let deletions: [IndexPath]
+	public let moves: [(source: IndexPath, destination: IndexPath)]
 }
