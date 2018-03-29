@@ -136,22 +136,6 @@ public extension Array {
 	}
 }
 
-public extension Array where Element == String {
-	public func instantiate<Target: RawRepresentable>(to target: Target.Type) -> [Target] where Target.RawValue == String {
-		var results = [Target]()
-		
-		for value in self {
-			guard let target = Target.init(rawValue: value) else {
-				continue
-			}
-			
-			results.append(target)
-		}
-		
-		return results
-	}
-}
-
 public func unwrap<Element>(_ array: [Element?]) -> [Element] {
 	var results = [Element]()
 	
