@@ -25,7 +25,7 @@ public extension Array where Element: Equatable {
 		let template = predicate(first)
 		
 		for element in self {
-			if predicate(element) != template {
+			guard predicate(element) == template else {
 				return false
 			}
 		}
@@ -35,7 +35,7 @@ public extension Array where Element: Equatable {
 	
 	public func contains(_ array: [Element]) -> Bool {
 		for element in array {
-			if !self.contains(element) {
+			guard self.contains(element) else {
 				return false
 			}
 		}
@@ -47,9 +47,11 @@ public extension Array where Element: Equatable {
 		var results = [Element]()
 		
 		for element in self {
-			if !results.contains(element) {
-				results.append(element)
+			guard !results.contains(element) else {
+				continue
 			}
+			
+			results.append(element)
 		}
 		
 		return results
@@ -59,9 +61,11 @@ public extension Array where Element: Equatable {
 public extension Array {
 	public mutating func remove(_ predicate: (Element) -> Bool) {
 		for (index, element) in self.enumerated().reversed() {
-			if predicate(element) {
-				self.remove(at: index)
+			guard predicate(element) else {
+				continue
 			}
+			
+			self.remove(at: index)
 		}
 	}
 	
@@ -75,9 +79,11 @@ public extension Array {
 		for index in 0..<results.count - 1 {
 			let next = Int(arc4random_uniform(UInt32(results.count - index))) + index
 			
-			if next != index {
-				results.swapAt(index, next)
+			guard next != index else {
+				continue
 			}
+			
+			results.swapAt(index, next)
 		}
 		
 		return results
@@ -111,9 +117,11 @@ public extension Array {
 		var count = 0
 		
 		for element in self {
-			if predicate(element) {
-				count += 1
+			guard predicate(element) else {
+				continue
 			}
+			
+			count += 1
 		}
 		
 		return count
@@ -132,9 +140,11 @@ public func unwrap<Element>(_ array: [Element?]) -> [Element] {
 	var results = [Element]()
 	
 	for element in array {
-		if let element = element {
-			results.append(element)
+		guard let element = element else {
+			continue
 		}
+		
+		results.append(element)
 	}
 	
 	return results

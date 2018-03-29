@@ -66,25 +66,31 @@ public extension Dictionary {
 	}
 }
 
-public func instantiate<Target: RawRepresentable, Value>(_ dictionary: [String: Value], _ type: Target.Type) -> [Target: Value] where Target.RawValue == String {
-	var results = [Target: Value]()
-	
-	for (key, value) in dictionary {
-		if let target = type.init(rawValue: key) {
+public extension Dictionary where Key: RawRepresentable, Key.RawValue == String {
+	public func instantiate(source: [String: Value]) -> [Key: Value] {
+		var results = [Key: Value]()
+		
+		for (key, value) in source {
+			guard let target = Key.init(rawValue: key) else {
+				continue
+			}
+			
 			results[target] = value
 		}
+		
+		return results
 	}
-	
-	return results
 }
 
 public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
 	var results = [Key: Value]()
 	
 	for (key, value) in dictionary {
-		if let value = value {
-			results[key] = value
+		guard let value = value else {
+			continue
 		}
+		
+		results[key] = value
 	}
 	
 	return results
