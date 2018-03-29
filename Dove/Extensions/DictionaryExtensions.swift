@@ -66,12 +66,12 @@ public extension Dictionary {
 	}
 }
 
-public extension Dictionary where Key: RawRepresentable, Key.RawValue == String {
-	public func instantiate(source: [String: Value]) -> [Key: Value] {
-		var results = [Key: Value]()
+public extension Dictionary where Key == String {
+	public func instantiate<Target: RawRepresentable>(to target: Target.Type) -> [Target: Value] where Target.RawValue == String {
+		var results = [Target: Value]()
 		
-		for (key, value) in source {
-			guard let target = Key.init(rawValue: key) else {
+		for (key, value) in self {
+			guard let target = Target.init(rawValue: key) else {
 				continue
 			}
 			
