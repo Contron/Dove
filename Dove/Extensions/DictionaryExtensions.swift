@@ -43,8 +43,8 @@ public extension Dictionary {
 	}
 	
 	public var urlQuery: String {
-		let keys = self.keys.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
-		let values = self.values.flatMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
+		let keys = self.keys.compactMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
+		let values = self.values.compactMap({ String(describing: $0).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) })
 		
 		let result = zip(keys, values)
 			.map({ "\($0)=\($1)" })

@@ -70,7 +70,7 @@ public extension UITableView {
 
 private struct BatchUpdate {
 	public init(from differences: [Difference]) {
-		self.insertions = differences.flatMap({ difference -> IndexPath? in
+		self.insertions = differences.compactMap({ difference -> IndexPath? in
 			guard case let .insertion(index) = difference else {
 				return nil
 			}
@@ -78,7 +78,7 @@ private struct BatchUpdate {
 			return IndexPath(row: index, section: 0)
 		})
 		
-		self.deletions = differences.flatMap({ difference -> IndexPath? in
+		self.deletions = differences.compactMap({ difference -> IndexPath? in
 			guard case let .deletion(index) = difference else {
 				return nil
 			}
@@ -86,7 +86,7 @@ private struct BatchUpdate {
 			return IndexPath(row: index, section: 0)
 		})
 		
-		self.moves = differences.flatMap({ difference -> (IndexPath, IndexPath)? in
+		self.moves = differences.compactMap({ difference -> (IndexPath, IndexPath)? in
 			guard case let .move(source, destination) = difference else {
 				return nil
 			}
