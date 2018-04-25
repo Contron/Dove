@@ -105,26 +105,16 @@ public extension Array {
 		return results
 	}
 	
-	public func any(_ predicate: (Element) -> Bool) -> Bool {
-		return self.count(predicate) > 0
-	}
-	
 	public func all(_ predicate: (Element) -> Bool) -> Bool {
 		return self.count(predicate) >= self.count
 	}
 	
+	public func any(_ predicate: (Element) -> Bool) -> Bool {
+		return self.count(predicate) > 0
+	}
+	
 	public func count(_ predicate: (Element) -> Bool) -> Int {
-		var count = 0
-		
-		for element in self {
-			guard predicate(element) else {
-				continue
-			}
-			
-			count += 1
-		}
-		
-		return count
+		return self.reduce(0, { $0 + (predicate($1) ? 1 : 0) })
 	}
 	
 	public var random: Element? {

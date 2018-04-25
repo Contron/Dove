@@ -73,12 +73,12 @@ public extension String {
 }
 
 public extension Int {
-	public static func align(number: Int, steps: Int) -> Int {
-		return Int(round(Double(number) / Double(steps))) * steps
-	}
-	
 	public static func random(maximum: Int) -> Int {
 		return Int(arc4random_uniform(UInt32(maximum)))
+	}
+	
+	public func align(to number: Int) -> Int {
+		return Int(round(Double(self) / Double(number))) * number
 	}
 	
 	public var ordinalValue: String {

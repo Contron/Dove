@@ -21,13 +21,6 @@ public extension Date {
 		return "\(timeAgoFormatter.string(from: self, to: .now) ?? "long") ago"
 	}
 	
-	public func between(start: (day: Int, month: Int), end: (day: Int, month: Int)) -> Bool {
-		let day = Calendar.current.component(.day, from: self)
-		let month = Calendar.current.component(.month, from: self)
-		
-		return (day >= start.day && month >= start.month) && (day <= end.day && month <= end.month)
-	}
-	
 	public func isPast() -> Bool {
 		return self < .now
 	}

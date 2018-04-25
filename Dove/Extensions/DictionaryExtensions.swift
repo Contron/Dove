@@ -26,12 +26,12 @@ public extension Dictionary {
 		return results
 	}
 	
-	public func any(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
-		return self.count(predicate) > 0
-	}
-	
 	public func all(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
 		return self.count(predicate) >= self.count
+	}
+	
+	public func any(_ predicate: ((key: Key, value: Value)) -> Bool) -> Bool {
+		return self.count(predicate) > 0
 	}
 	
 	public func count(_ predicate: ((key: Key, value: Value)) -> Bool) -> Int {
