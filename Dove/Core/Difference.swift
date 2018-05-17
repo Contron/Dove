@@ -15,7 +15,7 @@ public enum Difference {
 	case deletion(index: Int)
 	case move(source: Int, destination: Int)
 	
-	public static func calculate<Element: Equatable>(old: [Element], new: [Element]) -> [Difference] {
+	public static func calculate<Element: Equatable>(from old: [Element], to new: [Element]) -> [Difference] {
 		let similarities = new
 			.filter({ old.contains($0) })
 			.map({ Difference.none(index: new.index(of: $0)!) })
@@ -38,44 +38,40 @@ public enum Difference {
 }
 
 public extension UICollectionView {
-	public func reload(using differences: [Difference]) {
-		let indexes = BatchUpdate(from: differences)
+	public func reload(using differences: [Difference], in section: Int) {
+		let indexes = Update(from: differences, in: section)
 		
 		self.performBatchUpdates({
 			self.insertItems(at: indexes.insertions)
 			self.deleteItems(at: indexes.deletions)
 			
-			for move in indexes.moves {
-				self.moveItem(at: move.source, to: move.destination)
-			}
+			indexes.moves.forEach({ self.moveItem(at: $0.source, to: $0.destination) })
 		}, completion: nil)
 	}
 }
 
 public extension UITableView {
-	public func reload(using differences: [Difference], with animation: UITableViewRowAnimation) {
-		let indexes = BatchUpdate(from: differences)
+	public func reload(using differences: [Difference], in section: Int, with animation: UITableViewRowAnimation) {
+		let indexes = Update(from: differences, in: section)
 		
 		self.beginUpdates()
 		self.insertRows(at: indexes.insertions, with: animation)
 		self.deleteRows(at: indexes.deletions, with: animation)
 		
-		for move in indexes.moves {
-			self.moveRow(at: move.source, to: move.destination)
-		}
+		indexes.moves.forEach({ self.moveRow(at: $0.source, to: $0.destination) })
 		
 		self.endUpdates()
 	}
 }
 
-private struct BatchUpdate {
-	public init(from differences: [Difference]) {
+private struct Update {
+	public init(from differences: [Difference], in section: Int) {
 		self.insertions = differences.compactMap({ difference -> IndexPath? in
 			guard case let .insertion(index) = difference else {
 				return nil
 			}
 			
-			return IndexPath(row: index, section: 0)
+			return IndexPath(row: index, section: section)
 		})
 		
 		self.deletions = differences.compactMap({ difference -> IndexPath? in
@@ -83,7 +79,7 @@ private struct BatchUpdate {
 				return nil
 			}
 			
-			return IndexPath(row: index, section: 0)
+			return IndexPath(row: index, section: section)
 		})
 		
 		self.moves = differences.compactMap({ difference -> (IndexPath, IndexPath)? in
@@ -91,7 +87,7 @@ private struct BatchUpdate {
 				return nil
 			}
 			
-			return (IndexPath(row: source, section: 0), IndexPath(row: destination, section: 0))
+			return (IndexPath(row: source, section: section), IndexPath(row: destination, section: section))
 		})
 	}
 	
