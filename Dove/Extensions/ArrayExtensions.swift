@@ -60,8 +60,8 @@ public extension Array where Element: Equatable {
 
 public extension Array {
 	public mutating func remove(_ predicate: (Element) -> Bool) {
-		for (index, element) in self.enumerated().reversed() {
-			guard predicate(element) else {
+		for index in stride(from: self.count - 1, through: 0, by: -1) {
+			guard predicate(self[index]) else {
 				continue
 			}
 			
