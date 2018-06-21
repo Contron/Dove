@@ -71,7 +71,7 @@ public extension Dictionary where Key == String {
 		var results = [Target: Value]()
 		
 		for (key, value) in self {
-			guard let target = Target.init(rawValue: key) else {
+			guard let target = Target(rawValue: key) else {
 				continue
 			}
 			

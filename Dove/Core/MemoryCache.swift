@@ -10,7 +10,7 @@ import Foundation
 
 public final class MemoryCache<Key: Hashable, Value> {
 	public init() {
-		self.cache.name = "Cache"
+		self.cache.name = "Memory Cache"
 	}
 	
 	public func add(_ value: Value, for key: Key, costing amount: Int) {

@@ -17,7 +17,7 @@ public extension Array where Element: Equatable {
 		self.remove(at: index)
 	}
 	
-	public func all<T: Equatable>(equal predicate: (Element) -> T) -> Bool {
+	public func all<Target: Equatable>(equal predicate: (Element) -> Target) -> Bool {
 		guard let first = self.first else {
 			return true
 		}
