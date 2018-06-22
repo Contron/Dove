@@ -51,11 +51,11 @@ public extension String {
 		case .pascal:
 			return String(self.prefix(1)).uppercased() + String(self.dropFirst())
 		case .title:
-			return self.replacingOccurrences(of: regex, with: "$1 $2", options: .regularExpression, range: self.startIndex..<self.endIndex).capitalized
+			return self.replacingOccurrences(of: regex, with: "$1 $2", options: .regularExpression).capitalized
 		case .snake:
-			return self.replacingOccurrences(of: regex, with: "$1_$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+			return self.replacingOccurrences(of: regex, with: "$1_$2", options: .regularExpression).lowercased()
 		case .kebab:
-			return self.replacingOccurrences(of: regex, with: "$1-$2", options: .regularExpression, range: self.startIndex..<self.endIndex).lowercased()
+			return self.replacingOccurrences(of: regex, with: "$1-$2", options: .regularExpression).lowercased()
 		}
 	}
 	
