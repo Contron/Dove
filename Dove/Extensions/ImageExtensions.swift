@@ -14,7 +14,7 @@ infix operator !≈: ComparisonPrecedence
 
 public extension UIImage {
 	public static func ≈≈(first: UIImage, second: UIImage) -> Bool {
-		guard let first = UIImagePNGRepresentation(first), let second = UIImagePNGRepresentation(second) else {
+		guard let first = first.pngData(), let second = second.pngData() else {
 			return false
 		}
 		
@@ -22,7 +22,7 @@ public extension UIImage {
 	}
 	
 	public static func !≈(first: UIImage, second: UIImage) -> Bool {
-		guard let first = UIImagePNGRepresentation(first), let second = UIImagePNGRepresentation(second) else {
+		guard let first = first.pngData(), let second = second.pngData() else {
 			return false
 		}
 		
@@ -61,7 +61,7 @@ public extension UIImage {
 		return UIImage(cgImage: result, scale: self.scale, orientation: self.imageOrientation)
 	}
 	
-	public func flip(to orientation: UIImageOrientation) -> UIImage? {
+	public func flip(to orientation: UIImage.Orientation) -> UIImage? {
 		guard let image = self.cgImage else {
 			return nil
 		}

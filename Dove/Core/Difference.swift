@@ -51,7 +51,7 @@ public extension UICollectionView {
 }
 
 public extension UITableView {
-	public func reload(using differences: [Difference], in section: Int, with animation: UITableViewRowAnimation) {
+	public func reload(using differences: [Difference], in section: Int, with animation: UITableView.RowAnimation) {
 		let indexes = Update(from: differences, in: section)
 		
 		self.beginUpdates()

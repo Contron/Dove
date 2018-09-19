@@ -42,6 +42,6 @@ public extension UserDefaults {
 	}
 	
 	public func register(defaults: [Key: Any]) {
-		self.register(defaults: defaults.transform({ ($0.rawValue, $1) }))
+		self.register(defaults: defaults.project({ ($0.key.rawValue, $0.value) }))
 	}
 }

@@ -10,15 +10,11 @@ import Foundation
 
 public extension Date {
 	public init?(string: String) {
-		guard let date = posixFormatter.date(from: string) else {
+		guard let date = formatter.date(from: string) else {
 			return nil
 		}
 		
 		self.init(timeInterval: 0, since: date)
-	}
-	
-	public func timeAgo() -> String {
-		return "\(timeAgoFormatter.string(from: self, to: .now) ?? "long") ago"
 	}
 	
 	public func isPast() -> Bool {
@@ -34,19 +30,11 @@ public extension Date {
 	}
 }
 
-private let posixFormatter: DateFormatter = {
+private let formatter: DateFormatter = {
 	let formatter = DateFormatter()
 	formatter.locale = Locale(identifier: "en_US_POSIX")
 	formatter.timeZone = TimeZone(abbreviation: "UTC")
 	formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-	
-	return formatter
-}()
-
-private let timeAgoFormatter: DateComponentsFormatter = {
-	let formatter = DateComponentsFormatter()
-	formatter.maximumUnitCount = 1
-	formatter.unitsStyle = .full
 	
 	return formatter
 }()

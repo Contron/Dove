@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public extension UIControl {
-	public func addBlock(for controlEvents: UIControlEvents, block: @escaping ActionBlock) {
+	public func addBlock(for controlEvents: UIControl.Event, block: @escaping ActionBlock) {
 		let wrapper = Wrapper(block: block)
 		var key = ObjectIdentifier(wrapper)
 		

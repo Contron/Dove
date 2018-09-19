@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3007C2BE21514EFF008B8E93 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007C2BD21514EFF008B8E93 /* SequenceExtensions.swift */; };
 		30139C4D1DA3F09D00A4DBC1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30139C4C1DA3F09D00A4DBC1 /* Environment.swift */; };
 		3022FCB920F35C910057D3B9 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022FCB820F35C910057D3B9 /* UserDefaultsExtensions.swift */; };
 		303258D71E30FAB50059C525 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303258D61E30FAB50059C525 /* MemoryCache.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3007C2BD21514EFF008B8E93 /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		30139C4C1DA3F09D00A4DBC1 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3022FCB820F35C910057D3B9 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		303258D61E30FAB50059C525 /* MemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
@@ -96,8 +98,8 @@
 		B343839D1D01FBA500E5F39E = {
 			isa = PBXGroup;
 			children = (
-				B34383AC1D01FBA600E5F39E /* Info.plist */,
 				B3984D371D085371005A1183 /* Dove.framework */,
+				B34383AC1D01FBA600E5F39E /* Info.plist */,
 				B34383A91D01FBA600E5F39E /* Dove */,
 			);
 			sourceTree = "<group>";
@@ -139,6 +141,7 @@
 				B34383BB1D0203FE00E5F39E /* NibExtensions.swift */,
 				30DC4A5F1F8E0D440011B18D /* NodeExtensions.swift */,
 				30485E2E1D5B197900EB74EA /* PrimitiveExtensions.swift */,
+				3007C2BD21514EFF008B8E93 /* SequenceExtensions.swift */,
 				3022FCB820F35C910057D3B9 /* UserDefaultsExtensions.swift */,
 				B3984D411D0857C0005A1183 /* ViewExtensions.swift */,
 			);
@@ -183,12 +186,13 @@
 		B343839E1D01FBA500E5F39E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Connor Haigh";
 				TargetAttributes = {
 					B34383A61D01FBA500E5F39E = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -228,6 +232,7 @@
 				30139C4D1DA3F09D00A4DBC1 /* Environment.swift in Sources */,
 				30F4D92F1D79C5080071B24B /* Debug.swift in Sources */,
 				303258D71E30FAB50059C525 /* MemoryCache.swift in Sources */,
+				3007C2BE21514EFF008B8E93 /* SequenceExtensions.swift in Sources */,
 				B34383C11D0203FE00E5F39E /* NibExtensions.swift in Sources */,
 				B34383BF1D0203FE00E5F39E /* ControllerExtensions.swift in Sources */,
 				B34383C01D0203FE00E5F39E /* DateExtensions.swift in Sources */,
@@ -304,7 +309,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -345,6 +350,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -355,7 +361,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -382,8 +388,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -405,8 +410,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorhaigh.Dove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

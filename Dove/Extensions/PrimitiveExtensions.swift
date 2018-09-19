@@ -23,25 +23,13 @@ public extension String {
 		case kebab
 	}
 	
-	public static func replace(transforms: [String: Any]) -> String {
-		var result = String(describing: self)
-		
-		transforms.forEach({ result = result.replacingOccurrences(of: $0.key, with: String(describing: $0.value)) })
-		
-		return result
-	}
-	
 	public static func generate(length: Int) -> String {
-		var result = String()
-		
-		for _ in 1...length {
+		return (1...length).reduce(into: String(), { result, _ in
 			let offset = Int(arc4random_uniform(UInt32(letters.count)))
 			let index = letters.index(letters.startIndex, offsetBy: offset)
 			
 			result.append(letters[index])
-		}
-		
-		return result
+		})
 	}
 	
 	public func convert(case: ConversionCase) -> String {
@@ -59,6 +47,10 @@ public extension String {
 		}
 	}
 	
+	public func replace(with transforms: [String: Any]) -> String {
+		return transforms.reduce(self, { $0.replacingOccurrences(of: $1.key, with: String(describing: $1.value)) })
+	}
+	
 	public func truncate(to length: Int) -> String {
 		guard self.count > length else {
 			return self
@@ -73,20 +65,16 @@ public extension String {
 }
 
 public extension Int {
-	public static func random(maximum: Int) -> Int {
-		return Int(arc4random_uniform(UInt32(maximum)))
-	}
-	
 	public func align(to number: Int) -> Int {
 		return Int(round(Double(self) / Double(number))) * number
 	}
 	
-	public var ordinalValue: String {
-		return ordinalFormatter.string(from: NSNumber(value: self)) ?? String(self)
-	}
-	
 	public var displayValue: String {
 		return integerFormatter.string(from: NSNumber(value: self)) ?? String(self)
+	}
+	
+	public var ordinalValue: String {
+		return ordinalFormatter.string(from: NSNumber(value: self)) ?? String(self)
 	}
 }
 
@@ -101,16 +89,12 @@ public extension Double {
 }
 
 public extension FloatingPoint {
-	public static var random: Self {
-		return Self(arc4random()) / Self(UInt32.max)
-	}
-	
 	public var radians: Self {
-		return self * .pi / 180
+		return .pi * (self / 180)
 	}
 	
 	public var degrees: Self {
-		return self * 180 / .pi
+		return self * (180 / .pi)
 	}
 }
 
