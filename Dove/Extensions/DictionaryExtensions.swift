@@ -14,16 +14,16 @@ public extension Dictionary {
 	}
 }
 
-public extension Dictionary where Value: Hashable {
+public extension Dictionary where Value: Equatable {
 	public func contains(value: Value) -> Bool {
 		return self.values.contains(value)
 	}
 }
 
 public extension Dictionary where Key == String {
-	public func instantiate<Target: RawRepresentable>(to target: Target.Type) -> [Target: Value] where Target.RawValue == String {
-		return self.reduce(into: [Target: Value](), { result, element in
-			guard let target = Target(rawValue: element.key) else {
+	public func instantiate<T: RawRepresentable>(to target: T.Type) -> [T: Value] where T.RawValue == String {
+		return self.reduce(into: [T: Value](), { result, element in
+			guard let target = T(rawValue: element.key) else {
 				return
 			}
 			
@@ -32,8 +32,8 @@ public extension Dictionary where Key == String {
 	}
 }
 
-public func unwrap<Key, Value>(_ dictionary: [Key: Value?]) -> [Key: Value] {
-	return dictionary.reduce(into: [Key: Value](), { result, element in
+public func unwrap<T, V>(_ dictionary: [T: V?]) -> [T: V] {
+	return dictionary.reduce(into: [T: V](), { result, element in
 		guard let value = element.value else {
 			return
 		}

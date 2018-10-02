@@ -19,11 +19,39 @@ public extension Sequence {
 		return count
 	}
 	
-	public func project<Key, Value>(_ transform: (Element) throws -> (key: Key, value: Value)) rethrows -> [Key: Value] {
-		return [Key: Value](uniqueKeysWithValues: try self.map(transform))
+	public func project<T, V>(_ transform: (Element) throws -> (key: T, value: V)) rethrows -> [T: V] {
+		return [T: V](uniqueKeysWithValues: try self.map(transform))
 	}
 	
-	public func group<Key>(by predicate: (Element) throws -> Key) rethrows -> [Key: [Element]] {
-		return try [Key: [Element]](grouping: self, by: predicate)
+	public func group<T>(by predicate: (Element) throws -> T) rethrows -> [T: [Element]] {
+		return try [T: [Element]](grouping: self, by: predicate)
+	}
+}
+
+public extension RangeReplaceableCollection {
+	public mutating func first(where predicate: (Element) throws -> Bool, appending create: () throws -> (Element)) rethrows -> Element? {
+		guard let element = try self.first(where: predicate) else {
+			let element = try create()
+			
+			self.append(element)
+			
+			return element
+		}
+		
+		return element
+	}
+}
+
+public extension RangeReplaceableCollection where Element: Equatable {
+	public mutating func remove(element: Element) {
+		guard let index = self.index(of: element) else {
+			return
+		}
+		
+		self.remove(at: index)
+	}
+	
+	public func contains(array: [Element]) -> Bool {
+		return self.contains(where: { array.contains($0) })
 	}
 }

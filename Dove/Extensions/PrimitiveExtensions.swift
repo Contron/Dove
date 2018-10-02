@@ -10,7 +10,7 @@ import Foundation
 
 infix operator ?=: AssignmentPrecedence
 
-public func ?= <Value>(first: inout Value, second: Value?) {
+public func ?= <T>(first: inout T, second: T?) {
 	return first = second ?? first
 }
 
