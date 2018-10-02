@@ -28,20 +28,6 @@ public extension Sequence {
 	}
 }
 
-public extension RangeReplaceableCollection {
-	public mutating func first(where predicate: (Element) throws -> Bool, appending create: () throws -> (Element)) rethrows -> Element? {
-		guard let element = try self.first(where: predicate) else {
-			let element = try create()
-			
-			self.append(element)
-			
-			return element
-		}
-		
-		return element
-	}
-}
-
 public extension RangeReplaceableCollection where Element: Equatable {
 	public mutating func remove(element: Element) {
 		guard let index = self.index(of: element) else {
