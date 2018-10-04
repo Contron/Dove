@@ -10,30 +10,36 @@ import Foundation
 import UIKit
 
 public enum Difference {
-	case none(index: Int)
-	case insertion(index: Int)
 	case deletion(index: Int)
-	case move(source: Int, destination: Int)
+	case insertion(index: Int)
+	case move(oldIndex: Int, newIndex: Int)
 	
-	public static func calculate<Element: Equatable>(from old: [Element], to new: [Element]) -> [Difference] {
-		let similarities = new
-			.filter({ old.contains($0) })
-			.map({ Difference.none(index: new.index(of: $0)!) })
+	public static func calculate<T: Equatable>(from old: [T], to new: [T]) -> [Difference] {
+		let deletions = old.compactMap({ element -> Difference? in
+			guard let index = old.index(of: element), !new.contains(element) else {
+				return nil
+			}
+			
+			return .deletion(index: index)
+		})
 		
-		let insertions = new
-			.filter({ !old.contains($0) })
-			.map({ Difference.insertion(index: new.index(of: $0)!) })
+		let insertions = new.compactMap({ element -> Difference? in
+			guard let index = new.index(of: element), !old.contains(element) else {
+				return nil
+			}
+			
+			return .insertion(index: index)
+		})
 		
-		let deletions = old
-			.filter({ !new.contains($0) })
-			.map({ Difference.deletion(index: old.index(of: $0)!) })
+		let moves = new.compactMap({ element -> Difference? in
+			guard let oldIndex = old.index(of: element), let newIndex = new.index(of: element), oldIndex != newIndex else {
+				return nil
+			}
+			
+			return .move(oldIndex: oldIndex, newIndex: newIndex)
+		})
 		
-		let moves = new
-			.filter({ old.contains($0) })
-			.filter({ new.index(of: $0) != old.index(of: $0) })
-			.map({ Difference.move(source: old.index(of: $0)!, destination: new.index(of: $0)!) })
-		
-		return similarities + insertions + deletions + moves
+		return deletions + insertions + moves
 	}
 }
 
@@ -42,10 +48,12 @@ public extension UICollectionView {
 		let indexes = Update(from: differences, in: section)
 		
 		self.performBatchUpdates({
-			self.insertItems(at: indexes.insertions)
 			self.deleteItems(at: indexes.deletions)
+			self.insertItems(at: indexes.insertions)
 			
-			indexes.moves.forEach({ self.moveItem(at: $0.source, to: $0.destination) })
+			for move in indexes.moves {
+				self.moveItem(at: move.oldIndex, to: move.newIndex)
+			}
 		}, completion: nil)
 	}
 }
@@ -55,10 +63,12 @@ public extension UITableView {
 		let indexes = Update(from: differences, in: section)
 		
 		self.beginUpdates()
-		self.insertRows(at: indexes.insertions, with: animation)
 		self.deleteRows(at: indexes.deletions, with: animation)
+		self.insertRows(at: indexes.insertions, with: animation)
 		
-		indexes.moves.forEach({ self.moveRow(at: $0.source, to: $0.destination) })
+		for move in indexes.moves {
+			self.moveRow(at: move.oldIndex, to: move.newIndex)
+		}
 		
 		self.endUpdates()
 	}
@@ -66,14 +76,6 @@ public extension UITableView {
 
 private struct Update {
 	public init(from differences: [Difference], in section: Int) {
-		self.insertions = differences.compactMap({ difference -> IndexPath? in
-			guard case let .insertion(index) = difference else {
-				return nil
-			}
-			
-			return IndexPath(row: index, section: section)
-		})
-		
 		self.deletions = differences.compactMap({ difference -> IndexPath? in
 			guard case let .deletion(index) = difference else {
 				return nil
@@ -82,16 +84,24 @@ private struct Update {
 			return IndexPath(row: index, section: section)
 		})
 		
-		self.moves = differences.compactMap({ difference -> (IndexPath, IndexPath)? in
-			guard case let .move(source, destination) = difference else {
+		self.insertions = differences.compactMap({ difference -> IndexPath? in
+			guard case let .insertion(index) = difference else {
 				return nil
 			}
 			
-			return (IndexPath(row: source, section: section), IndexPath(row: destination, section: section))
+			return IndexPath(row: index, section: section)
+		})
+		
+		self.moves = differences.compactMap({ difference -> (IndexPath, IndexPath)? in
+			guard case let .move(oldIndex, newIndex) = difference else {
+				return nil
+			}
+			
+			return (IndexPath(row: oldIndex, section: section), IndexPath(row: newIndex, section: section))
 		})
 	}
 	
-	public let insertions: [IndexPath]
 	public let deletions: [IndexPath]
-	public let moves: [(source: IndexPath, destination: IndexPath)]
+	public let insertions: [IndexPath]
+	public let moves: [(oldIndex: IndexPath, newIndex: IndexPath)]
 }

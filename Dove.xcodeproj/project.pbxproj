@@ -22,6 +22,7 @@
 		30D723C71F862C160055D70A /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D723C61F862C160055D70A /* ImageExtensions.swift */; };
 		30D902391F87BA710042E0D9 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D902381F87BA710042E0D9 /* CalendarExtensions.swift */; };
 		30DC4A601F8E0D440011B18D /* NodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC4A5F1F8E0D440011B18D /* NodeExtensions.swift */; };
+		30E542B221650516005DB6FF /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E542B121650516005DB6FF /* CollectionExtensions.swift */; };
 		30F104421F90D7D80006F707 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F104411F90D7D80006F707 /* Storage.swift */; };
 		30F4D92F1D79C5080071B24B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D92E1D79C5080071B24B /* Debug.swift */; };
 		B34383AB1D01FBA600E5F39E /* Dove.h in Headers */ = {isa = PBXBuildFile; fileRef = B34383AA1D01FBA600E5F39E /* Dove.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,6 +51,7 @@
 		30D723C61F862C160055D70A /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		30D902381F87BA710042E0D9 /* CalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		30DC4A5F1F8E0D440011B18D /* NodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeExtensions.swift; sourceTree = "<group>"; };
+		30E542B121650516005DB6FF /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		30F104411F90D7D80006F707 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		30F4D92E1D79C5080071B24B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		B34383AA1D01FBA600E5F39E /* Dove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dove.h; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				B34383B71D0203FE00E5F39E /* AnimationExtensions.swift */,
 				B34383B81D0203FE00E5F39E /* ArrayExtensions.swift */,
 				30D902381F87BA710042E0D9 /* CalendarExtensions.swift */,
+				30E542B121650516005DB6FF /* CollectionExtensions.swift */,
 				307688272046AFDD00264281 /* ControlExtensions.swift */,
 				B34383B91D0203FE00E5F39E /* ControllerExtensions.swift */,
 				B34383BA1D0203FE00E5F39E /* DateExtensions.swift */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E542B221650516005DB6FF /* CollectionExtensions.swift in Sources */,
 				B3984D421D0857C0005A1183 /* ViewExtensions.swift in Sources */,
 				30139C4D1DA3F09D00A4DBC1 /* Environment.swift in Sources */,
 				30F4D92F1D79C5080071B24B /* Debug.swift in Sources */,

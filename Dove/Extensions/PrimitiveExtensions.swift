@@ -10,8 +10,12 @@ import Foundation
 
 infix operator ?=: AssignmentPrecedence
 
-public func ?= <T>(first: inout T, second: T?) {
-	return first = second ?? first
+public func ?=<T>(value: inout T, potential: T?) {
+	guard let potential = potential else {
+		return
+	}
+	
+	value = potential
 }
 
 public extension String {
@@ -24,7 +28,7 @@ public extension String {
 	}
 	
 	public static func generate(length: Int) -> String {
-		return (1...length).reduce(into: String(), { result, _ in
+		return stride(from: 0, to: length, by: 1).reduce(into: String(), { result, iteration in
 			let offset = Int(arc4random_uniform(UInt32(letters.count)))
 			let index = letters.index(letters.startIndex, offsetBy: offset)
 			
